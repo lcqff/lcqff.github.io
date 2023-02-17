@@ -35,3 +35,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 #UserSetting
 #theme
 gem "github-pages", group: :jekyll_plugins
+gem "webrick", "~> 1.8"
