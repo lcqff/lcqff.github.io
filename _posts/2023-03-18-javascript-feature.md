@@ -2,7 +2,7 @@
 layout: post
 title: "Javascript의 특징"
 author: 사탄
-categories: Javascripy
+categories: Javascript
 banner:
   image: https://user-images.githubusercontent.com/71930280/226112111-c23343a0-ceee-44ec-8f1e-b3802d49460d.png
   background: "#000"
