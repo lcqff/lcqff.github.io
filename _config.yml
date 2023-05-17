@@ -26,7 +26,7 @@
 
 title: 코딩지옥
 email: yeonnu82g@gmail.com
-author: 사탄
+author: 불한당
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -43,7 +43,7 @@ author: 사탄
 copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
 description: >- # this means to ignore newlines until "baseurl:"
-  J가 되고 싶은 P의 블로그
+  게으른사람
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lcqff.github.io" # the base hostname & protocol for your site, e.g. https://example.com
