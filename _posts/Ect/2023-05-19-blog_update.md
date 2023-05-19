@@ -29,7 +29,7 @@ aaa
 - 위에 있는 responses 기능도 disqus에서 함께 제공해준다. (off 가능)
 - 심지어 블로그 테마 제작자 분이 이미 해당 기능을 위한 코드를 주석 처리해놓았다😅 코드를 더 잘 살펴보는 것이 좋겠다.
   - **disqus**사용, `config.yml` 파일 내 disqus 설정 존재
-  - disqus사이트에서 설정 변경 가능
+  - disqus사이트에서 설정 변경 가능 ![사이트](https://https-lcqff-github-io.disqus.com/admin/settings/general/)
 - 비회원으로 댓글 작성이 가능하지만 그래도 이메일 주소는 작성해야한다.
 - 이후 좀 더 살펴봐야겠다.
   <br/>
