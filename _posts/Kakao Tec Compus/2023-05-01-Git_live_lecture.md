@@ -11,7 +11,6 @@ banner:
   heading_style: "font-size: 4.25em; font-weight: bold;"
   subheading_style: "color: gold"
 tags: 카태캠 kakaoTecCampus 후기
-sidebar: []
 ---
 
 Git 라이브 특강은 Zoom을 통해 4/23,5/1 이론과 실습 총 두 차례에 나눠 이루어졌다.
