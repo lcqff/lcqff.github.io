@@ -10,7 +10,7 @@ sidebar: []
 
 ## 추가 기능
 
-1.**게시글 내부 사이드바 추가**
+**1. 게시글 내부 사이드바 추가**
 
 ![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/f8927b65-be82-46e6-b08b-429e8a2d4b66)
 
@@ -21,7 +21,7 @@ sidebar: []
 <br/>
 <br/>
 
-2.**대망의 댓글 기능 추가**
+.**2. 대망의 댓글 기능 추가**
 
 ![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/d70565b1-4bed-4599-9b94-38d3fc624933)
 
@@ -36,9 +36,15 @@ sidebar: []
 <br/>
 <br/>
 
-3.**블로그 배너 추가, 사이드 헤딩 변경**
+**3. 블로그 배너 추가, 사이드 헤딩 변경**
 
 ![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/3cc6598a-1910-4943-b1aa-e59c844338f1)
 
 - 현재 디폴트 이미지 적용 중… 이후 변경예정
 - `_data/defaults.yml`
+
+**4. 날짜 포맷 변경**
+![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/09ae0022-6335-4322-ad35-14f48d1d200e)
+
+- 기존 미국식 날짜 표기 방식을 한국식으로 변경했다.
+- `config.yml` 파일 내 `date_format: "%Y년 %m월 %d일"` 설정으로 변경
