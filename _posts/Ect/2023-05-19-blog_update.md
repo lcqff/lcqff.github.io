@@ -43,6 +43,9 @@ sidebar: []
 - 현재 디폴트 이미지 적용 중… 이후 변경예정
 - `_data/defaults.yml`
 
+<br/>
+<br/>
+
 **4. 날짜 포맷 변경**
 ![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/09ae0022-6335-4322-ad35-14f48d1d200e)
 
