@@ -180,9 +180,9 @@ yat:
 # Pagination setting
 # paginate: 5
 
-# Disqus comments
-# disqus:
-#   shortname: "Your Disqus username"
+#Disqus comments
+disqus:
+  shortname: "https-lcqff-github-io"
 
 # Gitment comments
 # gitment:
