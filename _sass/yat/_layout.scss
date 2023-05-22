@@ -798,4 +798,26 @@ html {
 }
 .box-note {
   background: rgba(0, 0, 0, 0.25);
+  border: #e3e3e3 solid 1px;
+}
+
+.callout {
+  background: rgb(241, 241, 239);
+  color: rgb(55, 53, 47);
+  display: flex;
+  padding: 16px 16px 16px 12px;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.callout div:first-child {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 24px;
+  width: 24px;
+}
+
+.callout div:last-child {
+  margin-left: 8px;
 }

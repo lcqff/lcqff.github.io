@@ -83,3 +83,14 @@ You can add notification, warning and error boxes like this:
 
 {: .box-error}
 **Error:** This is an error box.
+
+### 콜아웃
+
+<div class="callout">
+  <div>:memo:</div>
+  <div>
+    <strong>JS 는 기본적으로 동기로 실행 → 실행이 끝나야 다음 코드가 실행된다.</strong><br/>
+    JS 는 기본적으로 동기로 실행 → 실행이 끝나야 다음 코드가 실행된다<br/>
+    JS 는 기본적으로 동기로 실행 → 실행이 끝나야 다음 코드가 실행된다
+  </div>
+</div>
