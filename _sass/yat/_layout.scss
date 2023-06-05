@@ -797,8 +797,10 @@ html {
   background: rgba(255, 0, 0, 0.25);
 }
 .box-note {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.15);
   border: #e3e3e3 solid 1px;
+  border-radius: 3px;
+  color: #858585;
 }
 
 .callout {
@@ -806,6 +808,8 @@ html {
   color: rgb(55, 53, 47);
   display: flex;
   padding: 16px 16px 16px 12px;
+  margin: 20px 0;
+  width: 90%;
   border-radius: 3px;
   font-size: 16px;
 }

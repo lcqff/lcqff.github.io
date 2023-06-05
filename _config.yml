@@ -26,7 +26,7 @@
 
 title: 코딩지옥
 email: yeonnu82g@gmail.com
-author: 불한당
+author: 파녀미
 
 # Copyright setting
 # You can use any html code, currently below placeholders are available:
@@ -46,7 +46,7 @@ copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lcqff.github.io" # the base hostname & protocol for your site, e.g. https://example.com
-favicon: "" # the favicon for your site
+favicon: "./assets/images/fav/panyeomi_fav.png" # the favicon for your site
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
