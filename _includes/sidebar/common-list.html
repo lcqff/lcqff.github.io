@@ -1,10 +1,5 @@
-{%- if include.keys -%}
-  {%- assign keys = include.keys -%}
-{%- endif -%}
-
-{%- if include.field -%}
-  {%- assign field = include.field -%}
-{%- endif -%}
+{%- if include.keys -%} {%- assign keys = include.keys -%} {%- endif -%} {%- if
+include.field -%} {%- assign field = include.field -%} {%- endif -%}
 
 <div class="common-list">
   <ul>
@@ -14,12 +9,13 @@
       </a>
     </li>
 
-    {% for key in  keys %}
-      <li>
-        <a href="{{ url }}#h-{{ key }}">
-          {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
-        </a>
-      </li>
+    {% for key in keys %}
+    <li>
+      <a href="{{ url }}#h-{{ key }}">
+        {{ key }} <span>{{ site.posts | where: field, key | size }}</span>
+      </a>
+    </li>
     {% endfor %}
   </ul>
+  {% if page.sidebar_main %} {% include category_list_main %} {% endif %}
 </div>
