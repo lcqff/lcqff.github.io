@@ -75,7 +75,7 @@ tags: gitblog
 
 <br/>
 <br/>
-이때 include 하는 내용을 <code>include <b>views/post-item.html</b></code> 로 수정했다.
+이때 **_posts/categories/category-{카테고리 이름}.md**에서 include 하는 내용을 <code>include <b>views/post-item.html</b></code> 로 수정했다.
 
 <pre><code>
 &#45;&#45;&#45;
