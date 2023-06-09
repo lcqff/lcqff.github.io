@@ -216,3 +216,4 @@ plugins:
   - jekyll-spaceship
 
 sidebar_main: true
+sidebar_defualt: false
