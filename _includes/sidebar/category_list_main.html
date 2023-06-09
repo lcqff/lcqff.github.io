@@ -2,49 +2,132 @@
 
 {% assign sum = site.posts | size %}
 
-<nav class="nav__list">
-  <input id="ac-toc" name="accordion-toc" type="checkbox" />
-  <label for="ac-toc">{{ site.data.ui-text[site.locale].menu_label }}</label>
-  <ul class="nav__items" id="category_tag_menu">
-      <!--전체 글 수-->
+<div>
+  <!--전체 글 수-->
+  <div class="common-list">
+    <ul>
       <li>
-            📂 <span style="font-family:'Cafe24Oneprettynight';">전체 글 수</style> <span style="font-family:'Coming Soon';">{{sum}}</style> <span style="font-family:'Cafe24Oneprettynight';">개</style> 
+        <a href="{{ '/index.html' | relative_url }}">
+          All<span>{{ site.posts.size }}</span>
+        </a>
       </li>
+    </ul>
+  </div>
+  <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
+  <div class="parent_cat">블로그</div>
+  <div class="common-list">
+    <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+    <ul>
+      <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+      <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+      {% for category in site.categories %} {% if category[0] == "Jekyll" %}
       <li>
-        <!--span 태그로 카테고리들을 크게 분류 ex) C/C++/C#-->
-        <span class="nav__sub-title">C/C++/C#</span>
-            <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
-            <ul>
-                <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
-                <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시--> 
-                {% for category in site.categories %}
-                    {% if category[0] == "Cpp" %}
-                        <li><a href="/categories/cpp" class="">C ++ ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "STL" %}
-                        <li><a href="/categories/stl" class="">C++ STL & 표준 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-        <span class="nav__sub-title">Jekyll</span>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "Jekyll" %}
-                        <li><a href="/categories/jekyll" class="">Jekyll ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
-            <ul>
-                {% for category in site.categories %}
-                    {% if category[0] == "flutter" %}
-                        <li><a href="/categories/programmers" class="">프로그래머스 ({{category[1].size}})</a></li>
-                    {% endif %}
-                {% endfor %}
-            </ul>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
       </li>
-  </ul>
-</nav>
+      {% endif %} {% endfor %}
+    </ul>
+    <ul>
+      {% for category in site.categories %} {% if category[0] ==
+      "블로그_업데이트" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+  <div class="parent_cat">CS</div>
+  <div class="common-list">
+    <!--ul 태그로 같은 카테고리들 모아둔 페이지들 나열-->
+    <ul>
+      <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
+      <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
+      {% for category in site.categories %} {% if category[0] == "CS" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+  <div class="parent_cat">Front End</div>
+  <div class="common-list">
+    <ul>
+      {% for category in site.categories %} {% if category[0] == "Javascript" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+    <ul>
+      {% for category in site.categories %} {% if category[0] == "React" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+    <ul>
+      {% for category in site.categories %} {% if category[0] ==
+      "KakaoTecCampus" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+  <div class="parent_cat">Back End</div>
+  <div class="common-list">
+    <ul>
+      {% for category in site.categories %} {% if category[0] == "Spring" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+  <div class="parent_cat">Mobile</div>
+  <div class="common-list">
+    <ul>
+      {% for category in site.categories %} {% if category[0] == "flutter" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+  <div class="parent_cat">기타</div>
+  <div class="common-list">
+    <ul>
+      {% for category in site.categories %} {% if category[0] == "회고" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </div>
+</div>
