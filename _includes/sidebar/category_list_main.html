@@ -20,18 +20,15 @@
     <ul>
       <!--Cpp 카테고리 글들을 모아둔 페이지인 /categories/cpp 주소의 글로 링크 연결-->
       <!--category[1].size 로 해당 카테고리를 가진 글의 개수 표시-->
-      {% for category in site.categories %} {% if category[0] == "Jekyll" %}
+      {% for category in site.categories %} {% if category[0] == "샘플" %}
       <li>
         <a href="{{ url }}#h-{{ category[0] }}">
           {{ category[0] }}
           <span>{{ site.posts | where: field, category[0] | size }}</span>
         </a>
       </li>
-      {% endif %} {% endfor %}
-    </ul>
-    <ul>
-      {% for category in site.categories %} {% if category[0] ==
-      "블로그_업데이트" %}
+      {% endif %} {% endfor %} {% for category in site.categories %} {% if
+      category[0] == "블로그_업데이트" %}
       <li>
         <a href="{{ url }}#h-{{ category[0] }}">
           {{ category[0] }}
@@ -54,6 +51,14 @@
           <span>{{ site.posts | where: field, category[0] | size }}</span>
         </a>
       </li>
+      {% endif %} {% endfor %} {% for category in site.categories %} {% if
+      category[0] == "Algorithm" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
       {% endif %} {% endfor %}
     </ul>
   </div>
@@ -67,21 +72,16 @@
           <span>{{ site.posts | where: field, category[0] | size }}</span>
         </a>
       </li>
-      {% endif %} {% endfor %}
-    </ul>
-    <ul>
-      {% for category in site.categories %} {% if category[0] == "React" %}
+      {% endif %} {% endfor %} {% for category in site.categories %} {% if
+      category[0] == "React" %}
       <li>
         <a href="{{ url }}#h-{{ category[0] }}">
           {{ category[0] }}
           <span>{{ site.posts | where: field, category[0] | size }}</span>
         </a>
       </li>
-      {% endif %} {% endfor %}
-    </ul>
-    <ul>
-      {% for category in site.categories %} {% if category[0] ==
-      "KakaoTecCampus" %}
+      {% endif %} {% endfor %} {% for category in site.categories %} {% if
+      category[0] == "KakaoTecCampus" %}
       <li>
         <a href="{{ url }}#h-{{ category[0] }}">
           {{ category[0] }}

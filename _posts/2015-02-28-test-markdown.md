@@ -2,7 +2,7 @@
 layout: post
 title: Test markdown
 subtitle: Each post also has a subtitle
-categories: Jekyll
+categories: 샘플
 banner:
   image: https://user-images.githubusercontent.com/71930280/236198202-1a6ec792-f31d-4e2b-858b-5535b4e25634.png
   background: "#000"
