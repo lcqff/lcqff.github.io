@@ -2,7 +2,7 @@
 layout: post
 title: "[Algorithm] 백트래킹(Bactracking)"
 author: 파녀미
-categories: CS
+categories: Algorithm
 banner:
   image: https://github.com/lcqff/lcqff.github.io/assets/71930280/183f2d64-6716-4a61-bc8f-5cd525bea29f
   background: "#000"
