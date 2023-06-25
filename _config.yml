@@ -180,8 +180,8 @@ yat:
 # paginate: 5
 
 #Disqus comments
-disqus:
-  shortname: "https-lcqff-github-io"
+#disqus:
+#  shortname: "https-lcqff-github-io"
 
 # Gitment comments
 # gitment:
