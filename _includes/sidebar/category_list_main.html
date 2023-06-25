@@ -88,7 +88,14 @@
           <span>{{ site.posts | where: field, category[0] | size }}</span>
         </a>
       </li>
-      {% endif %} {% endfor %}
+      {% endif %} {% endfor %} {% for category in site.categories %} {% if
+      category[0] == "Works" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
     </ul>
   </div>
   <div class="parent_cat">Back End</div>
