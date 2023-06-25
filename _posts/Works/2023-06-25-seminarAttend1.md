@@ -150,10 +150,10 @@ Keeper라는 부산대학교 보안동아리에서 난데없이 개발을 하고
         </tr>
         <tr>
             <td>회원</td>
-            <td>X</td>
+            <td>O</td>
             <td class="slash"></td>
             <td class="slash"></td>
-            <td>X</td>
+            <td>O</td>
         </tr>
         <tr>
             <td rowspan=4>관리 페이지 이동</td>
