@@ -10,7 +10,7 @@ banner:
   min_height: "38vh"
   heading_style: "font-size: 4.25em; font-weight: bold;"
   subheading_style: "color: gold"
-tags: keeper
+tags: Keeper
 ---
 
 <style>
@@ -45,8 +45,8 @@ Keeper라는 부산대학교 보안동아리에서 난데없이 개발을 하고
 
 ## FlowChart
 
-![회장 flowchart](https://github.com/lcqff/lcqff.github.io/assets/71930280/dfd94d49-7b43-40d8-a5ef-7a2e4dce7cb5)
 ![회원 flowchart](https://github.com/lcqff/lcqff.github.io/assets/71930280/0b619336-fec6-4e3a-ba5c-387107e607da)
+![회장 flowchart](https://github.com/lcqff/lcqff.github.io/assets/71930280/ba099be3-d2a8-483a-978c-fdbda318baee)
 
 ## Permission
 
