@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "출석체크 기능 제작 1- 기획"
+title: "출석 체크 페이지 제작 1- 설계"
 author: 파녀미
 categories: Works
 banner:
