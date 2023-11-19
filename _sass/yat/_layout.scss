@@ -788,10 +788,12 @@ html {
 .box-yello,
 .box-error,
 .box-note {
-  padding: 20px 10px;
+  padding: 20px 20px;
+  border-radius: 0.5rem;
+  color: #858585;
 }
 .box-yello {
-  background: rgba(255, 165, 0, 0.25);
+  background: rgba(255, 210, 128, 0.25);
 }
 .box-error {
   background: rgba(255, 0, 0, 0.25);
@@ -799,8 +801,7 @@ html {
 .box-note {
   background: rgba(0, 0, 0, 0.15);
   border: #e3e3e3 solid 1px;
-  border-radius: 3px;
-  color: #858585;
+  
 }
 
 .callout {
