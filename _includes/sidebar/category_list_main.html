@@ -110,6 +110,22 @@
         </a>
       </li>
       {% endif %} {% endfor %}
+      {% for category in site.categories %} {% if category[0] == "Java" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
+      {% for category in site.categories %} {% if category[0] == "JPA" %}
+      <li>
+        <a href="{{ url }}#h-{{ category[0] }}">
+          {{ category[0] }}
+          <span>{{ site.posts | where: field, category[0] | size }}</span>
+        </a>
+      </li>
+      {% endif %} {% endfor %}
     </ul>
   </div>
   <div class="parent_cat">Mobile</div>
