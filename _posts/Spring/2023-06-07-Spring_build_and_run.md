@@ -21,7 +21,7 @@ tags: Spring
   }
 </style>
 
-{: .box-warning}
+{: .box-yello}
 읽기 전 [이 게시물](https://lcqff.github.io/cs/2023/06/07/MVC.html)을 먼저 읽고 오는 것을 추천한다.
 
 ## 스프링 프로젝트 생성
@@ -137,7 +137,7 @@ th: thymeleaf 문법
 
 터미널 입력
 
-{: .box-warning}
+{: .box-yello}
 `./gradlew build`<br/>
 `cd build/libs`<br/><br/>
 ![image](https://github.com/lcqff/lcqff.github.io/assets/71930280/d87531f3-fae2-4198-ab33-74e081635814)

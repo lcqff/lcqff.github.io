@@ -76,7 +76,7 @@ You can add notification, warning and error boxes like this:
 
 ### Warning
 
-{: .box-warning}
+{: .box-yello}
 **Warning:** This is a warning box.
 
 ### Error
