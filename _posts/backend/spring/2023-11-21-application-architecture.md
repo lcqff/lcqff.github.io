@@ -20,9 +20,9 @@ tags: spring
     - 가장 바깥 계층으로 사용자와 직접 상호작용하는 계층  
 2. **Businness Layer**
     - 요청에 따른 비즈니스 로직을 다루는 계층
-2. **Persistence Layer**
+3. **Persistence Layer**
     - 데이터베이스와 상호작용하는 계층
-3. **Database Layer**
+4. **Database Layer**
     - 데이터가 저장되어 있는 계층 (데이터베이스)
 {: .box-yello}
 
