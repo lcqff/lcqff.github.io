@@ -13,7 +13,6 @@ banner:
 tags: CSS HTML P1Ch8
 ---
 
-sssnnnasasas
 
 You can write regular [markdown](https://markdowntutorial.com/) here and Jekyll will automatically convert it to a nice webpage. I strongly encourage you to [take 5 minutes to learn how to write in markdown](http://markdowntutorial.com/) - it'll teach you how to transform regular text into bold/italics/headings/tables/etc.
 
@@ -30,13 +29,31 @@ Here's a useless table:
 | Seven  | Eight       | Six             |
 | Two    | Three       | One             |
 
+
+### 이미지
+
 How about a yummy crepe?
 
 ![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg)
 
-It can also be centered!
+<!-- It can also be centered!
 
-![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .center-block :}
+![Crepe](https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg){: .center-block :} -->
+
+#### 이미지 row 정렬
+<div>
+  <img src="https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg">
+  <img src="https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg">
+  <img src="https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg">
+</div>
+{: .imageRow}   
+
+#### 이미지 캡션
+  <div class="captionedImg">
+    <img src="https://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg">
+    <p >yummy crepe</p>
+  </div>
+
 
 Here's a code chunk:
 
@@ -65,26 +82,26 @@ return(x + 5);
 foo(3)
 {% endhighlight %}
 
-## Boxes
+### Boxes
 
 You can add notification, warning and error boxes like this:
 
-### Notification
+#### Notification
 
 {: .box-note}
 **Note:** This is a notification box.
 
-### Warning
+#### yello
 
 {: .box-yello}
-**Warning:** This is a warning box.
+**yello:** This is a yello box.
 
-### Error
+#### Error
 
 {: .box-error}
 **Error:** This is an error box.
 
-### 콜아웃
+#### 콜아웃
 
 <div class="callout">
   <div>:memo:</div>
@@ -94,3 +111,10 @@ You can add notification, warning and error boxes like this:
     JS 는 기본적으로 동기로 실행 → 실행이 끝나야 다음 코드가 실행된다
   </div>
 </div>
+
+### 텍스트
+#### 텍스트 색상
+<p class="red"> 붉은색</p>
+<p class="blue"> 푸른색</p>
+
+
