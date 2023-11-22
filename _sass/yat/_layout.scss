@@ -482,19 +482,19 @@ html {
     }
 
       //post image
-  .imageRow {
-    display:flex;
-    margin: 20px 0;
-    width: 50%;
-  }
-    .captionedImg {
-    display: grid;
-    align-content: flex-end;
-    margin: 0 20px;
-    text-align:center;
-    font-size: 12px;
-    color:gray;
-  }
+    .imageRow {
+      display:flex;
+      margin: 20px 0;
+      width: 50%;
+    }
+      .captionedImg {
+      display: grid;
+      align-content: flex-end;
+      margin: 0 20px;
+      text-align:center;
+      font-size: 12px;
+      color:gray;
+    }
   }
 
   .post-related {
@@ -517,18 +517,18 @@ html {
           color: #333;
         }
 
-        &:after {
-          content: "NEW";
-          position: absolute;
-          margin-left: 8px;
-          margin-top: 3px;
-          padding: 0px 3px;
-          background-color: $brand-color;
-          color: #fff;
-          font-size: 10px;
-          font-weight: 600;
-          border-radius: 2px;
-        }
+        // &:after {
+        //   content: "NEW";
+        //   position: absolute;
+        //   margin-left: 8px;
+        //   margin-top: 3px;
+        //   padding: 0px 3px;
+        //   background-color: $brand-color;
+        //   color: #fff;
+        //   font-size: 10px;
+        //   font-weight: 600;
+        //   border-radius: 2px;
+        // }
 
         &:visited:after {
           background-color: #fff;
@@ -787,18 +787,18 @@ html {
       color: #000;
     }
 
-    &:after {
-      content: "NEW";
-      position: absolute;
-      margin-left: 8px;
-      margin-top: 3px;
-      padding: 0px 3px;
-      background-color: $brand-color;
-      color: #fff;
-      font-size: 10px;
-      font-weight: 600;
-      border-radius: 2px;
-    }
+    // &:after {
+    //   content: "NEW";
+    //   position: absolute;
+    //   margin-left: 8px;
+    //   margin-top: 3px;
+    //   padding: 0px 3px;
+    //   background-color: $brand-color;
+    //   color: #fff;
+    //   font-size: 10px;
+    //   font-weight: 600;
+    //   border-radius: 2px;
+    // }
 
     &:visited:after {
       background-color: #fff;
@@ -819,9 +819,10 @@ html {
 .box-yello,
 .box-error,
 .box-note {
-  padding: 20px 20px;
+  padding: 20px 40px;
   border-radius: 0.5rem;
   color: #858585;
+  margin-left: 0px;
 }
 .box-yello {
   background: rgba(255, 210, 128, 0.25);
