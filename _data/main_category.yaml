@@ -1,0 +1,24 @@
+  - name: "CS"
+    subcategories:
+      - "CS"
+      - "Algorithm"
+  - name: "BackEnd"
+    subcategories:
+      - "Spring"
+      - "Java"
+      - "JPA"
+      - "오류기록장"
+  - name: "FrontEnd"
+    subcategories:
+      - "Javascript"
+      - "React"
+      - "KakaoTecCampus"
+      - "Works"
+  - name: "Mobile"
+    subcategories:
+      - "flutter"
+  - name: "기타"
+    subcategories:
+      - "블로그_업데이트"
+      - "회고"
+      - "샘플"
