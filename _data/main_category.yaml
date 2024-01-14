@@ -8,6 +8,9 @@
       - "Java"
       - "JPA"
       - "오류기록장"
+  - name: "BDD"
+    subcategories:
+      - "두레(doo-rae)" 
   - name: "FrontEnd"
     subcategories:
       - "Javascript"
