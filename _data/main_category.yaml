@@ -10,6 +10,7 @@
       - "오류기록장"
   - name: "BDD"
     subcategories:
+      - "BDD"
       - "두레(doo-rae)" 
   - name: "FrontEnd"
     subcategories:
