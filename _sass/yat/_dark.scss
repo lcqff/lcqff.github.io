@@ -58,7 +58,7 @@ html[data-theme="dark"]  {
       }
     }
 
-    .site-nav .page-link {
+    .site-nav .trigger .page-link { //edit: 24-03-13 //적용안되던거 수정함(.trigger 추가)
       color: #f8f8f8;
     }
 

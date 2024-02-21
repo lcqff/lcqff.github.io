@@ -18,7 +18,8 @@ html {
       &.site-header {
         .site-brand-inner,
         .page-link {
-          color: #fff;
+          //color: #fff;
+          color: #303030; //edit: 24-03-13 
           transition: 0.1s color;
         }
 
@@ -132,7 +133,8 @@ html {
 
   .page-link {
     line-height: $base-line-height;
-    color: $header-text-color;
+    //color: $header-text-color;
+    color: #000;
     transition: 0.1s ease-in-out;
 
     // Gaps between nav items, but not on the last one
@@ -655,7 +657,11 @@ html {
 
     color: $banner-text-color;
     padding: 10px 5px;
-    text-shadow: 1px 1px 2px #33333355;
+    text-shadow: 1px 1px 0px #33333355,
+                -1px -1px 0px #33333355,
+                1px -1px 0px #33333355,
+                -1px 1px 0px #33333355, //edit: 24-03-13
+                ;
 
     & > *:first-child {
       margin: 0;
