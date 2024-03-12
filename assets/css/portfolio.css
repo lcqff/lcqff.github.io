@@ -1,0 +1,64 @@
+.main-container {
+  margin: 0px 30px;
+}
+
+.container-fluid {
+    padding: 0 10px;
+    position: fixed;
+    width: 100%;
+    top: 0px;
+    background-color: gainsboro;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    .navbar-header {
+        .navbar-brand{
+            color: dimgray;
+            text-decoration: none;
+        }
+    }
+}
+
+.about-container {
+  margin: 0em 0 0 0;
+  @include bp-xsmall {
+    margin: 5em 0 5em 0;
+  }
+  @include bp-small {
+    margin: 5em 0 5em 0;
+  }
+}
+
+.about-content {
+  width: 60%;
+  margin: 20px auto;
+  display: table;
+  @include bp-medium {
+    width: 100%;
+  }
+  @include bp-small {
+    width: 100%;
+  }
+  @include bp-xsmall {
+    width: 100%;
+  }
+  h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
+  }
+  p {
+    margin: 2em 0 4em 0;
+  }
+  .buttons {
+    margin: 0 auto;
+    display: table;
+    a {
+      padding-right: 1em;
+    }
+    button {
+        font-size: 1rem;
+        padding: 5px 10px;
+        background-color: white;
+    }
+  }
+}

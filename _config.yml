@@ -47,6 +47,7 @@ copyright: "Unpublished Work (cleft) 2017-{currentYear} {author}"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lcqff.github.io" # the base hostname & protocol for your site, e.g. https://example.com
 favicon: "/assets/images/fav/panyeomi_fav2.png" # the favicon for your site
+github_username: lcqff
 
 # Yat date format
 # refer to https://shopify.github.io/liquid/filters/date/ if you want to customize this
@@ -143,12 +144,12 @@ google_analytics: "G-8FFWMXQQD8"
 
 # If you want to link only specific pages in your header, uncomment
 # this and add the path to the pages in order as they should show up
-# header_pages:
-#   - index.html
-#   - archives.html
-#   - categories.html
-#   - tags.html
-#   - about.md
+header_pages:
+  - index.html
+  - archives.html
+  - categories.html
+  - tags.html
+  - portfolio.html
 
 # Page default value
 # defaults:
