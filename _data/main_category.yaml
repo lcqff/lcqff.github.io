@@ -20,12 +20,9 @@
       - "Javascript"
       - "React"
       - "KakaoTecCampus"
-      - "Works"
-  - name: "Mobile"
-    subcategories:
       - "flutter"
+      - "Works"
   - name: "기타"
     subcategories:
       - "블로그_업데이트"
-      - "회고"
       - "샘플"
