@@ -167,7 +167,7 @@ public void setMaxPageSize(int maxPageSize) {
 
 Pageable의 설정은 변경되었으나 어떠한 이유로 **PageableHandlerMethodArgumentResolver**의 메서드가 실행되지 않아 설정 값으로 Pageable이 설정되지 않은 것으로 판단했다.
 
-## 원인
+### 원인
 
 ![document](https://github.com/lcqff/lcqff.github.io/assets/71930280/029dc0a7-b3eb-4e1b-ad25-5ae2aeb99f1f)
 
