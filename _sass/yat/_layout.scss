@@ -491,14 +491,18 @@ html {
     .imageRow {
       display:flex;
       margin: 20px 0;
-      width: 50%;
+      /* edit: 24-04-08 */
+      //width: 50%;
+      width: 100%;
     }
 
-    .imageRow img {
-      object-fit: cover; /* 이미지 비율 유지 */
-      width: 100%; /* 부모 요소에 맞게 확장 */
-      height: 100%; /* 부모 요소에 맞게 확장 */
+     .imageRow img { 
+      object-fit: cover; // 이미지 비율 유지
+      /* edit: 24-04-08 */
+      //width: 100%; // 부모 요소에 맞게 확장
+      //height: 100%; // 부모 요소에 맞게 확장
     }
+
       .captionedImg {
       display: grid;
       align-content: flex-end;

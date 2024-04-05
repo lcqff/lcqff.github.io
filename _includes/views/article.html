@@ -7,3 +7,30 @@
     </div>
 
 </article>
+
+<!-- edit: 24-04-08 -->
+<script>
+  (function () {
+    window.addEventListener('DOMContentLoaded', function() {
+      const imageRows = document.querySelectorAll('.imageRow');
+      imageRows.forEach(imageRow => {
+          const images = imageRow.querySelectorAll('img');
+          
+          // 이미지의 개수
+          const numImages = images.length;
+          
+          // 부모 요소의 너비
+          const containerWidth = imageRow.offsetWidth;
+          
+          // 각 이미지의 너비 계산
+          const imageWidthPercentage = 100 / numImages;
+          
+          // 각 이미지에 너비 설정
+          images.forEach(image => {
+              image.style.width = `${imageWidthPercentage}%`;
+              image.style.height = 'auto'; // 이미지의 높이는 가로 비율에 따라 자동 조절됨
+          });
+      });
+  });
+  })();
+</script>
