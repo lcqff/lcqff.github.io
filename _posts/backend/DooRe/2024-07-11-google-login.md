@@ -3,6 +3,7 @@ layout: post
 title: 구글 소셜 로그인 에러 해결(Cors, Redirect uri)
 author: 팜
 categories: DooRe
+description: Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting
 tags: Spring Backend DooRe troubleShooting
 sidebar:
 ---
