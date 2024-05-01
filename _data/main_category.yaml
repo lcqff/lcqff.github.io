@@ -4,6 +4,7 @@
       - "Algorithm"
   - name: "BackEnd"
     subcategories:
+      - "Dotted"
       - "Spring"
       - "Java"
       - "JPA"
