@@ -5,6 +5,7 @@
   - name: "BackEnd"
     subcategories:
       - "Dotted"
+      - "Infra"
       - "Spring"
       - "Java"
       - "JPA"
