@@ -2,8 +2,8 @@
 layout: post
 title: "페이지네이션 크기(Size) 제한"
 author: 팜
-categories: 동아리연합활동
-tags: 동아리연합활동 Keeper bug
+categories: Keeper
+tags: Keeper bug
 sidebar:
 ---
 ![요청](https://github.com/lcqff/lcqff.github.io/assets/71930280/e09c7f90-d9ee-4d6b-8cb7-18385e1d6fd4)
