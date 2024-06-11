@@ -2,8 +2,8 @@
 layout: post
 title: "가짜 Cors 해결(false cors)"
 author: 팜
-categories: 동아리연합활동
-tags: 동아리연합활동 Keeper bug
+categories: Keeper
+tags: Keeper bug
 sidebar:
 ---
 ## 문제
