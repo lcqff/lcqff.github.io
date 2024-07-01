@@ -6,6 +6,7 @@
     subcategories:
       - "Dotted"
       - "Keeper"
+      - "DooRe"
       - "세차새차"
       - "Infra"
       - "Spring"
@@ -15,7 +16,6 @@
   - name: "BDD"
     subcategories:
       - "BDD"
-      - "두레(doo-rae)" 
   - name: "FrontEnd"
     subcategories:
       - "Javascript"
