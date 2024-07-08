@@ -162,6 +162,8 @@ SpringBoot 설정파일 네이밍 규칙에 의하여 어떤 프로파일의 설
 
 따라서 배포 서버 주소를 추가해주는 것으로 Cors 에러를 해결할 수 있었다.
 
+[서브모듈 수정 방법](https://lcqff.github.io/doore/2024/07/13/submodule.html)
+
 ## 2. redirect_uri_mismatch 오류
 
 
