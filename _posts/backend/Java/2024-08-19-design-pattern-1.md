@@ -70,7 +70,8 @@ DELIMITER ;
 - 같은 데이터를 프로시저들이 다른 의미로 사용하는 경우가 발생한다.
 
 
-![image](https://github.com/user-attachments/assets/ba0d38e9-e6f4-468c-a61d-0fda8d0c749f)
+![image](https://github.com/user-attachments/assets/1d99025c-7add-4a7e-a318-9dae315bae76)
+
 
 예를 들어 위의 평균값 출력 프로그램에 ‘시험종료’ 데이터를 추가해보자. 
 
@@ -92,7 +93,7 @@ DELIMITER ;
 
 객체 지향은 데이터와 데이터와 관련된 프로시저를 객체(Object)라는 단위로 묶는 것으로 시작한다. 
 
-![image](https://github.com/user-attachments/assets/94ec84d7-66ff-4e30-8e46-ccf4110923d8)
+![image](https://github.com/user-attachments/assets/c5828a16-4968-4ed1-951d-607576c4fa74)
 
 객체는 자신만의 기능을 제공하며, 각 객체들은 서로 연결되어 다른 객체가 제공하는 ‘프로시저’를 사용할 수 있다.
 
@@ -108,27 +109,33 @@ DELIMITER ;
 
 객체의 사용은 데이터가 아닌 ‘기능’에 집중된 구현을 가능하게 해준다. 따라서 객체는 객체가 제공하는 기능(책임)으로 정의된다. 이때 객체가 제공하는 기능을 <blue>오퍼레이션(Operation)</blue>이라 한다. 
 
+
 또한 이런 오퍼레이션을 사용하기 위해서는 오퍼레이션의 사용 방법을 알아야만 한다. 이를 <blue>‘시그니처(Signature)’</blue>라 하며, 시그니처는 ‘**식별 이름, 파라미터 및 파라미터 타입, 리턴 값**’의 3가지로 구성된다.
+
 
 객체가 제공하는 오퍼레이션의 집합을 <blue>‘인터페이스(Interface)’</blue>라 한다. (이때 인터페이스는 Java에서 제공하는 Interface와는 다른 개념이다.) 인터페이스를 구분할 때는 <blue>타입(type)</blue>이라는 명칭으로 구분한다. 
 
+
 인터페이스는 기능에 대한 명세서 역할을 하며 한 객체가 지닌 책임을 정의한다. 
 
+
 마지막으로 <blue>클래스(class)</blue>는 실제 객체가 기능을 어떻게 구현하는지에 대한 정보이다. 이때 class는 Java에서 사용하는 Class와 유사하다.
+
 
 ‘소리 크기 제어 객체’ 예시를 통해 위 용어를 알아보자. 이편이 이해가 빠를 것이다.
 
 ‘소리 크기 제어 객체’는 ‘소리 증가’, ‘소리 감소’, ‘음소거’의 3가지 기능을 지니고 있다.
 
 
-![image](https://github.com/user-attachments/assets/3ff2d5cf-44f5-4edc-8c62-7e351c0086d7)
+
+![image](https://github.com/user-attachments/assets/5086238e-4809-4af3-af11-3380e2c83583)
 
 ### 객체의 책임
 
 상황에 따라 객체의 책임 구성은 달라질 수 있다. 그러나 확실한 규칙이 있다면 그것은 ‘객체의 책임, 즉 객체가 제공하는 기능은 작을수록 좋다’이다.
 
 
-![image](https://github.com/user-attachments/assets/06aa4486-c1f1-4c77-98ce-1a456434b997)
+![image](https://github.com/user-attachments/assets/3270d855-01bc-45a2-921d-12a4a375537a)
 
 위 이미지는 동일한 기능을 절차지향적으로 구현한 것과(좌), 모든 기능을 한 객체에 모두 밀어넣은 것이다(우).
 
@@ -139,7 +146,7 @@ DELIMITER ;
 자, 여기서 옛날 이야기를 하나 해보겠다. 내가 ‘두레’ 프로젝트를 진행하며 생긴 일이다…
 
 
-![image](https://github.com/user-attachments/assets/5e7ec81f-5fcf-414c-8c62-c17249126f66)
+![image](https://github.com/user-attachments/assets/5143de4c-d8f6-49e8-984f-3766fc387a8d)
 
  위 이미지는 내가 진행하고 있는 두레의 코드 일부이다.
 
@@ -169,13 +176,15 @@ private Map<Member, TeamRoleType> getRoleOfMember(final Long teamId, final List<
 
 실수를 알아차린 것은 그로부터 한참 뒤였다.
 
+
 그러면 이제 무엇을 해야하는가? 사실 위 문제를 해결하는 건 어렵지 않다. 팀원 검증 로직의`findTeamRoleByTeamId`을 `findTeamRoleByTeamIdAndMemberId`로 수정해주면 되는 일이기 때문이다.
 
 그러나 private으로 선언된 팀원 검증 코드는 두레의 모든 도메인에 뿌려져있었고…. 이를 모두 찾아 하나 하나 수정하고 문제 없이 수정되었는지 확인 하기 위해서는 꽤 많은 시간이 필요했다.
 
 <br>
 
-위 문제의 원인은 **책임 분리가** 적절하게 이루어지지 않았기 때문이다. 두레에서는 ‘팀 관리’, ‘스터디 관리’, ‘회원 관리’와 같은 기능들에 ‘검증’의 책임이 적절하게 분리되지 않았다. 만일 개발자들이 ‘검증’의 책임을 검증 Service로 분리하고, ‘팀 관리’, ‘스터디 관리’, ‘회원 관리’와 같은 기능은 검증 Service에서 해당 기능을 가져와 사용하는 식으로 개발하였으면  검증 Service의 코드 단 한줄만을 수정하는 것으로 모든 문제가 해결되었을 것이다.
+위 문제의 원인은 **책임 분리가** 적절하게 이루어지지 않았기 때문이다. 두레에서는 ‘팀 관리’, ‘스터디 관리’, ‘회원 관리’와 같은 기능들에 ‘검증’의 책임이 적절하게 분리되지 않았다. 
+만일 개발자들이 ‘검증’의 책임을 검증 Service로 분리하고, ‘팀 관리’, ‘스터디 관리’, ‘회원 관리’와 같은 기능은 검증 Service에서 해당 기능을 가져와 사용하는 식으로 개발하였으면  검증 Service의 코드 단 한줄만을 수정하는 것으로 모든 문제가 해결되었을 것이다.
 
  이렇게 객체의 책임과 관련된 원칙으로 <red>단일 책임 원칙 (Single Responsibility Principle: SRP)</red>이 존재한다. 
 
@@ -186,7 +195,8 @@ private Map<Member, TeamRoleType> getRoleOfMember(final Long teamId, final List<
 객체의 의존은 필연적으로 발생한다. (위 이미지를 예시로 들면, 한곳에 몰아넣어져 서로 교류하던 기능들을 서로 다른 객체로 분리한 것이니 의존이 존재하지 않을 수가 없다.)
 
 
-![image](https://github.com/user-attachments/assets/64b3d341-c152-458e-8054-d97c123ec0bc)
+![image](https://github.com/user-attachments/assets/a07a57b7-6919-44cc-9fae-e9dad45d36a9)
+
 위의 예시를 그대로 가져오자면, 흐름 제어 객체는 파일읽기 객체, 파일 쓰기 객체, 암호화 객체에 대한 의존성을 지닌다.
 
 
@@ -199,7 +209,7 @@ private Map<Member, TeamRoleType> getRoleOfMember(final Long teamId, final List<
   </div>
 </div>
 
-![image](https://github.com/user-attachments/assets/be836d37-1dcb-4e92-bf61-9644ecdbec8b)
+![image](https://github.com/user-attachments/assets/5f8b273a-3739-47e2-87ba-5f1166a881f3)
 
 의존은 전이된다. 위 이미지는 Controller가 ServiceA에 의존하고, ServiceA는 ServiceB에 의존하고 있는 상황을 나타낸다. 
 
@@ -207,8 +217,7 @@ private Map<Member, TeamRoleType> getRoleOfMember(final Long teamId, final List<
 
 이런 의존의 특징에 의해 나타날수 있는 문제가 바로 **순환 의존**이다.
 
-
-![image](https://github.com/user-attachments/assets/324b94e8-ee45-4279-8e51-27dc22332628)
+![image](https://github.com/user-attachments/assets/107d5e34-d878-4ac5-bcc5-6c527f4eba53)
 
 자기 자신의 변경이 다시 자시 자신의 변경을 유발할 수 있다는 것이다.
 
@@ -276,11 +285,13 @@ if (member.isExpried()) {
 
 객체의 책임에 대해 설명했을 때 예시로 든 검증 코드또한 캡슐화의 예시가 될 수 있겠다. 
 
+
 캡슐화 되지 않은 코드는 변경이 필요해질 때, 해당 코드가 사용되는 곳을 모두 찾아 수정해주어야 하며, 해당 코드를 사용하는 곳이 많을수록 수정에서 실수가 발생할 가능성이 높아진다. 아니, 해당 코드들이 사용되는 곳을 찾는 것부터가 문제이다. 
 
 이는 코드가 데이터 중심으로 짜여졌기 때문이다. 데이터를 직접적으로 사용하기에 데이터의 변화에 영향을 받는 코드들이 연쇄적으로 발생하는 것이다.
 
 그러나 캡슐화를 사용하면 캡슐화된 코드를 수정하는 것만으로 기능 수정이 가능하며, 반환값이 수정되지 않는 이상 연쇄적으로 영향을 받는 코드 또한 발생하지 않는다.
+
 
 아래는 캡슐화를 돕기위한 두가지 법칙이다.
 
