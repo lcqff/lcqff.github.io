@@ -4,7 +4,6 @@
       - "Algorithm"
   - name: "BackEnd"
     subcategories:
-      - "Dotted"
       - "Keeper"
       - "DooRe"
       - "세차새차"
@@ -26,4 +25,4 @@
   - name: "기타"
     subcategories:
       - "블로그_업데이트"
-      - "샘플"
+      - "일상"
