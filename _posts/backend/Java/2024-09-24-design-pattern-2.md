@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 디자인패턴(2)- 객체 지향
+title: 디자인패턴(2)- 다형성과 추상 타입
 author: 팜
 categories: Java
 description: \[Study] 구현 변경의 유연함을 위한 추상화
