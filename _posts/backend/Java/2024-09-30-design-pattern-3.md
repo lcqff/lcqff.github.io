@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 디자인패턴(2)- 재사용 | 상속보단 조립
+title: 디자인패턴(3)- 재사용 | 상속보단 조립
 author: 팜
 categories: Java
 description: \[Study] 상속이 아닌 조립(Composition)을 통해 코드를 재사용하자.
