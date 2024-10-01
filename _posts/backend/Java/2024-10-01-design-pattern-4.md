@@ -11,7 +11,7 @@ sidebar:
 이전 포스팅
 - [객체지향](https://lcqff.github.io/java/2024/08/19/design-pattern-1.html)  
 - [다형성과 추상 타입](https://lcqff.github.io/java/2024/09/24/design-pattern-2.html)  
-- 
+- [재사용: 상속보단 조립](https://lcqff.github.io/java/2024/09/30/design-pattern-3.html)
 
 ---
 ## 0. 개요
