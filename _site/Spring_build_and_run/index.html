@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>스프링 프로젝트 생성과 실행 | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>스프링 프로젝트 생성과 실행 | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="스프링 프로젝트 생성과 실행" />
+<meta name="author" content="파녀미" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="팜의 백엔드 이것저것 놀이터" />
+<meta property="og:description" content="팜의 백엔드 이것저것 놀이터" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/Spring_build_and_run/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/Spring_build_and_run/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-07T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="스프링 프로젝트 생성과 실행" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"파녀미"},"dateModified":"2023-06-07T00:00:00+09:00","datePublished":"2023-06-07T00:00:00+09:00","description":"팜의 백엔드 이것저것 놀이터","headline":"스프링 프로젝트 생성과 실행","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/Spring_build_and_run/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"파녀미"},"url":"http://localhost:4000/pam-tree/Spring_build_and_run/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=스프링 프로젝트 생성과 실행&url=http://localhost:4000/pam-tree/Spring_build_and_run/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/Spring_build_and_run/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/Spring_build_and_run/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">스프링 프로젝트 생성과 실행</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <style>
+  .imageRow {
+    display:flex;
+    margin: 20px 0;
+  }
+  .captionedImg {
+    display: grid;
+    align-content: flex-end;
+    margin: 0 20px;
+    text-align:center;
+    font-size: 12px;
+    color:gray;
+  }
+</style>
+
+<p class="box-yello">읽기 전 <a href="https://lcqff.github.io/cs/2023/06/07/MVC.html">이 게시물</a>을 먼저 읽고 오는 것을 추천한다.</p>
+
+<h2 id="스프링-프로젝트-생성">스프링 프로젝트 생성</h2>
+
+<p><a href="https://start.spring.io/">start.spring.io</a></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/ae29bd8f-e717-4b0e-8270-35c52a6d3561" alt="image" />
+Dependancies로 Spring Web과 Thymeleaf를 추가한 뒤 build해준다.</p>
+
+<ul>
+  <li>Spring Web: 웹프로젝트용 스프링을 개발하는데 필요한 모듈</li>
+  <li>Thymeleaf: HTML 만들어주는 템플릿 엔진</li>
+</ul>
+
+<p><br /></p>
+<div class="imageRow">
+  <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/6189ac49-3ae8-4fc5-9ec2-3926ebe2b2b6" />
+  <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/2ca30bec-d74b-43d9-abed-59a0488f3c94" />
+</div>
+
+<h2 id="스프링-실행">스프링 실행</h2>
+
+<h3 id="정적-페이지">정적 페이지</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">y2h.Springbegin</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.boot.SpringApplication</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.boot.autoconfigure.SpringBootApplication</span><span class="o">;</span>
+
+<span class="nd">@SpringBootApplication</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">SpringBeginApplication</span> <span class="o">{</span>
+	<span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+		<span class="nc">SpringApplication</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="nc">SpringBeginApplication</span><span class="o">.</span><span class="na">class</span><span class="o">,</span> <span class="n">args</span><span class="o">);</span>
+	<span class="o">}</span>
+
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>Spring을 실행시켜준다.</p>
+
+<p>실행버튼을 누르면 터미널의 Spring 화면과 함께 <code class="language-plaintext highlighter-rouge">localhost:8080</code>에 에러 페이지가 뜨는 것을 확인할 수 있다. 웰컴 페이지가 없어서 그러는 것이니 만들어주자.</p>
+
+<p>Spring Boot에서는 <code class="language-plaintext highlighter-rouge">static/index.html</code> 을 올려두면 <a href="https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#web.servlet.spring-mvc.welcome-page">Welcome page</a> 기능을 제공하도록 되어있다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/41b1c2d9-9a05-4f6f-b55b-2f7ff4296ea5" alt="image" /></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="rouge-code"><pre><span class="o">&lt;!</span><span class="no">DOCTYPE</span> <span class="no">HTML</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="nc">Hello</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">meta</span> <span class="n">http</span><span class="o">-</span><span class="n">equiv</span><span class="o">=</span><span class="s">"Content-Type"</span> <span class="n">content</span><span class="o">=</span><span class="s">"text/html; charset=UTF-8"</span><span class="o">/&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="nc">Hello</span>
+<span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s">"/hello"</span><span class="o">&gt;</span><span class="n">hello</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/45147c46-dd97-469f-a332-9fb239255216" alt="image" /></p>
+
+<p>위 코드는 <strong>static한</strong>(정적인) 웰컴 페이지를 제공해준다. 동적인 페이지를 만들기 위해서는 템플릿 엔진을 사용해야한다.</p>
+
+<h3 id="thymeleaf-템플릿-엔진">Thymeleaf 템플릿 엔진</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kn">package</span> <span class="nn">y2h.Springbegin.controller</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">org.springframework.stereotype.Controller</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.ui.Model</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">org.springframework.web.bind.annotation.GetMapping</span><span class="o">;</span>
+
+<span class="nd">@Controller</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloController</span> <span class="o">{</span>
+    <span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"hello"</span><span class="o">)</span> <span class="c1">//웹페이지에서 /hello로 이동할시 메서드를 호출</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">hello</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span><span class="c1">//요청 처리 로직</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">addAttribute</span><span class="o">(</span><span class="s">"data"</span><span class="o">,</span><span class="s">"hello!!"</span><span class="o">);</span>
+        <span class="k">return</span> <span class="s">"hello"</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p style="color:gray">HelloController.java</p>
+<p><code class="language-plaintext highlighter-rouge">@GetMapping</code>은 HTTP GET 요청을 처리하는 핸들러 메서드를 정의하는 데 사용되는 어노테이션이다.<br />
+핸들러 메서드 <code class="language-plaintext highlighter-rouge">hello</code>에 <code class="language-plaintext highlighter-rouge">@GetMapping</code> 어노테이션을 적용한다. 이때 어노테이션의 매개변수로는 해당 요청을 처리할 URL인 <code class="language-plaintext highlighter-rouge">/hello</code>를 지정했다.</p>
+
+<p>클라이언트로부터 /hello경로의 GET 요청이 올시, 요청은 <code class="language-plaintext highlighter-rouge">hello()</code> 메서드에 의해해 처리된다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">model.addAttribute("data","hello!!");</code>은 Spring MVC에서 사용되는 메서드로, 컨트롤러에서 모델에 데이터를 추가하는 역할을 한다.</p>
+
+<div class="language-html highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html</span> <span class="na">xmlns:th=</span><span class="s">"http://www.thymeleaf.org"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;head&gt;</span>
+    <span class="nt">&lt;title&gt;</span>Hello<span class="nt">&lt;/title&gt;</span>
+    <span class="nt">&lt;meta</span> <span class="na">http-equiv=</span><span class="s">"Content-Type"</span> <span class="na">content=</span><span class="s">"text/html; charset=UTF-8"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/head&gt;</span>
+  <span class="nt">&lt;body&gt;</span>
+    <span class="nt">&lt;p</span> <span class="na">th:text=</span><span class="s">"'안녕하세요. ' + ${data}"</span><span class="nt">&gt;</span>안녕하세요. 손님<span class="nt">&lt;/p&gt;</span>
+  <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p style="color:gray">resources/templates/hello.html</p>
+<p>th: thymeleaf 문법</p>
+
+<p>위는 data 속성 값을 <strong>동적</strong>으로 출력하는 HTML 코드이다.
+모델에 data라는 속성이 존재할시 해당 속성값을 모델에서 가져와 출력한다.
+<code class="language-plaintext highlighter-rouge">HelloController.java</code>에서 우리는 data의 값으로 “hello!!”를 입력했다. 따라서 결과적으로 출력되는 값은 <strong>안녕하세요. hello!!</strong>가 된다.
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/8b2e7bd9-cd18-44e1-8c1b-f26d5fc7ebd4" alt="image" /></p>
+
+<h3 id="실행">실행</h3>
+
+<p>터미널 입력</p>
+
+<p class="box-yello"><code class="language-plaintext highlighter-rouge">./gradlew build</code><br />
+<code class="language-plaintext highlighter-rouge">cd build/libs</code><br /><br />
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/d87531f3-fae2-4198-ab33-74e081635814" alt="image" />
+<code class="language-plaintext highlighter-rouge">java -jar Spring-begin-0.0.1-SNAPSHOT.jar</code></p>
+
+<hr />
+
+<h2 id="원리">원리</h2>
+
+<h3 id="정적-컨텐츠">정적 컨텐츠</h3>
+
+<div class="captionedImg">
+  <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/981b8a6a-a335-46ea-bf3c-77be439b5d0b" />
+  <a href="https://www.inflearn.com/course/lecture?courseSlug=%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8">https://www.inflearn.com/course/lecture?courseSlug=스프링입문</a>
+</div>
+
+<p>웹브라우저가 /hello-static.html으로 이동하며 <code class="language-plaintext highlighter-rouge">hello-static.html</code> 파일을 요청한다.<br />
+요청을 받은 내장 톰켓 서버는 스프링 컨테이너에서 <code class="language-plaintext highlighter-rouge">hello-static</code>과 매칭되는 컨트롤러를 찾는다.<br />
+만일 매칭되는 컨트롤러가 존재하지 않을 경우 <strong>resources</strong>에서 <code class="language-plaintext highlighter-rouge">hello-static.html</code> 파일을 찾아 반환한다.</p>
+
+<p>정적 컨텐츠는 static 폴더 내부에 html파일을 생성하는 것으로 생성할 수 있다.</p>
+
+<h3 id="mvc-템플릿-엔진">MVC 템플릿 엔진</h3>
+
+<div class="captionedImg">
+  <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/93fd4783-fbe6-4f15-b826-aef093668f4e" />
+  <a href="https://www.inflearn.com/course/lecture?courseSlug=%EC%8A%A4%ED%94%84%EB%A7%81-%EC%9E%85%EB%AC%B8-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8">https://www.inflearn.com/course/lecture?courseSlug=스프링입문</a>
+</div>
+
+<p>웹브라우저에서 <code class="language-plaintext highlighter-rouge">/hello</code>로 이동하면 내장 톰켓 서버는 <code class="language-plaintext highlighter-rouge">GetMapping</code>을 사용해 스프링 컨테이너에서 <code class="language-plaintext highlighter-rouge">/hello</code>경로와 동일한 메서드를 찾아 매칭하고, 해당 메서드를 실행시킨다.</p>
+
+<p>실행된 메소드가 리턴 값으로 문자열을 반환하면 viewResolver가 viewName을 매핑해 <strong>templates</strong> 폴더 아래에 매칭된 html을 랜더링한다. (<code class="language-plaintext highlighter-rouge">resorces: templates/</code> + {ViewName} + <code class="language-plaintext highlighter-rouge">.html</code>)</p>
+
+<ul>
+  <li>웹 브라우저: /hello로 url 이동</li>
+  <li>내장 톰켓 서버: GetMapping으로 경로와 동일한 메서드 찾아 실행</li>
+  <li>스프링 컨테이너
+    <ul>
+      <li>메서드: 로직을 실행시킨다. 파라미터로 넘어온 data를 model에 넘기고 문자열을 return한다.</li>
+      <li>viewResolver: model의 키 값을 이용해 model로부터 값을 가져온다, 또한 반환된 문자값을 기반으로 viewName을 매핑해 templates 폴더 아래에 있는 html을 화면에 표시한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="api">API</h3>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"hello-string"</span><span class="o">)</span> <span class="c1">//api방식</span>
+<span class="nd">@ResponseBody</span> <span class="c1">//응답 body 부분에 반환값을 직접 넣어준다.</span>
+<span class="kd">public</span> <span class="nc">String</span> <span class="nf">helloString</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">return</span> <span class="s">"hello "</span> <span class="o">+</span> <span class="n">name</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="imageRow">
+  <div class="captionedImg">
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/8b2e7bd9-cd18-44e1-8c1b-f26d5fc7ebd4" />
+    <p>mvc 방식 코드</p>
+  </div>
+  <div class="captionedImg">
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/2d63371d-f2d8-4458-b214-30693515088d" />
+    <p>@ResponseBody를 사용한 코드</p>
+  </div>
+</div>
+
+<p><code class="language-plaintext highlighter-rouge">@ResponseBody</code>를 사용해 반환값을 HTTP 응답의 body 부분에 직접 넣었다.
+또한 <code class="language-plaintext highlighter-rouge">@RequestParam</code>을 사용해 클라이언트가 URL의 쿼리부분에 name이라는 이름의 요청 파라미터값을 전달하도록 했다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="rouge-code"><pre><span class="nd">@GetMapping</span><span class="o">(</span><span class="s">"hello-api"</span><span class="o">)</span>
+<span class="nd">@ResponseBody</span>
+<span class="kd">public</span>  <span class="nc">Hello</span> <span class="nf">helloApi</span><span class="o">(</span><span class="nd">@RequestParam</span><span class="o">(</span><span class="s">"name"</span><span class="o">)</span> <span class="nc">String</span> <span class="n">name</span> <span class="o">){</span>
+    <span class="nc">Hello</span> <span class="n">hello</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Hello</span><span class="o">();</span>
+    <span class="n">hello</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">hello</span><span class="o">;</span>
+<span class="o">}</span>
+<span class="kd">static</span> <span class="kd">class</span> <span class="nc">Hello</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">name</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">name</span> <span class="o">=</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">name</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/8e6eae35-1db1-4615-b2af-1efab9f7853d" alt="image" /></p>
+
+<p>위 코드와 다르게 문자열이 아닌 <strong>객체</strong>를 반환하는 코드다. 그 결과값으로 HTTP의 body에 Json값이 삽입되었다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/0da19ed8-efda-4257-9ba7-a42fcb698bcd" alt="image" /></p>
+
+<p><code class="language-plaintext highlighter-rouge">@ResponseBody</code>가 사용된 경우 viewResolver 대신 <strong>HttpMessageConverter</strong>가 작동한다.
+이때 메서드가 반환한 값이 문자열인가 객체인가에 따라 다른 컨버터가 실행된다.</p>
+
+<ul>
+  <li>단순 문자 반환: StringConvertor 동작</li>
+  <li>객체 반환: JsonConverter를 통해 json으로 변환됨.</li>
+</ul>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2023-06-07">07 Jun 2023</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#Spring">Spring</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Spring">#Spring</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//MVC/"> &laquo; MVC 패턴</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//2depth_sidbar/">[Gitblog] 2-depth 사이드바 제작 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

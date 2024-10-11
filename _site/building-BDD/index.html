@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain) | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain) | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)" />
+<meta name="author" content="팜" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="BDD가 만들어지기까지" />
+<meta property="og:description" content="BDD가 만들어지기까지" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/building-BDD/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/building-BDD/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-01-10T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"팜"},"dateModified":"2024-01-10T00:00:00+09:00","datePublished":"2024-01-10T00:00:00+09:00","description":"BDD가 만들어지기까지","headline":"[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/building-BDD/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"팜"},"url":"http://localhost:4000/pam-tree/building-BDD/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)&url=http://localhost:4000/pam-tree/building-BDD/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/building-BDD/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/building-BDD/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h2 id="bdd가-만들어지기까지">BDD가 만들어지기까지</h2>
+
+<blockquote>
+  <p><a href="https://www.notion.so/BDD-5252b9dbf5d5459396148c21fd96703a?pvs=21">동아리 노션</a></p>
+</blockquote>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/50745219-9faa-48cc-bd23-d813191d6822" alt="BDD 로고" /></p>
+
+<p>나는 보안에 큰 뜻이 없지만 대학 신입생 시절부터 모교의 보안 동아리에서 활동했다. 보안에 열정적이지 않았음에도 활동 회원이라면 반드시 해야하는 발표와 기술문서를 매년 수행하며 4년(정확히는 3년 반)의 기간동안 보안 동아리에 속해있던 이유라고 하면, 우리 학교에 있는 기타 다른 개발 동아리보다 해당 보안 동아리에 개발 인재가 많았기 때문이다.</p>
+
+<p>어쩨서 보안 동아리가 풍부한 개발 환경을 가지고 있는가? 사정은 많았지만 축약해서 말하자면 우리 학교에는 개발 공부를 지원해줄만한 환경이 부족했다.</p>
+
+<p>비록 보안동아리에서 활동하고 있었으나, 우리는 개발 스터디를 통해 자신의 분야에 대해 배울 수 있었고, 동아리 홈페이지 제작이라는 큰 프로젝트를 함께할 수 있는 좋은 기회 또한 얻을 수 있었다.</p>
+
+<p>그러나 동아리가 ‘보안 동아리’의 정체성을 굳히기 시작하면서 문제가 생겼다. 정체성을 확실히 하는 것이 나쁜 것은 아니기에 그 정체성에 반하는 ‘개발’에 대한 지원과 관심이 점차 줄어드는 점은 어쩔 수 없었다고 생각한다.</p>
+
+<h4 id="하지만-우리는-개발-공부를-할-곳이-필요했다">하지만 우리는 개발 공부를 할 곳이 필요했다!</h4>
+
+<p>그러나 본교에는 개발자들을 위한 체계와 매력적인 활동이 마련된 곳이 마땅히 없었다. 그렇다면 우리가 만드는 수밖에 없다. 그렇게 만들어진 동아리가 <blue>BDD(Bright Developer Domain)</blue>이다. 임원진 셋이 함께 기획하고, 주변 인물들을 끌어모아 완성된 <strong>웹 개발자와 디자이너들을 위한 커뮤니티</strong>이다.</p>
+
+<p>BDD에 대한 본격적인 기획이 시작된 것이 2023년 9월 초이고, 현재 2024년 1월 초이니 벌써 만들어진지 5개월이 지났다. 그동안 총 5개의 스터디가 열렸고, 2개의 프로젝트가 진행 중이며, 첫 번째 세미나가 다가오는 2월에 개최될 예정이다. 처음에는 회원과 임원진에게 모두 잊혀진 동아리가 될까 두려움도 있었으나 결과적으로 어느정도 성장한 동아리가 된 것 같아 안심이다. 이렇게 동아리가 커질 수 있었던 건 다른 두 명의 임원진의 역할이 컸다. 그 둘에게 매우 감사하고 있다.</p>
+
+<p>개발자 동아리, 혹은 커뮤니티를 생각하고 있는 사람들을 위해 BDD가 무엇에 집중했는지에 대해 작성해볼까 한다. 참고로 BDD는 대학교 공식 동아리가 아니기에(공식 동아리 등록을 고려 중이다.) 대학교 동아리 등록과 관련된 지식은 전달할 수 없다는 점을 먼저 밝힌다.</p>
+
+<p><br /></p>
+
+<h2 id="적극적이고-열정있는-임원진">적극적이고 열정있는 임원진</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/9464f316-92d7-4b1a-94b8-fc37d4a9e714" alt="회의록" /></p>
+
+<p>BDD 개설에 대한 논의는 8월부터 이야기 되었으나 사실 그 이후 대략 한 달간은 방치되었다. 임원진 세명이 모두 학교와 부트캠프 활동 때문에 바빴고, 함께 모일 기회가 없었기 때문이다. 이대로는 영영 잊혀질 것이 뻔했기 때문에 임원진 셋은 <strong>매주 동아리 기획 회의</strong>를 진행하기로 결정했다.</p>
+
+<p>열정적인 임원진들 덕분에 매 기획 회의에서 새로운 안건이 논의되었고, 그를 기반으로 동아리의 틀을 잡아갔다. 동아리의 방향성 또한 수십번씩 바뀌었다. 어느 정도 동아리의 모양이 잡힌 지금도 회의에는 항상 1시간 30분 정도의 시간이 소요된다. 그만큼 임원진들이 동아리에 많은 관심과 시간을 투자하고, 동아리의 방향에 대해 고민하고 있기에 BDD가 지금만큼 성장할수 있었다고 생각한다. 이는 정말로 다른 두 명의 임원진들의 덕이 컸다.</p>
+
+<p>BDD 기획 과정에 대해서는 아래 <strong>팀블로그 포스팅</strong>에 훌륭하게 설명되어 있으니 궁금한 사람은 읽어보길 바란다.</p>
+
+<p><a href="https://velog.io/@bdd14club/개발-소모임-BDD를-만들게-된-과정">개발 소모임 ‘BDD’를 만들게 된 과정</a></p>
+
+<h2 id="회원들의-참여를-유도하라">회원들의 참여를 유도하라</h2>
+
+<p>걱정했던 것과 달리 초기 동아리 인원은 쉽게 모아졌다. 오히려 주변에서 가입 요청이 들어올 정도… 이들은 이전에 언급한 보안 동아리에서 활동하던 개발자들이기도 했다. <br />
+이런 초기 동아리, 혹은 그룹에서 가장 두려워하고 경계해야 하는 것은 참여자들에게 <strong>잊혀지는 것</strong>이라 생각한다. 잊혀진다는 것은 <red>동아리로써의 신뢰성을 잃는다는 것</red>과 일맥상통한다. 아직 동아리 이름을 건 활동이 아무것도 이루어지지 않은 지금, 회원은 자신의 시간을 투자할만큼 동아리를 신뢰할 이유가 없고, 그럴수록 회원에게 잊혀진다는 건 타격이 크다.</p>
+
+<h3 id="설명회">설명회</h3>
+<p>동아리 초기 인원들은 모두 입소문 혹은 임원진들에게 직접 간단한 설명만을 듣고 가입한 사람들로, 동아리의 정체성을 확실히 하기 위해선 이들에게 BDD가 정확히 어떤 동아리인지 설명할 필요가 있었다. 따라서 회원들에게 BDD와 그 내부에서 이루어지는 활동에 대해 설명하기 위한 <strong>설명회</strong>를 준비했다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/d89ac461-48d6-440d-aa3b-7f36493c8368" alt="설명회" /></p>
+
+<h3 id="슬랙-활성화">슬랙 활성화</h3>
+
+<p>동아리에 회원들의 관심을 유지시키는 것은 힘든 일이다. BDD는 기획이 한창 진행되는 중인 동아리었고, 회원들이 BDD의 이름을 걸고 할만한 활동이 완성되지 않았다. 이런 상황에서 회원들에게 BDD를 인식시키기 위한 제일 좋은 방법은 <strong>BDD 슬랙의 주기적인 접속</strong>이라 생각했다.</p>
+
+<p>매주 임원진 회의를 통해 새로운 결정사항에 대한 공지가 올라오긴 했으나 임원진측의 일방적인 메세지로는 접속률을 기대하기 어려웠다. 그리고 의미있는 활동률을 만들기 위해선 회원이 직접 메세지를 올려야 한다 생각했다. 따라서 BDD의 첫번째 공식 활동으로 <strong>챌린지</strong>가 시작됐다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/4dfaae7e-3ec5-49a0-8010-12e8807629ed" alt="갓생챌 시트" /></p>
+
+<p>첫번째 챌린지로 글쓰기 챌린지와 갓생(생활 규칙 만들기) 챌린지 두 가지가 열렸다. 그 중 내가 진행한 갓생 챌린지는 메세지와 사진으로 자신의 목표를 인증하는 형태로, 인증을 하기 위해선 BDD 슬랙에 접속해 직접 메세지를 남겨야 했다.</p>
+
+<h3 id="게더">게더</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/6e199f6e-e2e1-46f4-8a38-7913fa3606a1" alt="image" /></p>
+
+<p>또한 BDD 전용 <strong>게더</strong>를 생성해 BDD만의 <strong>온라인 공부 공간</strong>을 만들었다. 물론 접속하는 사람만 접속하곤 했으나 <strong>고정 접속 회원</strong>을 만든 것만으로도 의미가 있었다. 참고로 <code class="language-plaintext highlighter-rouge">게더-왔다감</code> 채널을 통해 다른 회원들의 접속 상황을 알수 있도록 했는데 상당히 좋아 추천한다.</p>
+
+<p><br /></p>
+
+<h2 id="회원들의-공통-목표를-만들어라">회원들의 공통 목표를 만들어라</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/58e73ddb-53b6-4a00-9edc-d03cc4ba25a0" alt="image" /></p>
+
+<p>당연하지만 위에 설명한 활동들은 BDD의 메인코스가 아니다. 임원진들이 BDD를 개설한 목적은 ‘프로젝트’였다. 프로젝트를 성공적으로 완성하기 위해 신뢰할 수 있는 동료들을 만날 수 있는 곳으로 만들고싶었다.</p>
+
+<p>동아리 운영에 대한 조언을 얻기 위해 교수님과 BDD 임원진(+회원 한 분)끼리 미팅을 가진 적이 있는데, 이때 강조받았던 것이 <strong>동아리원 공동의 목표</strong>이다. 하나의 목표를 가지는 것으로 <strong>동아리원들의 소속감</strong>뿐만 아니라 <strong>동아리의 매력</strong> 또한 얻을 수 있다는 것이다.</p>
+
+<p>또한 교수님께 들은 비판점 중 하나가 <strong>명확한 목표 없는 광범위한 활동</strong>을 경계하란 부분이었다. BDD의 개설 목적이 프로젝트이긴 했으나, 프로젝트 외로도 꽤 많은 양의 활동(세미나, 스터디, 기술문서 등등)이 존재하고 있었기 때문이다. 당연하게 BDD의 목표는 <strong>프로젝트 런칭</strong>이 되었다. 프로젝트를 동아리의 주 목표로 잡은 만큼 그에 더 많은 시간과 관심을 쏟고 있다. 실제로 프로젝트 기획을 시작한 이후로 본격적인 동아리로 활동하고 있다는 느낌을 강하게 받는다.</p>
+
+<p>그것이 꼭 프로젝트가 아니더라도 동아리를 하나로 유지하기 위해선 동아리원들이 바라볼 하나의 목표가 중요하다 생각된다. 어쩌면 대회 입상일 수도 있겠고, 동아리 홈페이지 제작이 될 수도 있겠다.</p>
+
+<p>이후 프로젝트가 종료된 뒤 교수님과의 미팅 내용과 실제 프로젝트 진행 경험을 비교하며 글을 써보고 싶다.</p>
+
+<p><br /></p>
+
+<h2 id="개발자-외-인원을-배려하라">개발자 외 인원을 배려하라</h2>
+
+<p>디자이너와 협업하는 경우 개발자의 사고를 멀리해야한다. BDD는 개발자뿐만 아니라 디자이너와 함께 꾸려나가는 동아리를 목표로 하나, 동아리를 구성하는 임원진 셋은 모두 개발자이다. 동아리를 기획하며 여러 아이디어를 실천에 옮겼으나 사실 프로젝트가 시작하기 전까지 디자이너가 참가할만한 활동이 마땅하지 않았다. 짧게 말해서 BDD는 디자이너들을 방치하고 있었다… 이를 해결하기 위해 임원진 회의에서 열심히 머리를 굴려보았으나 결론적으로 <strong>디자이너를 위한 활동은 개발자가 생각할게 아니라는</strong> 답이 나왔다.</p>
+
+<p>따라서 디자이너를 위해 BDD에서 무엇을 할 수 있을지 얘기하기 위해 디자이너 두 분에게 대면 모임을 요청드렸다. 이 모임에서 임원진과 디자이너가 직접 만나 궁금했던 사항을 직접 질답하며 많은 의문점이 해소되었다. 물론 지금껏 디자이너를 위한 활동을 준비하지 못한 점에 대해서도 사과드렸다.</p>
+
+<p>아래는 위 모임에서 여쭤본 질문들이다.</p>
+
+<p><br /></p>
+
+<blockquote>
+  <ul>
+    <li>한 번에 처리할 수 있는 작업량은은 어느 정도가 적당한가</li>
+    <li>작업 기간은 어느 정도가 적당한가</li>
+    <li>웹 디자인 외로도 BDD 내부에서 필요한 디자인을 작업해도 괜찮은가</li>
+    <li>디자이너 커뮤니티에서도 개발자 커뮤니티처럼 기술문서와 세미나 발표를 하는가</li>
+    <li>팀 블로그를 작성할수 있는가</li>
+    <li>어떻게 하면 디자이너들에게 매력적인 동아리가 될 수 있을까</li>
+  </ul>
+</blockquote>
+
+<p><br /></p>
+
+<p>덕분에 개발자와 디자이너들 간 공부 지향점에 대한 차이를 알게 되었고 작업물을 맡길 때에 대한 규칙을 결정할 수 있었다.</p>
+
+<p>꼭 디자이너와 개발자간의 관계에만 국한된 이야기는 아니지만, 개발자가 다수로 이루어진 그룹에서 개발자 외 사람들 소수와 작업할 때 개발자 중심적 사고로 팀을 이끌지 않도록 항상 주의해야한다. 마찰없이 팀을 이끌고 싶고, 다음에 그들과 또 다시 함께 일하고 싶다면 다른 사람들보다 더 신경써주고, 항상 감사하다는 말을 직접 전하자.</p>
+
+<p>혹자는 굳이 그렇게 해서까지(개발자 회원보다 더 많은 신경을 쓰면서까지) 해야하나? 생각할지도 모르겠다. 그러나 사실 이 부분은 개발자에 국한된 이야기가 아니라, 자신과 다른 분야의 사람과 함께 일한다면 당연하게 해야하는 일이라 생각한다.</p>
+
+<p>무엇보다 프로젝트는 개발자들끼지 진행하는 것이 아니기 때문에, 우리가 그들을 배려하는 만큼 그들이 자신이 맡은 일에 더 최선을 다하지 않을까, 하고 생각한다. 아래는 BDD의 디자이너분들이 만들어주신 작업물 중 일부다😄</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/20997ce0-731f-47d7-87e0-d11747e5dfe6" alt="디자이너 작업물- 로고" />
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/9b0efcee-ae3e-4e67-86ed-05621c1a2833" alt="디자이너 작업물- 두레" /></p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2024-01-10">10 Jan 2024</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#BDD">BDD</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#BDD">#BDD</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//backJoon-hideAndSeek/"> &laquo; [BFS] 백준 1697- 숨바꼭질</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//pagenation-size/">페이지네이션 크기(Size) 제한 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

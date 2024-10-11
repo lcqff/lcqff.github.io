@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>P4Ch7. 모듈 | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>P4Ch7. 모듈 | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="P4Ch7. 모듈" />
+<meta name="author" content="퍄녀미" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="모듈" />
+<meta property="og:description" content="모듈" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/ch7/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/ch7/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-05-22T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="P4Ch7. 모듈" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"퍄녀미"},"dateModified":"2023-05-22T00:00:00+09:00","datePublished":"2023-05-22T00:00:00+09:00","description":"모듈","headline":"P4Ch7. 모듈","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/ch7/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"퍄녀미"},"url":"http://localhost:4000/pam-tree/ch7/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=P4Ch7. 모듈&url=http://localhost:4000/pam-tree/ch7/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/ch7/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/ch7/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">P4Ch7. 모듈</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h2 id="모듈">모듈</h2>
+
+<p><strong>모듈</strong>: 특정 데이터들의 집합(파일), 가져오기(Import), 내보내기(Export)가 된 Javascript 파일.</p>
+
+<p><strong>예시</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">Hello world!</span><span class="dl">"</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>module.js</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">hello</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./module.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">hello</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js</p>
+
+<hr />
+
+<h3 id="가져오기와-내보내기">가져오기와 내보내기</h3>
+
+<p>export를 통해 다른 파일로 내보내기가 가능하고, import를 통해 다른 파일의 내용을 가져와 사용할 수 있다. → 모듈화</p>
+
+<p>내보내기에는 두 가지의 패턴이 있다.</p>
+
+<ul>
+  <li><strong>기본 내보내기</strong>: <code class="language-plaintext highlighter-rouge">default</code>키워드를 사용해 export 하는 것
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">default</code> 를 중복사용할 수 없다.</li>
+    </ul>
+  </li>
+  <li><strong>이름 내보내기</strong>: 이름을 명시해 export하는 것
+    <ul>
+      <li>한번에 여러개를 내보낼 수 있다.</li>
+      <li>import할때 중괄호를 사용해서 해당 이름으로 가져와야 한다.</li>
+      <li>import 할 때 <code class="language-plaintext highlighter-rouge">as</code>를 사용해 이름을 변경할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">//기본 내보내기</span>
+<span class="k">export</span> <span class="k">default</span> <span class="mi">123</span><span class="p">;</span>
+<span class="c1">//이름 내보내기</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ABC</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>module.js</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="nx">number</span><span class="p">,</span> <span class="p">{</span> <span class="nx">str</span> <span class="nx">as</span> <span class="nx">xyz</span><span class="p">,</span> <span class="nx">arr</span><span class="p">,</span> <span class="nx">hello</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./module.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">number</span><span class="p">);</span> <span class="c1">//123</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">xyz</span><span class="p">);</span> <span class="c1">//ABC</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">hello</span><span class="p">);</span> <span class="c1">//hello() {}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js</p>
+
+<ul>
+  <li>모든 데이터를 하나의 변수에 할당해 가져올 수 있다.
+    <ul>
+      <li>이때 *를 <strong>와일드카드</strong>라고 한다.</li>
+      <li>와일드카드: 여러개의 개념을 한 번에 지정함</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="o">*</span> <span class="nx">as</span> <span class="nx">abc</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./module.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">abc</span><span class="p">);</span> <span class="c1">//arr: Array(0)</span>
+<span class="c1">//defualt: 123</span>
+<span class="c1">//hello: f hello()</span>
+<span class="c1">//str: 'ABC'</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js</p>
+
+<hr />
+
+<h2 id="동적인-모듈-사용">동적인 모듈 사용</h2>
+
+<h3 id="동적으로-모듈-가져오기">동적으로 모듈 가져오기</h3>
+
+<div class="callout">
+  <div>❓</div>
+  <div>
+    <strong>코드 중간에서 바로 모듈을 가져오기</strong><br />
+    import를 키워드를 사용한 가져오기는 코드 최상단에서밖에 사용할 수 없다.<br />
+    코드 중간에서 모듈을 동적으로 import하기 위해 import() 함수를 사용할 수 있다.
+  </div>
+</div>
+<p><br /></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre></td><td class="rouge-code"><pre><span class="c1">//기본 내보내기</span>
+<span class="k">export</span> <span class="k">default</span> <span class="mi">123</span><span class="p">;</span>
+<span class="c1">//이름 내보내기</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">str</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">ABC</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">arr</span> <span class="o">=</span> <span class="p">[];</span>
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">hello</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{};</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>module.js</p>
+
+<p><strong><code class="language-plaintext highlighter-rouge">import()</code></strong> <strong>함수는 비동기적으로 동작한다!</strong></p>
+
+<p>모듈이 모두 import 됐는지 기다릴 필요가 있다.</p>
+
+<ol>
+  <li><strong>then</strong>을 사용한 import()</li>
+</ol>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="nf">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">./module.js</span><span class="dl">"</span><span class="p">).</span><span class="nf">then</span><span class="p">((</span><span class="nx">abc</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">abc</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js
+<code class="language-plaintext highlighter-rouge">import()</code>를 사용해 모듈을 가져오고, 모듈을 다 가져왔다면 <code class="language-plaintext highlighter-rouge">**then**</code>을 통해 콜백을 실행한다.</p>
+
+<ol>
+  <li><strong>await</strong>과 <strong>async</strong>를 사용한 import()</li>
+</ol>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="nf">setTimeout</span><span class="p">(</span><span class="k">async </span><span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">abc</span> <span class="o">=</span> <span class="k">await</span> <span class="k">import</span><span class="p">(</span><span class="dl">"</span><span class="s2">./module.js</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nx">abc</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js
+<code class="language-plaintext highlighter-rouge">import()</code>를 사용해 모듈을 가져오고, <code class="language-plaintext highlighter-rouge">await</code>을 사용해 모듈을 다 가져올때까지 기다린다.</p>
+
+<p>이때 <code class="language-plaintext highlighter-rouge">await</code> 키워드를 사용하기 위해서는 콜백 함수 앞에 <code class="language-plaintext highlighter-rouge">async</code> 키워드를 추가해야한다.</p>
+
+<h3 id="동적으로-모듈-내보내기">동적으로 모듈 내보내기</h3>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">a</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">b</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./b.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">a</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">b</span><span class="p">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js
+a와 b를 사용하기 위해선 각 모듈에서 따로 함수를 들고와야한다.</p>
+
+<p><strong>⇒ utils.js를 사용해 한번에 import한다.</strong></p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre></td><td class="rouge-code"><pre><span class="k">export</span> <span class="p">{</span> <span class="nx">a</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./a.js</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">export</span> <span class="p">{</span> <span class="nx">b</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./b.js</span><span class="dl">"</span><span class="p">;</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>utils.js</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="k">import</span> <span class="p">{</span> <span class="nx">a</span><span class="p">,</span> <span class="nx">b</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">./utils.js</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">a</span><span class="p">());</span>
+<span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="nf">b</span><span class="p">());</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>main.js</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2023-05-22">22 May 2023</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Javascript">#Javascript</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Js">#Js</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#모듈">#모듈</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//ch6_1/"> &laquo; P4Ch6.표준 내장 객체- 날짜 </a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//ch6/">P4Ch8. 비동기 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

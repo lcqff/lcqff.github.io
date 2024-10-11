@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>객체와 데이터베이스간 불일치 | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>객체와 데이터베이스간 불일치 | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="객체와 데이터베이스간 불일치" />
+<meta name="author" content="팜" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="팜의 백엔드 이것저것 놀이터" />
+<meta property="og:description" content="팜의 백엔드 이것저것 놀이터" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-09-04T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="객체와 데이터베이스간 불일치" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"팜"},"dateModified":"2023-09-04T00:00:00+09:00","datePublished":"2023-09-04T00:00:00+09:00","description":"팜의 백엔드 이것저것 놀이터","headline":"객체와 데이터베이스간 불일치","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"팜"},"url":"http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=객체와 데이터베이스간 불일치&url=http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/difference-of-objects-and-relational-databases/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">객체와 데이터베이스간 불일치</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <style>
+  .imageRow {
+    display:flex;
+    margin: 20px 0;
+  }
+  .captionedImg {
+    display: grid;
+    align-content: flex-end;
+    margin: 0 20px;
+    text-align:center;
+    font-size: 12px;
+    color:gray;
+  }
+</style>
+
+<blockquote>
+  <p>JPA를 사용하는 큰 이유 중 하나는 객체와 데이터베이스 간의 매핑(ORM)에 있다. <br />
+해당 게시글에서는 객체와 데이터베이스 간의 차이와, 그로 인해 발생하는 문제점에 대해 다룬다.</p>
+</blockquote>
+
+<h2 id="sql-중심적인-개발의-문제점">SQL 중심적인 개발의 문제점</h2>
+
+<p>객체를 저장하는 수단은 RDB, NoSQL, File 등 다양하게 존재하나 현실적으로 쓰이는 대안은 <strong>RDB(관계형 데이터베이스)</strong>이다. (NoSQL은 보통 RDB의 보조적인 수단으로 쓰인다.)
+ 그렇다면 관계형 데이터베이스에 객체를 저장하기 위해선 어떻게 해야하는가?</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/28a96357-85dd-4d16-8b72-306b8f956f80" alt="image" /></p>
+
+<p>데이터베이스에 객체를 저장하기 위해선 객체를 <strong>SQL로 변환</strong>하는 선수과정이 필요하다. 회원 정보를 DB에 저장할 때는 insert문을 사용해 SQL로 변환시켜 RDB에 전달하고, 반대로 조회할 때 또한 select문을 작성해 DB에 저장된 데이터를 객체로 바꾼다.
+이런 <strong>SQL 매핑</strong>은, 개발자에게 불가피한 과정이다.</p>
+
+<p>그렇다면 SQL을 배우기 전 객체와 관계형 데이터의 차이를 먼저 알아보자.</p>
+
+<h2 id="객체와-관계형-데이터베이스의-차이">객체와 관계형 데이터베이스의 차이</h2>
+
+<p>객체와 관계형 데이터베이스 사이에는 크게 <strong>상속, 연관관계, 데이터 타입, 데이터 식별 방법</strong>의 4가지 차이점이 있다.</p>
+
+<h2 id="상속">상속</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/54d4b282-906d-4584-9d1c-9350be628824" alt="image" /></p>
+
+<p>데이터베이스엔 객체에서 흔히 말하는 상속관계가 존재하지 않는다. 그렇다면 객체의 상속관계를 데이터베이스에 저장하기 위해선 어떻게 해야하는가?</p>
+
+<h3 id="슈퍼타입-서브타입">슈퍼타입 서브타입</h3>
+<p>객체의 상속관계를 데이터베이스에 저장하기 위해 데이터베이스 테이블 설계 기법 중 하나인 <strong>슈퍼타입 서브타입 관계</strong>를 사용할 수 있다. 슈퍼타입 서브타입 관계란 부모와 자식에 해당하는 객체들을 테이블로 만든 후 SQL을 사용해 상속관계를 흉내내는 기법이다.</p>
+
+<p>그러나 위 방식을 사용하면 곤란한 부분이 있다. 예를 들어 Album 객체를 데이터베이스에 저장하는 과정을 생각해보자.</p>
+<p style="font-size: 1rem;" class="box-yello">
+ 1. 먼저 Album 객체를 분해해야한다.<br />
+ 2. 분해된 객체의 데이터(id, 이름, 가격)를 Insert문을 사용해 ITEM 테이블에 저장한다.<br /> 
+ 3. 2와 동일한 방식으로 데이터(id, 작곡가)를 ALBUM 테이블에 저장한다.<br />
+</p>
+
+<p>Album을 조회하는 경우는 더 까다롭다.</p>
+<p style="font-size: 1rem;" class="box-yello">
+1. ITEM 테이블과 ALBUM테이블을 Join하기 위한 SQL을 작성한다.<br />
+2. 객체를 생성한다.<br />
+3. 조인된 테이블의 데이터를 객체에 다 집어넣는다.<br />
+4. … 생략<br />
+</p>
+
+<p>심지어 위 단계를 다른 객체를 조회하는 경우에도 또 다시 반복해야하니 복잡해질 수밖에 없고, 이는 SQL을 작성하는 개발자에게 힘이 드는 일이 아닐 수 없다.</p>
+
+<p>그렇기 때문에, <strong>DB에 저장할 객체에는 상속관계를 사용하지 않는다.</strong></p>
+
+<h3 id="자바-컬렉션">자바 컬렉션</h3>
+
+<p>자바 컬렉션을 사용하면 슈퍼타입 서브타입을 사용하는 것보다 훨씬 간단한 방법으로 객체의 저장과 조회가 가능하다.</p>
+
+<ul>
+  <li>저장: <code class="language-plaintext highlighter-rouge">list.add(Album);</code></li>
+  <li>조회: <code class="language-plaintext highlighter-rouge">Album album = list.get(albumId);</code> 또는 <code class="language-plaintext highlighter-rouge">Item item = list.get(albumId);</code></li>
+</ul>
+
+<p>이렇게 자바 컬렉션을 사용한 객체 관리가 간단한 이유는, 자바 컬렉션 또한 <strong>객체 차원</strong>에서 사용되는 도구이기 때문이다. 즉, 자바 컬렉션은 객체를 데이터베이스에 저장하는 것이 아닌, 메모리 내에서 객체를 저장하고 관리하는 자료 구조이다.</p>
+
+<h2 id="연관-관계">연관 관계</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/a9e1dae8-0359-4535-9634-704f7f7d61a7" alt="연관관계" /></p>
+
+<p>연관 관계의 데이터를 가져오기 위해 객체는 <code class="language-plaintext highlighter-rouge">member.getTeam()</code>과 같은 <strong>참조</strong>를 사용한다. 그러나 데이터베이스에는 객체와 같은 참조가 없다. 그렇기에 데이터베이스에선 연관관계를 만들기 위해 <strong>외래 키를 사용해 Join</strong>하는 방식을 사용한다.(<code class="language-plaintext highlighter-rouge">JOIN ON M.TEAM_ID = T.TEAM_ID</code>)</p>
+
+<p>이렇게 객체는 참조를 사용하고, 데이터베이스는 외래키를 사용하는 차이에서 문제가 발생한다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Member</span> <span class="p">{</span>
+	<span class="nb">String</span> <span class="nx">id</span><span class="p">;</span> <span class="c1">//MEMBER_ID 컬럼 사용</span>
+	<span class="nx">Long</span> <span class="nx">teamId</span><span class="p">;</span> <span class="c1">//TEAM_ID FK 컬럼 사용</span>
+	<span class="nb">String</span> <span class="nx">username</span><span class="p">;</span><span class="c1">//USERNAME 컬럼 사용</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Team</span> <span class="p">{</span>
+	<span class="nx">Long</span> <span class="nx">id</span><span class="p">;</span> <span class="c1">//TEAM_ID PK 사용</span>
+	<span class="nb">String</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">//NAME 컬럼 사용</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>객체 저장을 쉽게 하기 위한 객체 구조를 생각해보자.</p>
+
+<p><strong>기존의</strong> <code class="language-plaintext highlighter-rouge">Team team;</code>과 같은 참조 대신 <code class="language-plaintext highlighter-rouge">Long teamId;</code>라는 외래키를 사용한 것을 확인할 수 있다. 이렇게 참조 대신 외래키를 사용하므로써 <strong>Insert문</strong> 작성이 간단해진다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/467e9fea-c827-4f62-a4d0-140354d7b9a5" alt="image" /></p>
+
+<p>그러나 이를 객체다운 모델링이라 할 순 없다: <strong><code class="language-plaintext highlighter-rouge">Member</code></strong> 클래스와 <strong><code class="language-plaintext highlighter-rouge">Team</code></strong> 클래스 사이의 관계가 명시적으로 표현되지 않았다. 즉, <strong>참조</strong>가 빠져있다.</p>
+
+<p>그렇다면 참조를 사용하는 것이 바람직하다. 참조를 사용해 INSERT문을 만들기 위하여 아래와 같은 객체 구조를 생각해볼 수 있다.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Member</span> <span class="p">{</span>
+	<span class="nb">String</span> <span class="nx">id</span><span class="p">;</span> <span class="c1">//MEMBER_ID 컬럼 사용</span>
+	<span class="nx">Team</span> <span class="nx">team</span><span class="p">;</span> <span class="c1">//참조로 연관관계를 맺는다. //**</span>
+	<span class="nb">String</span> <span class="nx">username</span><span class="p">;</span><span class="c1">//USERNAME 컬럼 사용</span>
+
+	<span class="nx">Team</span> <span class="nf">getTeam</span><span class="p">()</span> <span class="p">{</span>
+		<span class="k">return</span> <span class="nx">team</span><span class="p">;</span>
+	<span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">Team</span> <span class="p">{</span>
+	<span class="nx">Long</span> <span class="nx">id</span><span class="p">;</span> <span class="c1">//TEAM_ID PK 사용</span>
+	<span class="nb">String</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">//NAME 컬럼 사용</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/7b16d143-0c52-41cd-a498-c4f2731a18b7" alt="image" /></p>
+
+<p>참조를 사용하니 데이터베이스에 Insert하기가 이전에 비해 까다로워졌다. 그러나 더 문제가 되는 것은 조회이다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="rouge-code"><pre><span class="no">SELECT</span> <span class="no">M</span><span class="o">.*,</span> <span class="no">T</span><span class="o">.*</span> <span class="no">FROM</span> <span class="no">MEMBER</span> <span class="no">M</span>
+<span class="no">JOIN</span> <span class="no">TEAM</span> <span class="no">T</span> <span class="no">ON</span> <span class="no">M</span><span class="o">.</span><span class="na">TEAM_ID</span> <span class="o">=</span> <span class="no">T</span><span class="o">.</span><span class="na">TEAM_ID</span>
+
+<span class="kd">public</span> <span class="nc">Member</span> <span class="nf">find</span><span class="o">(</span><span class="nc">String</span> <span class="n">memberId</span><span class="o">)</span> <span class="o">{</span>
+	<span class="c1">//SQL 실행 ...</span>
+	<span class="nc">Member</span> <span class="n">member</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Member</span><span class="o">();</span>
+	<span class="c1">//데이터베이스에서 조회한 회원 관련 정보를 모두 입력</span>
+	<span class="nc">Team</span> <span class="n">team</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Team</span><span class="o">();</span>
+	<span class="c1">//데이터베이스에서 조회한 팀 관련 정보를 모두 입력</span>
+
+	<span class="c1">//회원과 팀 관계 설정</span>
+	<span class="n">member</span><span class="o">.</span><span class="na">setTeam</span><span class="o">(</span><span class="n">team</span><span class="o">);</span>
+	<span class="k">return</span> <span class="n">member</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>생략된 부분이 많으나, 충분히 번거로워 보인다.</p>
+
+<p>그렇다면 번거로운 부분을 어떻게 줄일 수 있을까? 이 모든 번거로움은 <strong>객체와 데이터베이스간의 불일치</strong>에서 발생하는 일이다.<br />
+그럼 <code class="language-plaintext highlighter-rouge">Member</code>와 <code class="language-plaintext highlighter-rouge">Team</code>을 DB가 아닌 자바 컬렉션에 관리한다면?</p>
+
+<h3 id="자바-컬렉션-1">자바 컬렉션</h3>
+
+<p>위에서 언급했듯이, 자바 컬렉션은 <strong>객체 차원</strong>에서 사용되는 도구이기 때문에 DB에서 객체를 관리할 때에 비해 훨신 간결하게 코드를 작성이 가능하다.</p>
+
+<ul>
+  <li>저장: <code class="language-plaintext highlighter-rouge">list.add(member);</code></li>
+  <li>조회: <code class="language-plaintext highlighter-rouge">Member member = list.get(memberId); Team team = member.getTeam();</code></li>
+</ul>
+
+<h3 id="sql-매핑에서의-해방">SQL 매핑에서의 해방</h3>
+
+<p>객체와 DB간 패러다임 불일치에서 번거로움이 있다면 객체 안에서 객체를 관리하면 되는 일이다. 이는 복잡한 변환 과정을 제거해주고, 자유로운 <strong>객체 그래프 탐색</strong>을 가능하게 해준다.</p>
+
+<div class="callout">
+  <div>💡</div>
+  <div>
+  	<strong>객체 그래프 탐색</strong>
+	<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/529fcad2-5289-49bc-82b3-42b926abb49c" />
+	자유로운 객체 그래프 탐색을 충족시키기 위해선, 참조를 통해 한 객체에서 다른 객체로 이동하며 전체 객체를 자유롭게 탐색할 수 있어야 한다. <br /> <br />
+	그러나 데이터베이스에선 처음 실행한 SQL문에 따라 탐색 범위에 제한이 걸리게 된다.<br />
+	예를 들어 <code><strong>SELECT M.*, T.* FROM MEMBER M JOIN TEAM T ON M.TEAM_ID = T.TEAM_ID</strong></code> 와 같은 SQ이 있을 때, 탐색 가능한 객체는 Member와 Team뿐이다.<br />
+	이러한 탐색의 제한은 <strong>엔티티 신뢰 문제</strong>를 발생시킨다.
+  </div>
+</div>
+
+<p>객체 지향 설계가 중요하다고 말들은 하나, 객체답게 모델링 할 수록 SQL로 매핑하는 비용이 늘어나게 된다.<br />
+이런 문제를 해결하기 위해, <strong>객체를 자바 컬렉션에 저장하듯이 DB에 저장</strong>하는 방식이 바로 <strong>JPA(Java Persistence API)</strong>이다.</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2023-09-04">04 Sep 2023</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#JPA">JPA</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#JPA">#JPA</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//seminarAttend1/"> &laquo; 출석 체크 페이지 제작 1- 설계</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//JPA-introduction/">JPA 소개 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

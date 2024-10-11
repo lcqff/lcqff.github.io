@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>구글 소셜 로그인 에러 해결(Cors, Redirect uri) | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>구글 소셜 로그인 에러 해결(Cors, Redirect uri) | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="구글 소셜 로그인 에러 해결(Cors, Redirect uri)" />
+<meta name="author" content="팜" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting" />
+<meta property="og:description" content="Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/google-login/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/google-login/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-07-11T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="구글 소셜 로그인 에러 해결(Cors, Redirect uri)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"팜"},"dateModified":"2024-07-11T00:00:00+09:00","datePublished":"2024-07-11T00:00:00+09:00","description":"Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting","headline":"구글 소셜 로그인 에러 해결(Cors, Redirect uri)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/google-login/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"팜"},"url":"http://localhost:4000/pam-tree/google-login/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=구글 소셜 로그인 에러 해결(Cors, Redirect uri)&url=http://localhost:4000/pam-tree/google-login/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/google-login/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/google-login/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">구글 소셜 로그인 에러 해결(Cors, Redirect uri)</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h2 id="0-개요">0. 개요</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/7b4f62c4-47e8-4332-8289-dbda3c33e0a8" alt="두레 메인" /></p>
+
+<p>두레의 소셜 로그인에서 <red>CORS 에러</red>가 발생한다는 프론트의 보고가 들어왔다.</p>
+
+<p><br /></p>
+
+<p>구글 소셜 로그인은 현재 팀을 나간 팀원이 몇 달 전에 작업한 내용이었다.</p>
+
+<p>해당 기능이 개발되던 당시에는 클라이언트 UI 작업이 되지 않아 제대로된 테스트가 이루어지지 못했고, 직접 클라이언트를 통해 로그인을 시도하자 오류가 발생한 것이다. (인터넷 URL 창에 직접 uri를 입력하여 정상 작동하는지 테스트했다 들음)</p>
+
+<p>백엔드는 이미 권한 처리가 완료돼있었기에 로그인을 하지 못하면 프론트에서 작업하기가 어려운 상황이었다.</p>
+
+<p>해당 포스팅에는 구글 소셜 로그인에서 발생한 <strong>Cors, redirection url</strong>의 두가지 문제를 해결한 내용을 기록해두었다. <del>(그 사이의 많은 삽질은 생략했다…)</del></p>
+
+<h2 id="1-cors-오류">1. Cors 오류</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/bd1ed749-452b-4d21-b3ed-ce463c1d93ab" alt="cors" /></p>
+
+<p><a href="https://lcqff.github.io/keeper/2024/03/30/false-cors.html">가짜 Cors 해결(false cors)</a></p>
+
+<p>(Cors 오류에 대한 설명은 위 포스팅을 참고하자.)</p>
+
+<h3 id="applicationyml-수정">application.yml 수정</h3>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="na">cors</span><span class="pi">:</span>
+  <span class="na">allow</span><span class="pi">:</span>
+    <span class="na">origins</span><span class="pi">:</span> <span class="s">http://localhost:3000</span>
+    <span class="na">methods</span><span class="pi">:</span> <span class="s">GET, POST, PUT, DELETE, PATCH, OPTION</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="nd">@Configuration</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">CorsConfig</span> <span class="kd">implements</span> <span class="nc">WebMvcConfigurer</span> <span class="o">{</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"${cors.allow.origins}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">allowedOrigins</span><span class="o">;</span>
+
+    <span class="nd">@Value</span><span class="o">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">"${cors.allow.methods}"</span><span class="o">)</span>
+    <span class="kd">private</span> <span class="nc">String</span><span class="o">[]</span> <span class="n">allowedMethods</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="nc">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">"/**"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="n">allowedOrigins</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="n">allowedMethods</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">"Origin"</span><span class="o">,</span> <span class="s">"Content-Type"</span><span class="o">,</span> <span class="s">"Accept"</span><span class="o">,</span> <span class="s">"Authorization"</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">allowCredentials</span><span class="o">(</span><span class="kc">true</span><span class="o">)</span>
+                <span class="o">.</span><span class="na">maxAge</span><span class="o">(</span><span class="mi">3600</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>최우선적으로 Cors 설정 관련 문제를 들여다보자.</p>
+
+<p><strong>allowedOrigins</strong>에 프론트 로컬 경로만 설정돼있고 실제 개발 서버가 연결돼있지 않은 것을 확인할 수 있었다.</p>
+
+<p><br /></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="na">cors</span><span class="pi">:</span>
+  <span class="na">allow</span><span class="pi">:</span>
+    <span class="na">origins</span><span class="pi">:</span> <span class="s">http://localhost:3000, https://www.doore.kro.kr</span>
+    <span class="na">methods</span><span class="pi">:</span> <span class="s">GET, POST, PUT, DELETE, PATCH, OPTION</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>개발서버를 추가해주자.</p>
+
+<h3 id="서브모듈-수정">서브모듈 수정</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/90e41dda-7060-491a-9c6b-4f7200b1d561" alt="여전" /></p>
+
+<p>그러나 application.yml의 allowOrigin을 수정해도 여전히 동일한 에러가 발생했다.</p>
+
+<p>이쯤해서 Doore의 민감정보 처리 방법에 대해 간단하게 알아보자…</p>
+
+<h4 id="submodules">Submodules</h4>
+
+<p>간과했던 사항은 <red>로컬과 개발서버, 운영서버는 서로 다른 설정 파일을 읽는다</red>는 점이다.</p>
+
+<p><br /></p>
+
+<p>환경이 나누어져 있는 이상 데이터베이스(또는 스키마)와 같이 <strong>각 환경별로 다르게 사용해야 할 설정</strong>이 있기 마련이며, 개발 서버와 운영서버에는 api-key또는 데이터베이스 비밀번호와 같이 <strong>외부인에게는 공개해선 안되는 민감 정보</strong>가 존재한다.</p>
+
+<p>당연하게도 이러한 설정을 통일하기 보다는 각 환경별로 분리하는 쪽이 운영에 훨씬 도움이 된다.</p>
+
+<p>따라서 두레에서는 환경에 따른 각 설정 정보를 다음과 같이 분리했다.</p>
+
+<ul class="box-yello">
+  <li><code class="language-plaintext highlighter-rouge">application.yml</code> → 로컬 설정</li>
+  <li><code class="language-plaintext highlighter-rouge">application-dev.yml</code> → 개발 환경 설정</li>
+  <li><code class="language-plaintext highlighter-rouge">application-prod.yml</code> → 운영 환경 설정</li>
+</ul>
+
+<cap>(설정파일 네이밍에 관해서는 아래 Profile 파트에서 설명하겠다.)</cap>
+<p><br /></p>
+
+<p>현재 두레 레포지토리는 public 상태로, <code class="language-plaintext highlighter-rouge">application.yml</code>은  외부에 공개돼있다. 
+그러나 개발 환경 설정과 운영 환경 설정은 민감한 정보를 담은 파일로 <blue>Private</blue>하게 관리해야 한다.</p>
+
+<p>따라서 Doore에서는 <strong>Submodule</strong>을 사용하여 민감 정보를 <strong>private 레파지토리에 보관</strong>하고 있다.</p>
+
+<h4 id="spring-profile">Spring Profile</h4>
+
+<p>그렇다면 어떻게 운영 환경에서는 <code class="language-plaintext highlighter-rouge">application-prod.yml</code>의 설정을 가져다 사용하고, 개발 환경에서는 <code class="language-plaintext highlighter-rouge">application-dev.yml</code>의 설정을 가져다 쓸 수 있도록 할 수 있단 말인가?</p>
+
+<p>이것은 <red>Profile</red>에 달려있다.</p>
+
+<div class="callout">
+  <div>💡</div>
+  <div>
+	<strong>Profile</strong><br />
+    특정 환경에 맞게 애플리케이션 설정을 다르게 적용할 수 있도록 해주는 기능
+  </div>
+</div>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/61a6a10e-92cc-4231-acef-bc2674b296e1" alt="profiles" /></p>
+<cap>https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-profiles.html#boot-features-profiles </cap>
+<p><br /></p>
+
+<p>스프링 부트에서는 <code class="language-plaintext highlighter-rouge">spring.profiles.active</code> 설정을 통해 활성화 할 프로파일을 설정할 수 있다.</p>
+
+<p>이 설정은 하나의 yml 파일에서 로컬,개발,운영 환경별 설정을 나눌 때 사용할 수도 있고, 어플리케이션 실행시 Java 시스템 프로퍼티를 통해 설정할 수도 있다.</p>
+
+<p><br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/1c36bcf2-adc1-4dcb-9632-edfc9dbb3c72" alt="dockerfile" /></p>
+
+<p>두레에서는 Docker를 사용하여 애플리케이션을 실행하고 있다.</p>
+
+<p>DockerFile을 확인해보면 어플리케이션 실행시 <strong><code class="language-plaintext highlighter-rouge">-Dspring.profiles.active</code> 시스템 프로퍼티를 사용하여 프로파일을 dev로 설정하고 있음</strong>을 확인할 수 있다.</p>
+
+<p><br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/c455154f-dc1d-481d-9294-4fe7bab36674" alt="propertiees" /></p>
+<cap>
+https://docs.spring.io/spring-boot/docs/1.2.0.M1/reference/html/boot-features-external-config.html#boot-features-external-config-profile-specific-properties</cap>
+<p><br /></p>
+
+<p>SpringBoot 설정파일 네이밍 규칙에 의하여 어떤 프로파일의 설정 파일의 이름은 <code class="language-plaintext highlighter-rouge">application-{profile}.properties</code>가 된다.</p>
+
+<p>따라서 profile이 dev로 설정된 개발서버에서 사용하는 설정파일은 <code class="language-plaintext highlighter-rouge">application-dev.yml</code>이 될 것이다.</p>
+
+<h3 id="해결">해결</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/30dc8a3e-a85a-4b93-b8f3-dcba6a4ca704" alt="cors 해결" /></p>
+
+<p>확인해보니 서브모듈의 Allow origin은 여전히 로컬서버를 향하고 있는 상태였다.</p>
+
+<p>따라서 배포 서버 주소를 추가해주는 것으로 Cors 에러를 해결할 수 있었다.</p>
+
+<p><a href="https://lcqff.github.io/doore/2024/07/13/submodule.html">서브모듈 수정 방법</a></p>
+
+<h2 id="2-redirect_uri_mismatch-오류">2. redirect_uri_mismatch 오류</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/8cbabbf8-ed87-4b09-b463-69b1803186ba" alt="redirect uri mismatch" /></p>
+
+<p>Cors 에러를 수정하자 이번엔 500에러가 발생했다…</p>
+
+<p>검출되지 못한 500에러가 지금 나를 덮친다……</p>
+
+<p><br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/20e732c9-62dd-45e7-8b75-f721d82ce02b" alt="ec2 log" /></p>
+
+<p>EC2에 접속해 서버 로그를 확인해보자. <strong>redirect_uri_mismatch</strong> 오류가 뜨는 걸 확인할 수 있었다.</p>
+
+<p>코드를 살펴보며 두레 구글 소셜 로그인 코드에서 <code class="language-plaintext highlighter-rouge">redirect_uri</code>를 어디에 사용하고 있는지 확인했다.</p>
+
+<p><br /></p>
+
+<ol class="box-yello">
+  <li>클라이언트에서 구글로 승인(인가코드 발급) 요청을 보낼 때
+    <ol>
+      <li>사용하고 있는 rediect_uri: <code class="language-plaintext highlighter-rouge">https:/www.doore.kro.kr/oauth2/code/google</code></li>
+    </ol>
+  </li>
+  <li>백엔드에서 구글로 토큰 요청을 보낼 때
+    <ol>
+      <li>사용하고 있는 redirect_uri: <code class="language-plaintext highlighter-rouge">https://www.doore.kro.kr</code></li>
+    </ol>
+  </li>
+</ol>
+
+<p>위의 두 군데에서 redirect-uri가 사용되고 있음을 확인했다.</p>
+
+<p><br /><br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/37b3b958-e53a-4f10-87c7-a5f5bf2f78c7" alt="dev doc" /></p>
+<cap>https://developers.google.com/identity/protocols/oauth2/web-server?hl=ko#httprest_1</cap>
+<p><br /></p>
+
+<p>구글 oauth2 문서에서 설명하길, <strong><a href="https://console.cloud.google.com/apis/credentials/oauthclient/470276714816-e3q16jtp6a5tmogt0tt1l1d0u8brhr65.apps.googleusercontent.com?authuser=2&amp;project=doore-411801">credentials page</a>의 승인된 리디렉션 URI와 일치하지 않은 redirection uri가 사용된 경우</strong> redirect_uri_mismatch 오류가 발생할 수 있다고 한다.</p>
+
+<h3 id="redirect-uri">Redirect uri</h3>
+
+<p>credentials page의 승인된 리디렉션 URI를 확인해보았다.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/9dfb96a0-3680-4872-b1f8-4aaf201c9905" alt="승인된 redirection" /></p>
+
+<p>이미 여러가지 리디렉션 URI가 등록되어 있었다.</p>
+
+<p>그러나 <code class="language-plaintext highlighter-rouge">https:/www.doore.kro.kr/oauth2/code/google</code>를 제외한 <code class="language-plaintext highlighter-rouge">https://www.doore.kro.kr</code>는 등록되어있지 않았음을 확인하고 새로 등록해주었다. (이후에 안쓰는 리디렉션 URI들은 정리하는 걸로…)</p>
+
+<p>google credentials page에 새로 등록된 리디렉션 URI는 실제로 적용되기까지 5분에서 n시간이 소요된다. 당연하게도 실제 적용됐다고 알림도 안온다. 그냥 해봤는데 안되면 아직 적용이 안됐거니 하고 기다려야하는 잔인한 시스템… (여기서 굉장히 많은 시간을 낭비했다)</p>
+
+<p>아무튼 결과적으로 리디렉션 URI에 값을 추가하는 걸로는 <strong>문제가 해결되지 않았다.</strong></p>
+
+<h3 id="해결-1">해결</h3>
+
+<p>구글 개발 문서 상에는 등록되지 않는 리디렉션 URI를 사용하여 발생하는 문제라 되어있긴 하나, 이쯤되니 <strong>리디렉션 URI 등록 문제가 아니어보였다.</strong></p>
+
+<p>다행히도(다행이라기엔 너무 많은 삽질을 거쳤지만) 이전에 개인 공부로 카카오 소셜 로그인을 구현해본적이 있다.</p>
+
+<p>구글 소셜 로그인을 개발하신 팀원분은 URL창에 get 요청을 전송하는 식으로 테스트를 하셨지만 나는 클라이언트로 직접 소셜 로그인이 성공하는 것까지 확인했기 때문에 <strong>두레의 구글 소셜 로그인 코드와 내가 작성한 카카오 소셜 로그인 코드를 비교해가며 문제를 찾는 것이 좋겠다 판단</strong>했다. (플랫폼이 다르긴 해도 소셜 로그인 원리는 거의 다르지 않을 것이기 때문에)</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/2a7f1d1a-9360-414f-9e8d-ec18aa3f742e" alt="카카오 소셜 로그인" /></p>
+<cap>https://lcqff.github.io/dotted/2024/05/01/kakao-login.html </cap>
+<p><br /></p>
+
+<p>내가 카카오 소셜 로그인을 구현하며 작성한 글을 다시 읽어보며 발견한 사실이 있다.</p>
+
+<red>인가 코드 요청과 토큰 발급시 동일한 redirection_uri를 사용한다는 점</red>
+<p>이다.</p>
+
+<p><br /></p>
+
+<p>위에서 설명했듯이 현재 두레의 구글 소셜 로그인에서 사용하는 <code class="language-plaintext highlighter-rouge">redirect_uri</code>는 두가지이다.</p>
+
+<ol class="box-yello">
+  <li>클라이언트에서 구글로 승인(인가코드 발급) 요청을 보낼 때
+    <ol>
+      <li>사용하고 있는 rediect_uri: <code class="language-plaintext highlighter-rouge">https:/www.doore.kro.kr/oauth2/code/google</code></li>
+    </ol>
+  </li>
+  <li>백엔드에서 구글로 토큰 요청을 보낼 때
+    <ol>
+      <li>사용하고 있는 redirect_uri: <code class="language-plaintext highlighter-rouge">https://www.doore.kro.kr</code></li>
+    </ol>
+  </li>
+</ol>
+
+<p>백엔드에서 사용하고 있는 redirection uri를 프론트에서 사용하고 있는 redirectoin uri와 동일한 것으로 수정해주자…….</p>
+
+<p><br />
+<br />
+<br />
+<br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/5a89d699-a91a-4356-8c14-044e953194ba" alt="해결" /></p>
+
+<p>ㅠㅠ</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/e3713eee-f1ab-4444-88d3-586fb94448d9" width="70%" /></p>
+
+<p>최종 포스팅에서는 결과만 요약해서 설명했지만</p>
+
+<p>이 사이에 너무 의미없는 뻘짓이라 포스팅에 차마 담지 못한 삽질이 많다…. (현재 분량의 3배정도 된다)</p>
+
+<p>그만큼 해결이 늦어져서 프론트분들에게 죄송할 따름이다ㅠㅠ</p>
+
+<hr />
+
+<blockquote>
+  <p>배운 점:</p>
+
+  <ol>
+    <li>소셜 로그인은 프론트 개발 후에 작업하자 직접 클라이언트로 테스트해보자</li>
+    <li>그래도 덕분이 이거 해결하면서 이후에 인프라 하며 경험할 삽질은 다 겪은거같다… +서브모듈과 프로파일에 대한 지식을 얻어 좋았다….</li>
+    <li>지금은 소셜 로그인 코드가 그냥 쌩으로 작성되어있는데  Oauth2 라이브러리를 사용하는 것으로 리팩터링하자…</li>
+  </ol>
+</blockquote>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2024-07-11">11 Jul 2024</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#DooRe">DooRe</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Backend">#Backend</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#DooRe">#DooRe</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Spring">#Spring</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#troubleShooting">#troubleShooting</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//rabbitmq2/"> &laquo; 세차새차 비즈콜 서비스 개발 (2) -RabbitMQ TTL, DLX, Retry 적용</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//submodule/">민감정보 처리 방법과 서브모듈 수정 방법 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제 | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제 | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제" />
+<meta name="author" content="팜" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="이전 코드의 문제" />
+<meta property="og:description" content="이전 코드의 문제" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/2depth_sidbar2/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/2depth_sidbar2/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-12-08T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"팜"},"dateModified":"2023-12-08T00:00:00+09:00","datePublished":"2023-12-08T00:00:00+09:00","description":"이전 코드의 문제","headline":"[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/2depth_sidbar2/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"팜"},"url":"http://localhost:4000/pam-tree/2depth_sidbar2/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제&url=http://localhost:4000/pam-tree/2depth_sidbar2/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/2depth_sidbar2/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/2depth_sidbar2/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h2 id="이전-코드의-문제">이전 코드의 문제</h2>
+
+<pre><code>
+&#123;% assign sum = site.posts | size %}
+
+&#60;sdiv&gt;
+  &#60;!--전체 글 수--&gt;
+  &#60;sdiv class="common-list"&gt;
+    ...
+  &#60;/div&gt;
+
+  &#60;!--카테고리--&gt;
+  &#60;div class="parent_cat"&gt;CS&lt;/div&gt;
+  &#60;div class="common-list"&gt;
+    &#60;ul&gt;
+
+      &#123;% for category in site.categories %} &#123;% if category[0] == "CS" %}
+      &#60;li&gt;
+        &#60;a href="#h-"&gt;
+          &#123;&#123; category[0] }}
+          &#60;span&gt;&#123;&#123; site.posts | where: field, category[0] | size }}&lt;/span&gt;
+        &#60;/a&gt;
+      &#60;/li&gt;
+      &#123;% endif %} &#123;% endfor %} 
+      &#60;!-- 서브 카테고리가 추가될 때마다 위 블럭을 반복...--&gt;
+
+    &#60;/ul&gt;
+  &#60;/div&gt;
+  &#60;!-- 카테고리가 추가될 때마다 위 블럭을 반복...--&gt;
+&#60;/div&gt;
+</code></pre>
+
+<p>2 depth sidebar을 만들고 방치해둔지 6개월… liquid를 모르는 상태로 2-depth 사이드바를 만든 것 자체로 진이 빠져 리팩토링은 미뤄둔 상태였다.<br />
+사실 이때까지만 해도 블로그에 카테고리가 그렇게 많진 않아서 카테고리를 만질 일이 없었는데, 이번에 다시 블러그를 시작하며 카테고리를 몇 개 추가하고 순서를 바꾸려고 하니 좀 귀찮다고 느껴졌다😅<br />
+카테고리를 수정할 때 카테고리 코드가 아닌 ‘카테고리 구성’을 저장해둔 파일만 수정하면 편할거 같다는 생각이 들었다.🤔</p>
+
+<h3 id="첫번째-시도---js">첫번째 시도 - JS</h3>
+<p>처음에는 JS를 사용하려 시도했다. liquid에 익숙하지 않아 자연스럽게 중복코드를 JS를 사용하는 쪽으로 생각이 기울었던거 같다.</p>
+
+<p>JS를 사용해 사이드바를 구현하는 것까진 성공했으나…..</p>
+
+<pre><code>
+&#60;span&gt; &#123;&#123; site.posts | where: field, category[0] | size }}&lt;/span&gt;
+</code></pre>
+<p>이녀석이 도무지 구현 불가능했다😱<br />
+site.posts는 말 그대로 블로그에 있는 ‘포스트’를 들고오는 것으로 보이는데, 위의 Liquid문법을 JS에서 사용할 수 없었고, site.posts 데이터를 html에서 JS로 넘겨주는 것 또한 불가능했다.<br />
+<code class="language-plaintext highlighter-rouge">&lt;span&gt;</code>이 굉장히 애매한 위치에 끼어있던 터라 위 코드는 html에서 처리하고 JS에서 중복 코드를 끼워넣는 방식으로 하는 것도 불가능했다.<br />
+멘붕…😂</p>
+
+<h3 id="두번째-시도---liquid">두번째 시도 - Liquid</h3>
+<p>결국 JS를 사용하는 것은 포기하고 순수하기 html내에서 중복코드를 처리하기로 마음먹었다.<br />
+JS를 사용할땐 이중 배열에 카테고리와 서브카테고리 값들을 저장할 계획이었는데, Liquid를 사용해보니 Liquid에서 배열을 흉내낼순 있으나 이중 배열의 사용은 불가능한 거 같았다.<br />
+따라서 카테고리 형식을 저장할 다른 방법이 필요했다.</p>
+
+<p>Liquid 템플릿 언어에서는 <code class="language-plaintext highlighter-rouge">site.data</code>를 사용해 _data디렉토리에 저장된 외부 데이터를 참고할 수 있다. 예를 들어 _data에 main_category.yaml 파일이 있다면 <code class="language-plaintext highlighter-rouge">site.data.main_category</code>를 사용해 해당 데이터를 조회할 수 있다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre></td><td class="rouge-code"><pre>  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">CS"</span>
+    <span class="na">subcategories</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">CS"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Algorithm"</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">BackEnd"</span>
+    <span class="na">subcategories</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Spring"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">Java"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">JPA"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">오류기록장"</span>
+
+      <span class="s">...</span>
+      
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">기타"</span>
+    <span class="na">subcategories</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">블로그_업데이트"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">회고"</span>
+      <span class="pi">-</span> <span class="s2">"</span><span class="s">샘플"</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+<p>_data 디렉토리 내에 main_category.yaml파일을 생성했다. 구성은 사이드바 내용과 순서를 그대로 옮겨왔다.</p>
+
+<p><br />
+이제 위 데이터를 가져와서 사이드바 코드를 작성하면……</p>
+<pre>
+<code>
+&#123;% assign sum = site.posts | size %}
+
+&#60;sdiv&gt;
+  &#60;!--전체 글 수--&gt;
+  &#60;sdiv class="common-list"&gt;
+    ...
+  &#60;/div&gt;
+
+  &#60;!--카테고리--&gt;
+  <strong>
+  &#123;%- assign categories = site.data.main_category -%}
+  &#123;% for category in categories %}
+  </strong>
+  &#60;div class="parent_cat"&gt;&#123;&#123; category.name }}&lt;/div&gt;
+  &#60;div class="common-list"&gt;
+    &#60;ul&gt;
+    <strong> &#123;% for subCategory in category.subcategories %}</strong>
+        &#60;li&gt;
+          &#60;a href="#h-"&gt;
+            &#123;&#123; subCategory }}
+            &#60;span&gt;&#123;&#123; site.posts | where: field, subCategory | size  }}&lt;/span&gt;
+          &#60;/a&gt;
+        &#60;/li&gt;
+        &#123;% endfor %}
+      &#60;/ul&gt;
+    &#60;/div&gt;
+&#123;% endfor %}
+&#60;/div&gt;
+</code>
+</pre>
+
+<p>이럴수가.. 너무 깔끔해졌다!
+JS로 했어도 이정도로 깔끔한 코드는 안나왔을 텐데, JS에서 실패하고 삽질을 꽤 오래 했었지만 차라리 잘된 일인거 같다.😂</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2023-12-08">08 Dec 2023</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#gitblog">#gitblog</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//bad-SQL-grammar/"> &laquo; bad SQL grammar []</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//backJoon-hideAndSeek/">[BFS] 백준 1697- 숨바꼭질 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

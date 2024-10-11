@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>[Algorithm] 백트래킹(Bactracking) | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>[Algorithm] 백트래킹(Bactracking) | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="[Algorithm] 백트래킹(Bactracking)" />
+<meta name="author" content="파녀미" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="팜의 백엔드 이것저것 놀이터" />
+<meta property="og:description" content="팜의 백엔드 이것저것 놀이터" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/backtracking/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/backtracking/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2023-06-03T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[Algorithm] 백트래킹(Bactracking)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"파녀미"},"dateModified":"2023-06-03T00:00:00+09:00","datePublished":"2023-06-03T00:00:00+09:00","description":"팜의 백엔드 이것저것 놀이터","headline":"[Algorithm] 백트래킹(Bactracking)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/backtracking/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"파녀미"},"url":"http://localhost:4000/pam-tree/backtracking/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=[Algorithm] 백트래킹(Bactracking)&url=http://localhost:4000/pam-tree/backtracking/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/backtracking/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/backtracking/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">[Algorithm] 백트래킹(Bactracking)</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <style>
+  .imageRow {
+    display:flex;
+    margin: 20px 0;
+  }
+  .captionedImg {
+    display: grid;
+    align-content: flex-end;
+    margin: 0 20px;
+    text-align:center;
+    font-size: 12px;
+    color:gray;
+  }
+</style>
+
+<div class="captionedImg">
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/b3dc2c26-4e13-41b0-8d0c-856625a8a1db" />
+<p>https://www.programiz.com/dsa/backtracking-algorithm</p>
+</div>
+
+<div class="callout">
+  <div>💡</div>
+  <div>
+    <strong>Backtracking</strong><br />
+    주어진 문제에 대한 가능한 모든 경우의 수를 탐색하면서 해를 찾는 알고리즘
+  </div>
+</div>
+
+<ul>
+  <li>주어진 자식 노드 중 하나를 골라 탐색한다.
+    <ul>
+      <li>만일 선택한 노드가 조건에 맞지(Promising하지) 않다면 부모 노드로 돌아간다.</li>
+      <li>만일 선택한 노드가 조건에 맞다면 다음 자식 노드로 이동한다.</li>
+    </ul>
+  </li>
+  <li>트리의 끝에 도착했다면 경로를 해에 추가한다.</li>
+</ul>
+
+<hr />
+
+<h4 id="경로-도출하기">경로 도출하기</h4>
+
+<p>어떠한 최적의 답을 구하기 위해서, 우리는 후보 솔루션들을 트리 형태로 구축하라 수 있습니다. 이렇게 구축된 트리를 <strong>상태 공간 트리(State Space Tree)</strong>라고 부릅니다.</p>
+
+<p>이렇게 주어진 상태 공간 트리에서 도출할 수 있는 경로를 구하기 위해 사용되는 알고리즘에는 <strong>DFS(깊이 우선 탐색)</strong>와 <strong>BFS(너비 우선 탐색)</strong>가 있습니다. 그러나 DFS와 BFS는 트리에서 찾을 수 있는 모든 경로를 탐색하므로, 해답에 대한 조건이 주어진 경우 불필요한 경로까지 탐색하여 비효율적일 수 있습니다.</p>
+
+<p>따라서 어떤 조건에 대한 최적의 해를 구하기 위해 <strong>백트래킹</strong>이 사용됩니다.
+<br /></p>
+
+<div class="imageRow">
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/1053ef11-82d9-4394-bdfd-b3aac4fb8c83" />
+<img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/b999fe60-8d83-4d49-ac87-cc2c3ce4af17" />
+</div>
+
+<h4 id="promising한-노드">Promising한 노드</h4>
+
+<blockquote>
+  <p><strong>백트래킹은 결정 문제(예, 아니오로 답할 수 있는 문제)를 다루는 데 사용된다.</strong></p>
+</blockquote>
+
+<p>백트래킹은 일반적으로 DFS과 결합되어 사용됩니다. 단, DFS가 해답에 대한 조건과 상관없이 모든 경로를 탐색하는 반면, 백트래킹은 노드를 지날 때마다 해당 노드가 경로에 부합하는가 여부를 판단하는 과정을 거칩니다.</p>
+
+<p>노드가 조건에 부합함을 <strong>‘유망하다(Promising 하다)’</strong>고 하며, 노드가 유망한 경우 다음 자식 노드 중 하나를 골라 탐색합니다.
+만일 노드가 유망하지 않을 경우, 우리는 바로 직전의 노드로 돌아가 다른 경로를 선택하게 됩니다. 이를 <strong>Backtracking</strong>이라 부릅니다.
+<br />이때, 직전의 노드로 돌아가기위해 DFS의 <strong>재귀적인 특성</strong>이 사용됩니다.</p>
+
+<p>이렇게 노드의 유망성을 따지는 것으로 백트래킹은 조건에 맞지 않는 경로를 사전에 차단해 살펴봐야하는 노드의 수와 해답에 대한 경우의 수를 줄여 더 효율적인 탐색을 가능하게 합니다.</p>
+
+<p class="box-note"><strong>이렇게 Backtracking으로 유망성을 따져 만들어진 경로만을 모아 만들어진 트리를 pruned state space tree라고 합니다.</strong></p>
+
+<h4 id="backtracking이-사용되는-예시">Backtracking이 사용되는 예시</h4>
+
+<ol>
+  <li>조합 가능한 모든 경우의 수 탐색</li>
+  <li>n-Queens Problem</li>
+  <li>Sum of subset Problem</li>
+  <li>그래프 경로 찾기</li>
+</ol>
+
+<h4 id="예시-코드">예시 코드</h4>
+
+<p>일반적으로 백트래킹은 아래와 같은 형태로 사용됩니다.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="rouge-code"><pre><span class="n">def</span><span class="err"> </span><span class="nf">getRoute</span><span class="p">(</span><span class="n">k</span><span class="p">):</span><span class="err"> </span><span class="c1">#백트래킹을 사용해 트리를 탐색.
+</span><span class="err">    </span><span class="k">global</span><span class="err"> </span><span class="n">route</span>
+<span class="err">    </span><span class="k">if</span><span class="err"> </span><span class="p">(</span><span class="nf">len</span><span class="p">(</span><span class="n">route</span><span class="p">)</span><span class="o">==</span><span class="n">N</span><span class="p">):</span>
+<span class="err">        </span><span class="nf">getDis</span><span class="p">()</span>
+<span class="err">        </span><span class="k">return</span>
+
+<span class="err">    </span><span class="k">for</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="ow">in</span><span class="err"> </span><span class="nf">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">N</span><span class="p">):</span>
+<span class="err">        </span><span class="k">if</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="ow">not</span><span class="err"> </span><span class="ow">in</span><span class="err"> </span><span class="n">route</span><span class="p">:</span>
+<span class="err">            </span><span class="n">route</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="err">            </span><span class="k">if</span><span class="err"> </span><span class="nf">promising</span><span class="p">(</span><span class="n">i</span><span class="p">):</span> <span class="c1">#노드의 유망성 판단
+</span><span class="err">                </span><span class="nf">getRoute</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="err">            </span><span class="n">route</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+<span class="nf">getRoute</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="n">def</span><span class="err"> </span><span class="nf">getcombination</span><span class="p">(</span><span class="n">k</span><span class="p">):</span><span class="err">  </span><span class="c1"># 백트래킹을 사용해 n개로 가능한 모든 조합을 구함.
+</span><span class="err">    </span><span class="k">for</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="ow">in</span><span class="err"> </span><span class="nf">range</span><span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="err"> </span><span class="n">n</span><span class="p">):</span>
+<span class="err">        </span><span class="k">if</span><span class="err"> </span><span class="n">i</span><span class="err"> </span><span class="ow">not</span><span class="err"> </span><span class="ow">in</span><span class="err"> </span><span class="n">combination</span><span class="p">:</span>
+<span class="err">            </span><span class="n">combination</span><span class="p">.</span><span class="nf">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+<span class="err">            </span><span class="nf">getcombination</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="err">            </span><span class="n">combination</span><span class="p">.</span><span class="nf">pop</span><span class="p">()</span>
+
+<span class="nf">getCombination</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2023-06-03">03 Jun 2023</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#Algorithm">Algorithm</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Algorithm">#Algorithm</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#backtracking">#backtracking</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//ch6/"> &laquo; P4Ch8. 비동기</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//orthogonality/">프로그래밍에서의 직교성(Orthogonality) &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>

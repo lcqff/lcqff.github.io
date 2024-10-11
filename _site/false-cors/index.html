@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link rel="icon" href="/pam-tree/assets/images/logo.png">
+
+<title>가짜 Cors 해결(false cors) | Pam Tree</title>
+
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>가짜 Cors 해결(false cors) | Pam Tree</title>
+<meta name="generator" content="Jekyll v4.3.4" />
+<meta property="og:title" content="가짜 Cors 해결(false cors)" />
+<meta name="author" content="팜" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="문제" />
+<meta property="og:description" content="문제" />
+<link rel="canonical" href="http://localhost:4000/pam-tree/false-cors/" />
+<meta property="og:url" content="http://localhost:4000/pam-tree/false-cors/" />
+<meta property="og:site_name" content="Pam Tree" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-03-30T00:00:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="가짜 Cors 해결(false cors)" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"팜"},"dateModified":"2024-03-30T00:00:00+09:00","datePublished":"2024-03-30T00:00:00+09:00","description":"문제","headline":"가짜 Cors 해결(false cors)","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/pam-tree/false-cors/"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"http://localhost:4000/pam-tree/assets/images/logo.png"},"name":"팜"},"url":"http://localhost:4000/pam-tree/false-cors/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    
+<link href="/pam-tree/assets/css/screen.css" rel="stylesheet">
+
+<link href="/pam-tree/assets/css/main.css" rel="stylesheet">
+
+<script src="/pam-tree/assets/js/jquery.min.js"></script>
+
+</head>
+
+
+
+
+<body class="layout-post">
+	<!-- defer loading of font and font awesome -->
+	<noscript id="deferred-styles">
+		<link href="https://fonts.googleapis.com/css?family=Righteous%7CMerriweather:300,300i,400,400i,700,700i" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+	</noscript>
+
+
+<!-- Begin Menu Navigation
+================================================== -->
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top mediumnavigation nav-down">
+
+    <div class="container pr-0">
+
+    <!-- Begin Logo -->
+    <a class="navbar-brand" href="/pam-tree/">
+    <img src="/pam-tree/assets/images/logo.png" alt="Pam Tree">
+    </a>
+    <!-- End Logo -->
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMediumish" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarMediumish">
+
+        <!-- Begin Menu -->
+
+            <ul class="navbar-nav ml-auto">
+
+                
+                <li class="nav-item">
+                
+                <a class="nav-link" href="/pam-tree/index.html">Blog</a>
+                </li>
+
+                <li class="nav-item">
+                <a class="nav-link" href="/pam-tree/about">About</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="/pam-tree/index.html"> My Resume</a>
+                </li>
+
+                <!-- <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-wordpress/"><i class="fab fa-wordpress-simple"></i> WP Version</a>
+                </li>
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href="https://www.wowthemes.net/themes/mediumish-ghost/"><i class="fab fa-snapchat-ghost"></i> Ghost Version</a>
+                </li> -->
+
+                <li class="nav-item">
+                <a target="_blank" class="nav-link" href=""><i class="fab fa-github"></i> My Github</a>
+                </li>
+
+                <script src="/pam-tree/assets/js/lunr.js"></script>
+
+
+<style>
+    .lunrsearchresult .title {color: #d9230f;}
+    .lunrsearchresult .url {color: silver;}
+    .lunrsearchresult a {display: block; color: #777;}
+    .lunrsearchresult a:hover, .lunrsearchresult a:focus {text-decoration: none;}
+    .lunrsearchresult a:hover .title {text-decoration: underline;}
+</style>
+
+
+<form class="bd-search" onSubmit="return lunr_search(document.getElementById('lunrsearch').value);">
+    <input type="text" class="form-control text-small launch-modal-search" id="lunrsearch" name="q" maxlength="255" value="" placeholder="Type and enter..."/>
+</form>
+
+<div id="lunrsearchresults">
+    <ul></ul>
+</div>
+
+<script src="/pam-tree/assets/js/lunrsearchengine.js"></script>
+
+            </ul>
+
+        <!-- End Menu -->
+
+    </div>
+
+    </div>
+</nav>
+<!-- End Navigation
+================================================== -->
+
+<div class="site-content">
+
+<div class="container">
+
+<!-- Site Title
+================================================== -->
+<div class="mainheading">
+    <h1 class="sitetitle">Pam Tree</h1>
+    <p class="lead">
+        팜의 백엔드 이것저것 놀이터
+    </p>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="main-content">
+    <!-- Begin Article
+================================================== -->
+<div class="container">
+    <div class="row">
+
+        <!-- Post Share -->
+        <div class="col-md-2 pl-0">
+            <div class="share sticky-top sticky-top-offset">
+    <p>
+        Share
+    </p>
+    <ul>
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://twitter.com/intent/tweet?text=가짜 Cors 해결(false cors)&url=http://localhost:4000/pam-tree/false-cors/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://facebook.com/sharer.php?u=http://localhost:4000/pam-tree/false-cors/" onclick="window.open(this.href, 'facebook-share', 'width=550,height=435');return false;">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+        </li>
+
+        <li class="ml-1 mr-1">
+            <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http://localhost:4000/pam-tree/false-cors/" onclick="window.open(this.href, 'width=550,height=435');return false;">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </li>
+
+    </ul>
+    
+    <div class="sep">
+    </div>
+    <ul>
+        <li>
+        <a class="small smoothscroll" href="#disqus_thread"></a>
+        </li>
+    </ul>
+    
+</div>
+
+        </div>
+
+        <!-- Post -->
+        
+
+        <div class="col-md-9 flex-first flex-md-unordered">
+            <div class="mainheading">
+
+                <!-- Author Box -->
+                
+                <div class="row post-top-meta">
+                    <div class="col-xs-12 col-md-3 col-lg-2 text-center text-md-left mb-4 mb-md-0">
+                        
+                        <img class="author-thumb" src="https://www.gravatar.com/avatar/?s=250&d=mm&r=x" alt="">
+                        
+                    </div>
+                    <div class="col-xs-12 col-md-9 col-lg-10 text-center text-md-left">
+                        <a target="_blank" class="link-dark" href=""></a><a target="_blank" href="" class="btn follow">Follow</a>
+                        <span class="author-description"></span>
+                    </div>
+                </div>
+                
+
+                <!-- Post Title -->
+                <h1 class="posttitle">가짜 Cors 해결(false cors)</h1>
+
+            </div>
+
+            <!-- Adsense if enabled from _config.yml (change your pub id and slot) -->
+            
+            <!-- End Adsense -->
+
+            <!-- Post Featured Image -->
+            
+            <!-- End Featured Image -->
+
+            <!-- Post Content -->
+            <div class="article-post">
+                <!-- Toc if any -->
+                
+                <!-- End Toc -->
+                <h2 id="문제">문제</h2>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/02c41f91-b918-4f20-8017-9e220c28563b" alt="요청" />
+<br />
+위와 같은 버그 해결 요청이 들어왔다. 모두 Cors 에러가 발생하며 Allow-Cors를 사용할 시 정상동작하기에 Cors 문제라고 판단되었다.</p>
+
+<h3 id="에러-재현">에러 재현</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/2ba5def4-e141-4577-9b97-4294c77063b3" alt="애러재현1" /></p>
+
+<p>로그인 페이지 리다이렉션 요청 씹힘</p>
+
+<ul>
+  <li>로그아웃 상태로 홈페이지 접근시 CORS 오류가 발생하며 로그인 화면이 뜨지 않음</li>
+</ul>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/3f1d64fb-4250-490b-a792-c8c7e7e42032" alt="에러재현2" /></p>
+
+<p>메일 인증 요청시 CORS 오류 발생하며 인증 메일이 전송되지 않음</p>
+<div class="captionedImg">
+  <div class="imageRow">
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/7d183764-984b-4529-b53d-9701eab9c803" />
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/bf6a33ec-a882-42c9-b938-91227fe29597" />
+  </div>
+  <p>토스트 정상 동작</p>
+</div>
+
+<div class="captionedImg">
+  <div class="imageRow">
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/c46d4300-fb23-49d4-95cf-602ad5d30c62" />
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/9cc5a561-3084-4dca-b73c-a36468a6b02a" />
+  </div>
+  <p>토스트 Cors 오류</p>
+</div>
+
+<p>댓글 작성 없이 파일 다운로드 시 떠야하는 토스트 메세지 씹힘</p>
+
+<p>문제를 해결하기 위해 우선 Cors가 무엇인지에 대해 알아보자.</p>
+
+<h2 id="cors">Cors?</h2>
+
+<blockquote class="box-error">
+  <p>Access to XMLHttpRequest at ‘https://api.keeper.or.kr/posts/notices?categoryId=102’ from origin ‘<a href="https://keeper.or.kr/">https://keeper.or.kr</a>’ has been blocked by CORS policy: No ‘Access-Control-Allow-Origin’ header is present on the requested resource.</p>
+
+</blockquote>
+
+<p>웹 브라우저는 기본적으로 동일 출처 정책(Same-Origin Policy)을 따르기 때문에 동일한 출처에서 온 스크립트 혹은 요청이 아니면 리소스애 대한 접근을 차단한다. → <strong>Cors 오류</strong></p>
+
+<div class="callout">
+  <div>💡</div>
+  <div> 
+    <strong>Origin</strong><br />
+    특정 리소스에 접근하는 웹 페이지의 출처로, 프로토콜(protocol), 호스트(host), 포트(port)로 정의된다.<br />
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/0398ae78-bcba-44d3-a9a0-65eef70bbc61" />
+  </div>
+</div>
+
+<div class="callout">
+  <div>💡</div>
+  <div> 
+    <strong>CORS(Cross-Origin Resource Sharing) 란?</strong><br />
+    웹 브라우저에서 발생하는 보안 정책 중 하나로, 웹 브라우저가 다른 도메인(Origin)의 리소스에 접근할 수 있도록 하는 설정<br />
+    <img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/2e585ff7-9d00-4c33-818c-d22146ff2b80" />
+  </div>
+</div>
+
+<p>일반적으로 HTTP header에 추가적인 정보(<strong>Access-Control-Allow-Origin</strong>)를 추가하여 서버가 브라우저에게 자기 자신뿐만 아니라 다른 origin 에서 요청한 정보도 허용할 수 있도록 알려준다.</p>
+
+<p>cors 설정을 통해 필요한 경우에만 다른 출처의 리소스에 접근할 수 있으며, 보안을 강화한다.</p>
+
+<h2 id="cors-preflight">CORS Preflight</h2>
+
+<h3 id="preflight">preflight</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/d30113d7-9471-4e12-906f-436f2ad16115" alt="how preflight works" /></p>
+
+<p>브라우저는 요청이 접근 가능한 Origin에서 왔다는 걸 판단하기 위해 <strong>CORS Preflight</strong> 요청을 보낸다.</p>
+
+<p>해당 <strong>Cors preflight값 요청 결과</strong>에 따라 브라우저는 본 요청을 서버로 보낼지 혹은 차단할지(Cors error) 결정한다.</p>
+
+<ul>
+  <li>preflight 요청: 본 요청이 <strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#%EB%8B%A8%EC%88%9C_%EC%9A%94%EC%B2%ADsimple_requests">Simple Request</a></strong>가 아닌 경우 발생</li>
+  <li>실제 요청: JavaScript 상에서 XMLHttpRequest나 Fetch API 등을 사용한 요청</li>
+</ul>
+
+<h3 id="options">OPTIONS</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/03a97625-bd93-4198-b63c-327082224c76" alt="options" /></p>
+
+<p>이때 Cors preflight 요청으로 <strong>OPTIONS</strong>가 사용된다.</p>
+
+<h4 id="options-요청응답-예시">options 요청&amp;응답 예시</h4>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="s">OPTIONS /resources/post-here/ HTTP/1.1</span>
+<span class="na">Host</span><span class="pi">:</span> <span class="s">bar.example</span>
+<span class="na">Accept</span><span class="pi">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span>
+<span class="na">Accept-Language</span><span class="pi">:</span> <span class="s">en-us,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="pi">:</span> <span class="s">gzip,deflate</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">keep-alive</span>
+<span class="na">Origin</span><span class="pi">:</span> <span class="s">https://foo.example</span>
+<span class="na">Access-Control-Request-Method</span><span class="pi">:</span> <span class="s">POST</span>
+<span class="na">Access-Control-Request-Headers</span><span class="pi">:</span> <span class="s">X-PINGOTHER,</span> 
+<span class="s">Content-Type</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="rouge-code"><pre><span class="s">HTTP/1.1 200 OK</span>
+<span class="na">Date</span><span class="pi">:</span> <span class="s">Mon, 01 Dec 2008 01:15:39 GMT</span>
+<span class="na">Server</span><span class="pi">:</span> <span class="s">Apache/2.0.61 (Unix)</span>
+<span class="na">**Access-Control-Allow-Origin</span><span class="pi">:</span> <span class="s">https://foo.example**</span>
+<span class="na">Access-Control-Allow-Methods</span><span class="pi">:</span> <span class="s">POST, GET, OPTIONS</span>
+<span class="na">Access-Control-Allow-Headers</span><span class="pi">:</span> <span class="s">X-PINGOTHER, Content-Type</span>
+<span class="na">Access-Control-Max-Age</span><span class="pi">:</span> <span class="m">86400</span>
+<span class="na">Vary</span><span class="pi">:</span> <span class="s">Accept-Encoding, Origin</span>
+<span class="na">Keep-Alive</span><span class="pi">:</span> <span class="s">timeout=2, max=100</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">Keep-Alive</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="curl-테스트">cURL 테스트</h3>
+
+<p>Cors 에러는 브라우저를 통해 발생하는 에러로, 로컬 서버로는 동일한 에러를 재현하기 어렵다.</p>
+
+<p>그러나 방법 중 하나로, 로컬에서 <strong>cURL 테스트</strong>를 통해 Cors 에러를 확인할 수 있다.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>  <span class="err">*</span><span class="nv">*curl</span> <span class="s">-v -X OPTIONS https://api.keeper.or.kr/sign-up/email-auth -H "Origin</span><span class="err">:</span> <span class="s">https://keeper.or.kr" -H "Access-Control-Request-Method</span><span class="err">:</span> <span class="s">POST";</span>
+  <span class="s">//......</span>
+  <span class="s">&gt; OPTIONS /sign-up/email-auth HTTP/1.1**</span>
+  <span class="s">&gt; Host</span><span class="err">:</span> <span class="s">api.keeper.or.kr</span>
+  <span class="s">&gt; User-Agent</span><span class="err">:</span> <span class="s">curl/8.1.2</span>
+  <span class="s">&gt; Accept</span><span class="err">:</span> <span class="err">*</span><span class="s">/*</span>
+  <span class="s">**&gt; Origin</span><span class="err">:</span> <span class="s">https://keeper.or.kr**</span>
+  <span class="s">&gt; Access-Control-Request-Method</span><span class="err">:</span> <span class="s">POST</span>
+
+  <span class="s">//응답</span>
+  <span class="s">**&lt; HTTP/1.1 200**</span>
+  <span class="s">&lt; Server</span><span class="err">:</span> <span class="s">nginx</span>
+  <span class="s">&lt; Date</span><span class="err">:</span> <span class="s">Tue, 26 Mar 2024 07:50:11 GMT</span>
+  <span class="s">&lt; Content-Length</span><span class="err">:</span> <span class="m">0</span>
+  <span class="na">&lt; Connection</span><span class="pi">:</span> <span class="s">keep-alive</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Origin</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Access-Control-Request-Method</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Access-Control-Request-Headers</span>
+  <span class="na">&lt; Access-Control-Allow-Methods</span><span class="pi">:</span> <span class="s">POST</span>
+  <span class="na">&lt; Access-Control-Allow-Credentials</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">&lt; X-Content-Type-Options</span><span class="pi">:</span> <span class="s">nosniff</span>
+  <span class="na">&lt; X-XSS-Protection</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">&lt; Cache-Control</span><span class="pi">:</span> <span class="s">no-cache, no-store, max-age=0, must-revalidate</span>
+  <span class="na">&lt; Pragma</span><span class="pi">:</span> <span class="s">no-cache</span>
+  <span class="na">&lt; Expires</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">&lt; X-Frame-Options</span><span class="pi">:</span> <span class="s">DENY</span>
+  <span class="na">**&lt; Access-Control-Allow-Origin</span><span class="pi">:</span> <span class="s">https://keeper.or.kr**</span>
+  <span class="s">&lt;</span>
+  <span class="err">*</span> <span class="s">Connection</span> <span class="c1">#0 to host api.keeper.or.kr left intact</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<blockquote>
+  <p>200이 리턴되었다면 Cors에러가 발생하지 않았다는 뜻이다.</p>
+</blockquote>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/77403046-f652-4cdd-8aaf-496122cdf5da" alt="preflight" /></p>
+
+<p>Cors는 웹 브라우저에서 시행되는 정책이긴 하나 실제로 Cors에 위반했는지를 판단하는 건 브라우저가 아닌 서버이다. 브라우저는 서버로 Cors 여부를 확인하는 요청인 Cors preflight을 보내고, 요청에 대한 서버의 응답값을 확인한 후 본 요청을 보내거나 차단한다.</p>
+
+<p>따라서 브라우저 없이도 Cors preflight를 서버에 전송할수만 있다면 Cors 여부를 판단할 수 있다.</p>
+
+<p>이때 Cors preflight를 모방하기 위해선 헤더에 반드시 Origin을 작성해야한다.</p>
+
+<h3 id="options-명령-없이도-cors가-발생했는데요">😯 OPTIONS 명령 없이도 Cors가 발생했는데요?</h3>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/c87b8180-911a-4605-b7d0-42c7cd002e40" alt="에러" /></p>
+
+<p>위에서 Cors 여부를 판단하기 위해선 본 요청 이전에 예비 요청인 Cors preflight가 필요하다 설명했다.</p>
+
+<p>그러나 사진과 같이 Options 명령 없이도 Cors에러가 발생할 때가 있다. (빨간줄 모두 Get 명령임)</p>
+
+<p><strong>Cors preflight가 발생하지 않음에도 Cors 에러를 발생시킬수 있는 경우는 아래 4가지 정도가 있다.</strong></p>
+
+<ol>
+  <li><strong>Simple request인 경우</strong></li>
+  <li><strong>Credentialed Request인 경우</strong></li>
+  <li><strong>Preflight가 캐싱된 경우</strong></li>
+  <li><strong>가짜 Cors의 경우</strong></li>
+</ol>
+
+<h2 id="cors-preflight가-발생하지-않는-요청">Cors preflight가 발생하지 않는 요청</h2>
+
+<h3 id="1-simle-request">1. Simle Request</h3>
+
+<p>본 요청이 <strong><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS#%EB%8B%A8%EC%88%9C_%EC%9A%94%EC%B2%ADsimple_requests">Simple Request</a></strong>인 경우 preflight(Option 명령)은 발생하지 않는다. 
+브라우저는 Preflight 응답이 아닌 <strong>본 요청의 응답 헤더 Access-Control-Allow-Origin 값을 통해 Cors 정책 위반 여부를 확인</strong>한다.</p>
+
+<p>Simple Request가 되기 위해서는 아래의 모든 조건을 만족해야한다.</p>
+
+<blockquote>
+  <ol>
+    <li>다음 Method 중 하나여야 한다.</li>
+  </ol>
+
+  <ul>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET">GET</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/HEAD">HEAD</a></li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST">POST</a></li>
+  </ul>
+
+  <ol>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Connection">Connection</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent">User-Agent</a>, or <a href="https://fetch.spec.whatwg.org/#forbidden-header-name">the other headers defined in the Fetch spec as a <em>forbidden header name</em></a>),와 같이 자동 설정되는 헤더를 제외하고 <a href="https://fetch.spec.whatwg.org/#cors-safelisted-request-header">수동 설정할 수 있는 헤더</a>는 다음으로 제한된다:
+      <ul>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept">Accept</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Accept-Language">Accept-Language</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Language">Content-Language</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type">Content-Type</a>(아래 내용 참고)</li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Range">Range</a> (only with a <a href="https://fetch.spec.whatwg.org/#simple-range-header-value">simple range header value</a>; e.g., <code class="language-plaintext highlighter-rouge">bytes=256-</code> or <code class="language-plaintext highlighter-rouge">bytes=127-255</code>)</li>
+      </ul>
+    </li>
+    <li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Type">Content-Type</a> header의 값은 다음으로 제한된다.
+      <ul>
+        <li><code class="language-plaintext highlighter-rouge">application/x-www-form-urlencoded</code></li>
+        <li><code class="language-plaintext highlighter-rouge">multipart/form-data</code></li>
+        <li><code class="language-plaintext highlighter-rouge">text/plain</code></li>
+      </ul>
+    </li>
+  </ol>
+</blockquote>
+
+<p>위와 같은 조건을 보면 알겠다 싶이 거의 대부분의 요청은 Simple Request가 아니다.<br /></p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/ed7ca2d3-f4f2-46c6-9902-5118b9647cc2" alt="simple request" /></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="rouge-code"><pre><span class="s">GET /resources/public-data/ HTTP/1.1</span>
+<span class="na">Host</span><span class="pi">:</span> <span class="s">bar.other</span>
+<span class="na">User-Agent</span><span class="pi">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:71.0) Gecko/20100101 Firefox/71.0</span>
+<span class="na">Accept</span><span class="pi">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span>
+<span class="na">Accept-Language</span><span class="pi">:</span> <span class="s">en-us,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="pi">:</span> <span class="s">gzip,deflate</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">keep-alive</span>
+<span class="na">Origin</span><span class="pi">:</span> <span class="s">https://foo.example</span>
+
+<span class="s">HTTP/1.1 200 OK</span>
+<span class="na">Date</span><span class="pi">:</span> <span class="s">Mon, 01 Dec 2008 00:23:53 GMT</span>
+<span class="na">Server</span><span class="pi">:</span> <span class="s">Apache/2</span>
+<span class="na">**Access-Control-Allow-Origin</span><span class="pi">:</span> <span class="s">https://foo.example**</span>
+<span class="na">Keep-Alive</span><span class="pi">:</span> <span class="s">timeout=2, max=100</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">Keep-Alive</span>
+<span class="na">Transfer-Encoding</span><span class="pi">:</span> <span class="s">chunked</span>
+<span class="na">Content-Type</span><span class="pi">:</span> <span class="s">application/xml</span>
+
+<span class="pi">[</span><span class="nv">…XML Data…</span><span class="pi">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="2-credentialed-request">2. Credentialed Request</h3>
+
+<p>보안상 이유로 출처가 다른 경우 사용자 인증 정보를 담은 요청을 <strong>Cors를 통해</strong> 브라우저상에서 제한하고 있다.</p>
+
+<p>사용자 인증 정보를 다른 출처의 서버로 전송하기 위해선 Credentialed Request를 사용해야한다.</p>
+
+<blockquote>
+  <p>서버와 클라이언트(백엔드 프론트) 양측의 Credentialed Request 설정이 필요하다.</p>
+</blockquote>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/d07f50cf-9472-42ab-81cf-689c894c0c67" alt="Credentialed Request" /></p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre></td><td class="rouge-code"><pre><span class="s">GET /resources/credentialed-content/ HTTP/1.1</span>
+<span class="na">Host</span><span class="pi">:</span> <span class="s">bar.other</span>
+<span class="na">User-Agent</span><span class="pi">:</span> <span class="s">Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:71.0) Gecko/20100101 Firefox/71.0</span>
+<span class="na">Accept</span><span class="pi">:</span> <span class="s">text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8</span>
+<span class="na">Accept-Language</span><span class="pi">:</span> <span class="s">en-us,en;q=0.5</span>
+<span class="na">Accept-Encoding</span><span class="pi">:</span> <span class="s">gzip,deflate</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">keep-alive</span>
+<span class="na">Referer</span><span class="pi">:</span> <span class="s">https://foo.example/examples/credential.html</span>
+<span class="na">Origin</span><span class="pi">:</span> <span class="s">https://foo.example</span>
+<span class="na">**Cookie</span><span class="pi">:</span> <span class="s">pageAccess=2 //사용자 인증 정보를 담은 요청**</span>
+
+<span class="s">HTTP/1.1 200 OK</span>
+<span class="na">Date</span><span class="pi">:</span> <span class="s">Mon, 01 Dec 2008 01:34:52 GMT</span>
+<span class="na">Server</span><span class="pi">:</span> <span class="s">Apache/2</span>
+<span class="na">Access-Control-Allow-Origin</span><span class="pi">:</span> <span class="s">https://foo.example</span>
+<span class="na">**Access-Control-Allow-Credentials</span><span class="pi">:</span> <span class="kc">true</span><span class="s">**</span>
+<span class="na">Cache-Control</span><span class="pi">:</span> <span class="s">no-cache</span>
+<span class="na">Pragma</span><span class="pi">:</span> <span class="s">no-cache</span>
+<span class="na">Set-Cookie</span><span class="pi">:</span> <span class="s">pageAccess=3; expires=Wed, 31-Dec-2008 01:34:53 GMT</span>
+<span class="na">Vary</span><span class="pi">:</span> <span class="s">Accept-Encoding, Origin</span>
+<span class="na">Content-Encoding</span><span class="pi">:</span> <span class="s">gzip</span>
+<span class="na">Content-Length</span><span class="pi">:</span> <span class="m">106</span>
+<span class="na">Keep-Alive</span><span class="pi">:</span> <span class="s">timeout=2, max=100</span>
+<span class="na">Connection</span><span class="pi">:</span> <span class="s">Keep-Alive</span>
+<span class="na">Content-Type</span><span class="pi">:</span> <span class="s">text/plain</span>
+
+<span class="pi">[</span><span class="nv">text/plain payload</span><span class="pi">]</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<h3 id="3-preflight-캐싱">3. Preflight 캐싱</h3>
+
+<p>모든 요청에 대해 예비 요청이 함께 발생시키는 것은 서버에 부담을 주고 실제 요청까지 걸리는 시간을 잡아먹는다.</p>
+
+<p>따라서 <strong>Preflight의 캐싱</strong>을 통해 서비스의 성능 향상을 향상시킬 수 있다.</p>
+
+<p>preflight 응답에 다음 헤더를 추가하는 것으로 preflight를 캐싱할 수 있다.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre></td><td class="rouge-code"><pre><span class="nc">Access</span><span class="o">-</span><span class="nc">Control</span><span class="o">-</span><span class="nc">Max</span><span class="o">-</span><span class="nl">Age:</span> <span class="mi">3600</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="nc">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">"/**"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="s">"https://keeper.or.kr"</span><span class="o">,</span> <span class="s">"https://localhost:3000"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="s">"POST"</span><span class="o">,</span> <span class="s">"PUT"</span><span class="o">,</span> <span class="s">"PATCH"</span><span class="o">,</span> <span class="s">"DELETE"</span><span class="o">,</span> <span class="s">"OPTIONS"</span><span class="o">)</span>
+        <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">"headers"</span><span class="o">)</span>
+        <span class="o">.**</span><span class="n">maxAge</span><span class="o">(</span><span class="mi">3000</span><span class="o">);**</span>
+  <span class="o">}</span>
+
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>캐싱된 시간동안은 새로운 <strong>Options 요청이 발생하지 않으며</strong>, 캐싱된 Options 응답값을 사용한다.</p>
+
+<h3 id="4-가짜-cors">4. 가짜 Cors</h3>
+
+<p>Options 명령이 발생하지 않는 3가지 경우에 대해 습득했다.</p>
+
+<p>해당 내용을 기반으로 발견한 오류에 대해 다시 살펴보자.</p>
+
+<p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/c87b8180-911a-4605-b7d0-42c7cd002e40" alt="에러" /></p>
+
+<p><br />
+Options 명령이 발생하지 않았고, Cors error가 발생했다. 이때 3가지 경우를 살펴볼 수 있다.</p>
+
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Simple request</code>인가?
+    <ol>
+      <li>GET, HEAD, POST 메서드 중 하나인가?: true</li>
+      <li>
+        <p>적절한 요청 헤더를 가지고 있는가? : <strong>False</strong></p>
+
+        <p><img src="https://github.com/lcqff/lcqff.github.io/assets/71930280/8da12028-b46b-4766-a90c-67b1a7da3263" alt="에러 헤더" /></p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p><code class="language-plaintext highlighter-rouge">Credentialed Request</code>인가?</p>
+
+    <p>응답 헤더에 <code class="language-plaintext highlighter-rouge">Access-Control-Allow-Credentials</code>가 true로 설정되어있기는 하나, 요청 헤더에 달리 사용자 인증 정보가 담겨있지 않다.
+ 무엇보다 일단 프론트 쪽에서 Credentialed Request 설정이 되어있지 않아 Credentialed Request 요청이 아니다.</p>
+
+    <div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre> <span class="kd">const</span> <span class="nx">useGetPostListQuery</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">categoryId</span><span class="p">,</span> <span class="nx">searchType</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">size</span> <span class="p">}:</span> <span class="nx">BoardSearch</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+   <span class="kd">const</span> <span class="nx">fetcher</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span>
+     <span class="nx">axios</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="dl">'</span><span class="s1">/posts</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span> <span class="na">params</span><span class="p">:</span> <span class="p">{</span> <span class="nx">categoryId</span><span class="p">,</span> <span class="nx">searchType</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">size</span> <span class="p">}</span> <span class="p">}).</span><span class="nf">then</span><span class="p">(({</span> <span class="nx">data</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="nx">data</span><span class="p">);</span>
+    
+   <span class="k">return</span> <span class="nx">useQuery</span><span class="o">&lt;</span><span class="nx">BoardPosts</span><span class="o">&gt;</span><span class="p">([</span><span class="dl">'</span><span class="s1">posts</span><span class="dl">'</span><span class="p">,</span> <span class="nx">categoryId</span><span class="p">,</span> <span class="nx">searchType</span><span class="p">,</span> <span class="nx">search</span><span class="p">,</span> <span class="nx">page</span><span class="p">,</span> <span class="nx">size</span><span class="p">],</span> <span class="nx">fetcher</span><span class="p">,</span> <span class="p">{</span>
+     <span class="na">keepPreviousData</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+   <span class="p">});</span>
+ <span class="p">};</span>
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Preflight가 캐싱 돼 있는가?</p>
+
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre>   <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addCorsMappings</span><span class="o">(</span><span class="nc">CorsRegistry</span> <span class="n">registry</span><span class="o">)</span> <span class="o">{</span>
+     <span class="n">registry</span><span class="o">.</span><span class="na">addMapping</span><span class="o">(</span><span class="s">"/**"</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">allowedOrigins</span><span class="o">(</span><span class="s">"https://keeper.or.kr"</span><span class="o">,</span> <span class="s">"https://localhost:3000"</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">allowedMethods</span><span class="o">(</span><span class="s">"GET"</span><span class="o">,</span> <span class="s">"POST"</span><span class="o">,</span> <span class="s">"PUT"</span><span class="o">,</span> <span class="s">"PATCH"</span><span class="o">,</span> <span class="s">"DELETE"</span><span class="o">,</span> <span class="s">"OPTIONS"</span><span class="o">)</span>
+         <span class="o">.</span><span class="na">allowedHeaders</span><span class="o">(</span><span class="s">"headers"</span><span class="o">)</span>
+         <span class="o">.**</span><span class="n">maxAge</span><span class="o">(</span><span class="mi">3000</span><span class="o">);**</span>
+   <span class="o">}</span>
+    
+</pre></td></tr></tbody></table></code></pre></div>    </div>
+
+    <p>다음과 같이 preflight 캐싱 정보가 포함되어 있긴 하나 최초 요청에서도(혹은 설정된 <code class="language-plaintext highlighter-rouge">Access-Control-Max-Age</code> 이후에도) Preflight를 확인하지 못했다.</p>
+  </li>
+</ol>
+
+<p>결과적으로 해당 에러는 위의 모든 경우와 일치하지 않았다. 그럼 뭐란 걸까?</p>
+
+<h4 id="세상에는-가짜-cors-라는-것이-있다">세상에는 <strong>가짜 Cors</strong> 라는 것이 있다</h4>
+
+<p>일단 Options 명령이 발생하지 않았으니 cUrl 테스트를 통해 Preflight 요청을 보내보자.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+</pre></td><td class="rouge-code"><pre>  <span class="err">*</span><span class="nv">*curl</span> <span class="s">-v -X OPTIONS https://api.keeper.or.kr/sign-up/email-auth -H "Origin</span><span class="err">:</span> <span class="s">https://keeper.or.kr" -H "Access-Control-Request-Method</span><span class="err">:</span> <span class="s">POST";</span>
+  <span class="s">//......</span>
+  <span class="s">&gt; OPTIONS /sign-up/email-auth HTTP/1.1**</span>
+  <span class="s">&gt; Host</span><span class="err">:</span> <span class="s">api.keeper.or.kr</span>
+  <span class="s">&gt; User-Agent</span><span class="err">:</span> <span class="s">curl/8.1.2</span>
+  <span class="s">&gt; Accept</span><span class="err">:</span> <span class="err">*</span><span class="s">/*</span>
+  <span class="s">**&gt; Origin</span><span class="err">:</span> <span class="s">https://keeper.or.kr**</span>
+  <span class="s">&gt; Access-Control-Request-Method</span><span class="err">:</span> <span class="s">POST</span>
+
+  <span class="s">//응답</span>
+  <span class="s">**&lt; HTTP/1.1 200**</span>
+  <span class="s">&lt; Server</span><span class="err">:</span> <span class="s">nginx</span>
+  <span class="s">&lt; Date</span><span class="err">:</span> <span class="s">Tue, 26 Mar 2024 07:50:11 GMT</span>
+  <span class="s">&lt; Content-Length</span><span class="err">:</span> <span class="m">0</span>
+  <span class="na">&lt; Connection</span><span class="pi">:</span> <span class="s">keep-alive</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Origin</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Access-Control-Request-Method</span>
+  <span class="na">&lt; Vary</span><span class="pi">:</span> <span class="s">Access-Control-Request-Headers</span>
+  <span class="na">&lt; Access-Control-Allow-Methods</span><span class="pi">:</span> <span class="s">POST</span>
+  <span class="na">&lt; Access-Control-Allow-Credentials</span><span class="pi">:</span> <span class="kc">true</span>
+  <span class="na">&lt; X-Content-Type-Options</span><span class="pi">:</span> <span class="s">nosniff</span>
+  <span class="na">&lt; X-XSS-Protection</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">&lt; Cache-Control</span><span class="pi">:</span> <span class="s">no-cache, no-store, max-age=0, must-revalidate</span>
+  <span class="na">&lt; Pragma</span><span class="pi">:</span> <span class="s">no-cache</span>
+  <span class="na">&lt; Expires</span><span class="pi">:</span> <span class="m">0</span>
+  <span class="na">&lt; X-Frame-Options</span><span class="pi">:</span> <span class="s">DENY</span>
+  <span class="na">**&lt; Access-Control-Allow-Origin</span><span class="pi">:</span> <span class="s">https://keeper.or.kr**</span>
+  <span class="s">&lt;</span>
+  <span class="err">*</span> <span class="s">Connection</span> <span class="c1">#0 to host api.keeper.or.kr left intact</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>🤔 성공적으로 200 ok를 반환했다.</p>
+
+<p>이 뜻은 무엇이냐 하면, 브라우저는 Cors 에러가 발생했다고 인지했으나 실제로는 Cors가 발생하지 않은 것이다. (아님 내가 뭘 잘못하고 있거나)</p>
+
+<p>어떻게 이런 일이 가능한 걸까?</p>
+
+<p>인터넷을 뒤져보니 위와 같은 경우에 대한 글을 몇가지 찾을 수 있었다:</p>
+
+<p><a href="https://dev.to/jpomykala/what-is-cors-11kf">What is CORS?</a></p>
+
+<p><a href="https://davidtruxall.com/misleading-cors-errors/">Misleading CORS Errors – Dev Notes</a></p>
+
+<p><a href="https://stackoverflow.com/questions/71948888/cors-why-do-i-get-successful-preflight-options-but-still-get-cors-error-with-p">CORS: Why do I get successful preflight OPTIONS, but still get CORS error with post?</a></p>
+
+<p><a href="https://www.popit.kr/cors-preflight-인증-처리-관련-삽질/">CORS, Preflight, 인증 처리 관련 삽질</a></p>
+
+<p><br />
+false cors, misleading cors 등 서로 다른 용어를 사용하는 거 보니 통일된 용어가 없어서 서치가 힘들었던 모양…</p>
+
+<p>Cors가 처리되기 전에 중간 레이어에서 오류가 발생하는 경우, Cors 처리 전에 미들웨어가 종료되는 경우 등등 원인은 다양했으나 결국 모두 어떤 <strong>에러 전에 헤더에 Cors가 추가되지 않았기 때문에</strong> 브라우저가 이를 Cors로 판단해 발생하는 문제다.</p>
+
+<p>keeper의 코드 상 Cors 코드는 정상적으로 작성되어 있기에 처음에는 필터 체인의 순서 문제라 생각했다. 그러나 이후 필터 체인에서도 인증 처리 이전에 Cors가 처리됨을 확인했다.</p>
+
+<p>문제 원인은 3가지로 예상했다.</p>
+
+<ol class="box-yello">
+  <li>인프라 설정 문제</li>
+  <li>프론트에서  origin 헤더 담아 보내주기</li>
+  <li>프론트에서의 credential request 설정</li>
+</ol>
+
+<p>그러나 Cors는 대부분 프론트에서 뭘 만진다고 해결되는 문제가 아니기 때문에 2번은 아닐거라 예상했고, 3번 또한 해당 요청이 credential request가 맞는데 내가 잘못 판단한 경우를 고려한 해결방법이었다.</p>
+
+<p>인프라 설정을 직접 확인하고 싶었으나 해당 프로젝트는 우리 동아리에서 다른 동아리 홈페이지를 관리하는 프로젝트였기 때문에 보안 문제상 인프라 접근이 제한되어 확인이 어려웠다…🥲</p>
+
+<h2 id="문제-해결">문제 해결</h2>
+
+<p>위와 같은 결과 보고를 하고 얼마 뒤, Cors 오류가 해결되었다는 이야기를 전해들었다. <strong>NginX 설정</strong>이 원인이었다!</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre></td><td class="rouge-code"><pre><span class="nx">location</span> <span class="o">/</span> <span class="p">{</span>
+    <span class="nx">proxy_pass</span> <span class="na">http</span><span class="p">:</span><span class="c1">//spring;</span>
+    <span class="nx">proxy_http_version</span> <span class="mf">1.1</span><span class="p">;</span>
+    <span class="nx">proxy_set_header</span> <span class="nx">Host</span> <span class="nx">$host</span><span class="p">;</span>
+    <span class="nx">proxy_set_header</span> <span class="nx">X</span><span class="o">-</span><span class="nx">Real</span><span class="o">-</span><span class="nx">IP</span> <span class="nx">$remote_addr</span><span class="p">;</span>
+    <span class="nx">proxy_hide_header</span> <span class="nx">Access</span><span class="o">-</span><span class="nx">Control</span><span class="o">-</span><span class="nx">Allow</span><span class="o">-</span><span class="nx">Origin</span><span class="p">;</span>
+    <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Origin</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">https://keeper.or.kr</span><span class="dl">'</span> <span class="o">**</span><span class="nx">always</span><span class="o">**</span><span class="p">;</span>
+    <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Headers</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">Content-Type, Authorization</span><span class="dl">'</span> <span class="o">**</span><span class="nx">always</span><span class="o">**</span><span class="p">;</span>
+    <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Methods</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">GET, POST, DELETE, PATCH, OPTIONS</span><span class="dl">'</span> <span class="o">**</span><span class="nx">always</span><span class="o">**</span><span class="p">;</span>
+    <span class="err">#</span> <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Origin</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">https://api.keeper.or.kr</span><span class="dl">'</span><span class="p">;</span>
+    <span class="err">#</span> <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Origin</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">*</span><span class="dl">'</span><span class="p">;</span>
+    <span class="err">#</span> <span class="nx">add_header</span> <span class="dl">'</span><span class="s1">Access-Control-Allow-Origin</span><span class="dl">'</span> <span class="dl">'</span><span class="s1">https://localhost:3000</span><span class="dl">'</span><span class="p">;</span>
+    <span class="nx">limit_req</span> <span class="nx">zone</span><span class="o">=</span><span class="nx">keeper_req</span> <span class="nx">burst</span><span class="o">=</span><span class="mi">5</span> <span class="nx">nodelay</span><span class="p">;</span>
+    <span class="nx">limit_conn</span> <span class="nx">keeper_conn</span> <span class="mi">10</span><span class="p">;</span>
+    <span class="nx">limit_req_log_level</span> <span class="nx">error</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></td></tr></tbody></table></code></pre></div></div>
+
+<p>기존 NginX 코드에서 <em>always가 없었던 부분</em>이 문제였다.</p>
+
+<p><code class="language-plaintext highlighter-rouge">always</code>가 없으면 400, 500번대 에러가 발생할시 Header에 Cors 설정값이 추가되지 않는다. always를 추가함으로써 응답 코드와 상관없이 항상 header에 cors 설정이 들어가게 된다.</p>
+
+<p>Security 필터에서 발생한 401에러로 인해 Cors 설정이 되지 않아 Cors 에러가 발생한 듯하다.</p>
+
+<hr />
+
+<p><br /></p>
+
+<blockquote>
+  <p>후기: 정말로 이제는 인프라 공부를 하자….</p>
+</blockquote>
+
+<p>그래도 이번 기회로 Cors에 대해 빡세게 공부한 거 같다😄</p>
+
+            </div>
+
+            <!-- Rating -->
+            
+
+            <!-- Post Date -->
+            <p>
+            <small>
+                <span class="post-date"><time class="post-date" datetime="2024-03-30">30 Mar 2024</time></span>           
+                
+                </small>
+            </p>
+
+            <!-- Post Categories -->
+            <div class="after-post-cats">
+                <ul class="tags mb-4">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/categories#Keeper">Keeper</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Categories -->
+
+            <!-- Post Tags -->
+            <div class="after-post-tags">
+                <ul class="tags">
+                    
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#Keeper">#Keeper</a>
+                    </li>
+                    
+                    <li>
+                        <a class="smoothscroll" href="/pam-tree/tags#bug">#bug</a>
+                    </li>
+                    
+                </ul>
+            </div>
+            <!-- End Tags -->
+
+            <!-- Prev/Next -->
+            <div class="row PageNavigation d-flex justify-content-between font-weight-bold">
+            
+            <a class="prev d-block col-md-6" href="/pam-tree//pagenation-size/"> &laquo; 페이지네이션 크기(Size) 제한</a>
+            
+            
+            <a class="next d-block col-md-6 text-lg-right" href="/pam-tree//test-context/">테스트 컨텍스트(Test Context) 줄이기 &raquo; </a>
+            
+            <div class="clearfix"></div>
+            </div>
+            <!-- End Categories -->
+
+        </div>
+        <!-- End Post -->
+
+    </div>
+</div>
+<!-- End Article
+================================================== -->
+
+<!-- Begin Comments
+================================================== -->
+
+    <div class="container">
+        <div id="comments" class="row justify-content-center mb-5">
+            <div class="col-md-8">
+                <script src="https://utteranc.es/client.js"
+        repo="lcqff/blog_comments"
+        issue-term="pathname"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script>
+            </div>
+        </div>
+    </div>
+
+<!--End Comments
+================================================== -->
+
+<!-- Review with LD-JSON, adapt it for your needs if you like, but make sure you test the generated HTML source code first: 
+https://search.google.com/structured-data/testing-tool/u/0/
+================================================== -->
+
+</div>
+
+
+    
+</div>
+
+<!-- Categories Jumbotron
+================================================== -->
+<!-- 
+<div class="jumbotron fortags">
+	<div class="d-md-flex h-100">
+		<div class="col-md-4 transpdark align-self-center text-center h-100">
+            <div class="d-md-flex align-items-center justify-content-center h-100">
+                <h2 class="d-md-block align-self-center py-1 font-weight-light">Explore <span class="d-none d-md-inline">→</span></h2>
+            </div>
+		</div>
+		<div class="col-md-8 p-5 align-self-center text-center">
+            
+            
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Jekyll">Jekyll (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#tutorial">tutorial (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#flutter">flutter (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Javascript">Javascript (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#React">React (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#KakaoTecCampus">KakaoTecCampus (17)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#블로그_업데이트">블로그_업데이트 (7)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Algorithm">Algorithm (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#CS">CS (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Spring">Spring (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Works">Works (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#JPA">JPA (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Java">Java (5)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#오류기록장">오류기록장 (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#BDD">BDD (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Keeper">Keeper (2)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#DooRe">DooRe (4)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#Infra">Infra (1)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#세차새차">세차새차 (3)</a>
+                
+                    <a class="mt-1 mb-1" href="/pam-tree/categories#일상">일상 (2)</a>
+                
+            
+            
+		</div>
+	</div>
+</div> -->
+
+<div class="jumbotron fortags">
+	<div class="d-flex h-100 justify-content-center">
+		<div class="col-12 py-3">
+            <div class="category-container">
+                <div class="category-item">
+                    <div class="parent_cat" style="font-weight: bold;">
+                        <a href="/pam-tree/index.html">
+                             전체 글
+                             <span>63</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- 카테고리 목록을 가로로 배치 -->
+                <div class="category-item">
+                    <div class="parent_cat">CS</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#CS">
+                                    CS
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Algorithm">
+                                    Algorithm
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BackEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Keeper">
+                                    Keeper
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#DooRe">
+                                    DooRe
+                                    <span>4</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#세차새차">
+                                    세차새차
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Infra">
+                                    Infra
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Spring">
+                                    Spring
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Java">
+                                    Java
+                                    <span>5</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#JPA">
+                                    JPA
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#오류기록장">
+                                    오류기록장
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">BDD</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#BDD">
+                                    BDD
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">FrontEnd</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Javascript">
+                                    Javascript
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#React">
+                                    React
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#KakaoTecCampus">
+                                    KakaoTecCampus
+                                    <span>17</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#flutter">
+                                    flutter
+                                    <span>3</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#Works">
+                                    Works
+                                    <span>1</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="category-item">
+                    <div class="parent_cat">기타</div>
+                    <div class="common-list">
+                        <div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#블로그_업데이트">
+                                    블로그_업데이트
+                                    <span>7</span>
+                                </a>
+                            </div>
+                            
+                            <div>
+                                <a href="/pam-tree/categories#일상">
+                                    일상
+                                    <span>2</span>
+                                </a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Begin Footer
+================================================== -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 text-center text-lg-left">
+                Copyright © 2024 Pam Tree 
+            </div>
+            <div class="col-md-6 col-sm-6 text-center text-lg-right">    
+                <a target="_blank" href="https://www.wowthemes.net/mediumish-free-jekyll-template/">Mediumish Jekyll Theme</a> by WowThemes.net
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer
+================================================== -->
+
+</div> <!-- /.site-content -->
+
+<!-- Scripts
+================================================== -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+<script src="/pam-tree/assets/js/mediumish.js"></script>
+
+
+
+<script src="/pam-tree/assets/js/ie10-viewport-bug-workaround.js"></script> 
+
+<!-- 
+<script id="dsq-count-scr" src="//.disqus.com/count.js"></script>
+ -->
+
+</body>
+</html>
