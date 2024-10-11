@@ -1,10 +1,12 @@
 ---
 layout: post
 title: 카카오 로그인 api로 알아보는(1) -소셜 로그인
+description: 수동 인증 처리를 통한 카카오 OAuth2 로그인을 구현한다.
 author: pam
 categories: Backend-Study
 tags: Spring Backend
-sidebar:
+image: https://github.com/lcqff/lcqff.github.io/assets/71930280/591708e2-0ec2-47de-8339-070f4a12d4b1
+toc: true
 ---
 
 ## 개요

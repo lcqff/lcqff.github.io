@@ -1,10 +1,12 @@
 ---
 layout: post
 title: 인프라 스터디 (1) Docker로 프론트 배포하기
+description: "Docker 스터디를 통해 학습한 프론트 배포 방법은 정리한다."
 author: pam
 categories: Infra
 tags: Backend Infra Docker
-sidebar:
+image: https://github.com/lcqff/lcqff.github.io/assets/71930280/d005c395-b105-4055-a7af-08330a63fcec
+toc: true
 ---
 ## 개요
 

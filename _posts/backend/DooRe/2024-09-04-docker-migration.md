@@ -3,12 +3,15 @@ layout: post
 title: Github Docker Migration (feat. CICD docker-compose command not found)
 author: pam
 categories: DooRe
-description: \[troubleShooting] DooRe의 CICD 과정엑서 갑작스럽게 발생한 에러 해결 과정
+description: "[troubleShooting] DooRe의 CICD 과정엑서 갑작스럽게 발생한 에러 해결 과정"
 tags: DooRe troubleShooting CICD
-sidebar:
+image: https://github.com/user-attachments/assets/18643b22-da32-47c6-9d1f-a2dc5dc8d1f1
+toc: true
 ---
 
-## 0. 개요
+---
+
+## 개요
 
 **갑자기 CICD가 실패한다!**
 
@@ -18,7 +21,7 @@ BDD가 거처를 디스코드로 옮김으로서 슬랙이 폐쇄되고, 그 과
 
 대체 원인이 무엇인지 알아보러 가자.
 
-## 1. 문제
+## 문제
 
 ![image](https://github.com/user-attachments/assets/8e0c8dc9-4145-408d-ae28-eca2ec9bbaa2)
 
@@ -50,13 +53,13 @@ BDD 슬랙이 폐쇄되어, 슬랙에 알림을 전송하는 코드에서 오류
 `docker-compose: command not found`에러는 여전하다. 🤔
 이는 docker-compose 명령을 찾지 못한다는 의미로, 원래 정상적으로 작동해왔던 코드이기에 이상함을 느꼈다. 
 
-## 2. 고민
+## 고민
 
 가장 먼저 고려할 수 있었던 것은 docker-compose 설치 코드를 추가하는 것이었다. 
 
 그러나 (자세히 아는 부분은 아니지만) 우리는 배포 과정에서 docker hub를 쓰는 것도, 따로 self-hosted runner를 사용하는 것도 아니었기 때문에 **Github Ubuntu**를 CICD환경으로 사용해왔다. 그런데 갑자기 Docker Compose 설치가 되어있지 않다고 에러가 뜨는 것은 이상하다…🫤
 
-## 3. 해결
+## 해결
 
 > GitHub deprecated v1, and you need to change the command from, e.g., `docker-compose build` to `docker compose build` (remove the dash)
 

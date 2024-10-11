@@ -1,10 +1,13 @@
 ---
 layout: post
 title: "가짜 Cors 해결(false cors)"
+description: "[troubleShootin] Keeper 홈페이지에서는 어째서 Cors 에러가 발생했는가?"
 author: pam
 categories: Keeper
 tags: Keeper bug
 sidebar:
+image: https://github.com/lcqff/lcqff.github.io/assets/71930280/2ba5def4-e141-4577-9b97-4294c77063b3
+toc: true
 ---
 ## 문제
 

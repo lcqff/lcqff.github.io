@@ -3,12 +3,13 @@ layout: post
 title: 구글 소셜 로그인 에러 해결(Cors, Redirect uri)
 author: pam
 categories: DooRe
-description: Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting
+description: "[troubleShooting] Doore에서 발생한 구글 소셜 로그인 에러 troubleShooting"
 tags: Spring Backend DooRe troubleShooting
-sidebar:
+image: https://github.com/lcqff/lcqff.github.io/assets/71930280/90e41dda-7060-491a-9c6b-4f7200b1d561
+toc: true
 ---
 
-## 0. 개요
+## 개요
 
 ![두레 메인](https://github.com/lcqff/lcqff.github.io/assets/71930280/7b4f62c4-47e8-4332-8289-dbda3c33e0a8)
 
@@ -24,7 +25,7 @@ sidebar:
 
 해당 포스팅에는 구글 소셜 로그인에서 발생한 **Cors, redirection url**의 두가지 문제를 해결한 내용을 기록해두었다. ~~(그 사이의 많은 삽질은 생략했다…)~~
 
-## 1. Cors 오류
+## Cors 오류
 
 
 ![cors](https://github.com/lcqff/lcqff.github.io/assets/71930280/bd1ed749-452b-4d21-b3ed-ce463c1d93ab)
@@ -165,7 +166,7 @@ SpringBoot 설정파일 네이밍 규칙에 의하여 어떤 프로파일의 설
 
 [서브모듈 수정 방법](https://lcqff.github.io/doore/2024/07/13/submodule.html)
 
-## 2. redirect_uri_mismatch 오류
+## redirect_uri_mismatch 오류
 
 
 ![redirect uri mismatch](https://github.com/lcqff/lcqff.github.io/assets/71930280/8cbabbf8-ed87-4b09-b463-69b1803186ba)

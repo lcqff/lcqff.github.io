@@ -1,10 +1,12 @@
 ---
 layout: post
 title: 테스트 컨텍스트(Test Context) 줄이기
+description: 애플리케이션 컨텍스트 공유를 통해 DooRe의 테스트 컨텍스트를 줄이자
 author: pam
 categories: DooRe
 tags: Spring 두레 성능 bug
-sidebar:
+image: https://github.com/lcqff/lcqff.github.io/assets/71930280/ae4531de-fc45-4603-929a-c46dfacb2f8b
+toc: true
 ---
 ## 개요
 
