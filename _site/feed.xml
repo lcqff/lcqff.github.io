@@ -5,8 +5,8 @@
     <description>팜의 백엔드 이것저것 놀이터</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 11 Oct 2024 15:04:18 +0900</pubDate>
-    <lastBuildDate>Fri, 11 Oct 2024 15:04:18 +0900</lastBuildDate>
+    <pubDate>Fri, 11 Oct 2024 15:21:13 +0900</pubDate>
+    <lastBuildDate>Fri, 11 Oct 2024 15:21:13 +0900</lastBuildDate>
     <generator>Jekyll v4.3.4</generator>
     
       <item>
@@ -879,7 +879,7 @@
         <category>디자인패턴</category>
         
         
-        <category>Java</category>
+        <category>Backend-Study</category>
         
       </item>
     
@@ -1147,7 +1147,7 @@
         <category>디자인패턴</category>
         
         
-        <category>Java</category>
+        <category>Backend-Study</category>
         
       </item>
     
@@ -1908,7 +1908,7 @@ LC와 같은 경우 기출문제집보다 훨씬 헷갈렸던거 같다. (아니
         <category>디자인패턴</category>
         
         
-        <category>Java</category>
+        <category>Backend-Study</category>
         
       </item>
     
@@ -2413,7 +2413,7 @@ LC와 같은 경우 기출문제집보다 훨씬 헷갈렸던거 같다. (아니
         <category>디자인패턴</category>
         
         
-        <category>Java</category>
+        <category>Backend-Study</category>
         
       </item>
     

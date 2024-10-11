@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "JPA 시작하기"
+title: "[JPA] JPA 시작하기"
 author: pam
-categories: JPA
+categories: Backend-Study
 tags: JPA
 ---
 

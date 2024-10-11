@@ -2,7 +2,7 @@
 layout: post
 title: "스프링 프로젝트 생성과 실행"
 author: 파녀미
-categories: Spring
+categories: Backend-Study
 tags: Spring
 ---
 

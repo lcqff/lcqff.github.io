@@ -2,7 +2,7 @@
 layout: post
 title: "bad SQL grammar []"
 author: pam
-categories: 오류기록장
+categories: Backend-Study
 tags: JDBC 오류
 ---
 

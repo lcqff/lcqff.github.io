@@ -2,7 +2,7 @@
 layout: post
 title: "[BDD] 개발 동아리 만들기 (feat. Brighten Developer Domain)"
 author: pam
-categories: BDD
+categories: 일상
 banner:
   image: https://github.com/lcqff/lcqff.github.io/assets/71930280/50745219-9faa-48cc-bd23-d813191d6822
   background: "#000"

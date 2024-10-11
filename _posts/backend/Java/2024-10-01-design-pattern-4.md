@@ -2,7 +2,7 @@
 layout: post
 title: 디자인패턴(4)- 설계 원칙 SOLID
 author: pam
-categories: Java
+categories: Backend-Study
 description: \[Study] 객체 지향 설계를 위한 SOLID 원칙에 대해 학습
 tags: Java 디자인패턴
 toc: true

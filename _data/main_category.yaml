@@ -8,13 +8,7 @@
       - "DooRe"
       - "세차새차"
       - "Infra"
-      - "Spring"
-      - "Java"
-      - "JPA"
-      - "오류기록장"
-  - name: "BDD"
-    subcategories:
-      - "BDD"
+      - "Backend-Study"
   - name: "FrontEnd"
     subcategories:
       - "Javascript"

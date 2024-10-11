@@ -2,7 +2,7 @@
 layout: post
 title: 카카오 로그인 api로 알아보는(1) -소셜 로그인
 author: pam
-categories: Spring
+categories: Backend-Study
 tags: Spring Backend
 sidebar:
 ---

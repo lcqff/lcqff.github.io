@@ -2,7 +2,7 @@
 layout: post
 title: "애플리케이션 아키텍쳐"
 author: 파녀미
-categories: Spring
+categories: Backend-Study
 tags: spring
 ---
 

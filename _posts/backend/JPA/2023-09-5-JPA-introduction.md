@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "JPA 소개"
+title: "[JPA] JPA 소개"
 author: pam
-categories: JPA
+categories: Backend-Study
 tags: JPA
 ---
 

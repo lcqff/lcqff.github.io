@@ -2,7 +2,7 @@
 layout: post
 title: 디자인패턴(1)- 객체 지향
 author: pam
-categories: Java
+categories: Backend-Study
 description: \[Study] 객체 지향적 설계를 위해 지켜야하는 규칙 공부 
 tags: Java 디자인패턴
 sidebar:

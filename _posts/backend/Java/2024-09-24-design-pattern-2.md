@@ -2,7 +2,7 @@
 layout: post
 title: 디자인패턴(2)- 다형성과 추상 타입
 author: pam
-categories: Java
+categories: Backend-Study
 description: \[Study] 구현 변경의 유연함을 위한 추상화
 tags: Java 디자인패턴
 sidebar:

@@ -2,7 +2,7 @@
 layout: post
 title: "레파지토리와 서비스 개발"
 author: pam
-categories: Spring
+categories: Backend-Study
 tags: spring, jpa
 ---
 
