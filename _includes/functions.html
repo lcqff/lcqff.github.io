@@ -9,13 +9,6 @@
   {%- assign include_path = include_path | append: '.html' -%}
 {%- endif -%}
 
-{%- if func == 'log' -%}
-  {%- include functions/log.html level=include.level msg=include.msg -%}
-{%- else -%}
-  {%- assign include_path = 'functions/' | append: include_path -%}
-  {%- include {{ include_path }} params=params-%}
-{%- endif -%}
-
 {%- if return == nil -%}
   {%- assign return = include.default -%}
 {%- endif -%}

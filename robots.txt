@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://lcqff.github.io/sitemap.xml

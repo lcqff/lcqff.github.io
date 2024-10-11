@@ -5,7 +5,7 @@ author: 팜
 categories: Java
 description: \[Study] 객체 지향 설계를 위한 SOLID 원칙에 대해 학습
 tags: Java 디자인패턴
-sidebar:
+toc: true
 ---
 
 이전 포스팅

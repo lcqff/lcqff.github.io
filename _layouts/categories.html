@@ -1,16 +1,20 @@
 ---
-layout: framework
-sidebar: category-list
+title: "Categories"
+layout: default
+permalink: "/categories.html"
 ---
 
-{%- if site.posts.size > 0 -%}
+<div class="row listrecent">
 
-  {%- include functions.html func='log' level='debug' msg='Get value' -%}
-  {%- include functions.html func='get_categories' -%}
-  {% assign categories = return %}
+    {%- if site.posts.size > 0 -%}
 
-  {% assign keys = categories %}
-  {% assign field = 'categories' %}
-  {%- include views/segments.html -%}
-
-{%- endif -%}
+    {%- include functions.html func='log' level='debug' msg='Get value' -%}
+    {%- include functions.html func='get_categories' -%}
+    {% assign categories = return %}
+  
+    {% assign keys = categories %}
+    {% assign field = 'categories' %}
+  
+  {%- endif -%}
+  
+</div>
