@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "가짜 Cors 해결(false cors)"
-author: 팜
+author: pam
 categories: Keeper
 tags: Keeper bug
 sidebar:

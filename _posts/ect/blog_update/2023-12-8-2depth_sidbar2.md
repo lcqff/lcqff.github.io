@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Gitblog] 2-depth 사이드바 제작 - 중복 코드 삭제"
-author: 팜
+author: pam
 categories: 블로그_업데이트
 tags: gitblog
 ---

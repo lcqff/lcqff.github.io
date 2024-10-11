@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JPA 소개"
-author: 팜
+author: pam
 categories: JPA
 tags: JPA
 ---

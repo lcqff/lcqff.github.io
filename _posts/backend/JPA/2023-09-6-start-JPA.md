@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "JPA 시작하기"
-author: 팜
+author: pam
 categories: JPA
 tags: JPA
 ---

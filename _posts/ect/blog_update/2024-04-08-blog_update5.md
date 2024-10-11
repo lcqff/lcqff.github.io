@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "24.04.08 블로그 업데이트5"
-author: 팜
+author: pam
 categories: 블로그_업데이트
 tags: gitblog
 ---

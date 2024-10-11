@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "레파지토리와 서비스 개발"
-author: 팜
+author: pam
 categories: Spring
 tags: spring, jpa
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "bad SQL grammar []"
-author: 팜
+author: pam
 categories: 오류기록장
 tags: JDBC 오류
 ---

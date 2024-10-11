@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "객체와 데이터베이스간 불일치"
-author: 팜
+author: pam
 categories: JPA
 tags: JPA
 ---

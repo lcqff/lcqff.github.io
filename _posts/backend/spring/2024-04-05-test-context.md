@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 테스트 컨텍스트(Test Context) 줄이기
-author: 팜
+author: pam
 categories: DooRe
 tags: Spring 두레 성능 bug
 sidebar:

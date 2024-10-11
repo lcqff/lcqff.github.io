@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "페이지네이션 크기(Size) 제한"
-author: 팜
+author: pam
 categories: Keeper
 tags: Keeper bug
 sidebar:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 민감정보 처리 방법과 서브모듈 수정 방법
-author: 팜
+author: pam
 categories: DooRe
 tags: Spring Backend DooRe
 sidebar:

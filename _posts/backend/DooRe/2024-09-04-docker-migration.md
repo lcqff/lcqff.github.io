@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Github Docker Migration (feat. CICD docker-compose command not found)
-author: 팜
+author: pam
 categories: DooRe
 description: \[troubleShooting] DooRe의 CICD 과정엑서 갑작스럽게 발생한 에러 해결 과정
 tags: DooRe troubleShooting CICD

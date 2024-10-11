@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 인프라 스터디 (1) Docker로 프론트 배포하기
-author: 팜
+author: pam
 categories: Infra
 tags: Backend Infra Docker
 sidebar:

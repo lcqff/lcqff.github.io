@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "23.11.22 블로그 업데이트4"
-author: 팜
+author: pam
 categories: 블로그_업데이트
 sidebar: []
 ---

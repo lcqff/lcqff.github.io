@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[BFS] 백준 1697- 숨바꼭질"
-author: 팜
+author: pam
 categories: Algorithm
 sidebar: []
 ---
