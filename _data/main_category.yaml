@@ -1,0 +1,28 @@
+  - name: "CS"
+    subcategories:
+      - "CS"
+      - "Algorithm"
+  - name: "BackEnd"
+    subcategories:
+      - "Keeper"
+      - "DooRe"
+      - "세차새차"
+      - "Infra"
+      - "Spring"
+      - "Java"
+      - "JPA"
+      - "오류기록장"
+  - name: "BDD"
+    subcategories:
+      - "BDD"
+  - name: "FrontEnd"
+    subcategories:
+      - "Javascript"
+      - "React"
+      - "KakaoTecCampus"
+      - "flutter"
+      - "Works"
+  - name: "기타"
+    subcategories:
+      - "블로그_업데이트"
+      - "일상"
