@@ -105,7 +105,7 @@ naver나 kakao의 설정파일 같은 경우 [**다른 포스팅**](https://lcqf
 
 # Spring Security Configuration 처리흐름
 
-![image](https://github.com/user-attachments/assets/2e751f02-4cc8-4429-b2bd-c2e0b5d08820)
+![image](https://github.com/user-attachments/assets/818e8335-b85b-413f-9228-a52ea6370ec3)
 
 Spring Security의 설정과 초기화는 **SecurityConfigurer**의 `init()`과 `configure()`에서 일어난다.
 
