@@ -2,7 +2,7 @@
 layout: post
 title: "Spring Security(1)- OAuth2 구글 로그인 구현"
 author: pam
-categories: [SoundFlyer]
+categories: [SOFO]
 tags: [Spring, Spring Security] 
 image: https://github.com/user-attachments/assets/19f7f0cf-3016-482b-9b4f-c27ebe0b78e1
 description: "Spring Security를 사용한 OAuth2 로그인 원리를 학습하고 직접 구현합니다."
