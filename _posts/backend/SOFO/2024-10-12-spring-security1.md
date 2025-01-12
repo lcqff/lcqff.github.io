@@ -204,11 +204,118 @@ Spring Security에서 인가코드 발급을 위해 사용되는 URI는 **`OAuth
 
 # Spring Security OAuth2 인증 처리 흐름
 
+Spring Security 필터 체인의 순서는 아래와 같다.
+
+### FilterChainProxy
+
+1. DisableEncodeUrlFilter
+2. WebAsyncManagerIntegrationFilter
+3. SecurityContextHolderFilter
+4. HeaderWriterFilter
+5. CorsFilter
+6. LogoutFilter
+7. <red>OAuth2AuthorizationRequestRedirectFilter</red>
+    - OAuth2 로그인 과정에서 사용자를 인증 서버로 리다이렉트
+    - 인증 서버로부터 인가코드 받아옴
+8. <blue>OAuth2LoginAuthenticationFilter</blue>
+    - OAuth2 인증 서버로부터 받은 인가 코드를 사용하여 액세스 토큰 요청
+    - 엑세스 토큰을 사용하여 사용자 정보 요청
+        
+        8-1. **OAuth2UserService** 
+        
+    - 사용자 정보 기반의 `Authentication` 객체 생성
+9. RequestCacheAwareFilter
+10. SecurityContextHolderAwareRequestFilter
+11. AnonymousAuthenticationFilter
+12. ExceptionTranslationFilter
+13. **AuthorizationFilter**
+    - 요청에 대한 권한 검사
+
+이하는 로그인 요청시, 사용자 정보 요청시에 발생하는 로그 정보이다.
+
+```
+o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+o.s.security.web.FilterChainProxy        : Invoking DisableEncodeUrlFilter (1/13)
+o.s.security.web.FilterChainProxy        : Invoking WebAsyncManagerIntegrationFilter (2/13)
+o.s.security.web.FilterChainProxy        : Invoking SecurityContextHolderFilter (3/13)
+o.s.security.web.FilterChainProxy        : Invoking HeaderWriterFilter (4/13)
+o.s.security.web.FilterChainProxy        : Invoking CorsFilter (5/13)
+o.s.security.web.FilterChainProxy        : Invoking LogoutFilter (6/13)
+o.s.s.w.a.logout.LogoutFilter            : Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+o.s.security.web.FilterChainProxy        : Invoking **OAuth2AuthorizationRequestRedirectFilter** (7/13)
+o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=……&redirect_uri=http://localhost:8080/login/oauth2/code/google
+
+---
+
+google 프로필 선택
+
+---
+
+o.s.security.web.FilterChainProxy        : Trying to match request against DefaultSecurityFilterChain … org.springframework.security.web.access.intercept.AuthorizationFilter@12d28106]] (1/1)
+o.s.security.web.FilterChainProxy        : Securing GET /login/oauth2/code/google?state=….
+o.s.security.web.FilterChainProxy        : Invoking DisableEncodeUrlFilter (1/13)
+o.s.security.web.FilterChainProxy        : Invoking WebAsyncManagerIntegrationFilter (2/13)
+o.s.security.web.FilterChainProxy        : Invoking SecurityContextHolderFilter (3/13)
+o.s.security.web.FilterChainProxy        : Invoking HeaderWriterFilter (4/13)
+o.s.security.web.FilterChainProxy        : Invoking CorsFilter (5/13)
+o.s.security.web.FilterChainProxy        : Invoking LogoutFilter (6/13)
+o.s.s.w.a.logout.LogoutFilter            : Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+o.s.security.web.FilterChainProxy        : Invoking **OAuth2AuthorizationRequestRedirectFilter** (7/13)
+o.s.security.web.FilterChainProxy        : Invoking **OAuth2LoginAuthenticationFilter** (8/13)
+o.s.s.authentication.ProviderManager     : Authenticating request with **OAuth2LoginAuthenticationProvider** (1/3)
+
+select member ... (MemberService.registerOrReturn())
+
+S.d.oauth2.service.OAuth2UserService     : 회원가입 = 토마토
+s.CompositeSessionAuthenticationStrategy : Preparing session with ChangeSessionIdAuthenticationStrategy (1/1)
+s.ChangeSessionIdAuthenticationStrategy : Changed session id from 1F1FE33BCEA04F6AD264643099E9A249
+w.c.HttpSessionSecurityContextRepository : Stored SecurityContextImpl [Authentication=OAuth2AuthenticationToken [Principal={uuid}, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=1F1FE33BCEA04F6AD264643099E9A249], Granted Authorities=[ROLE_USER]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@6b59c5ef]
+s.o.c.w.**OAuth2LoginAuthenticationFilter** : Set SecurityContextHolder to OAuth2AuthenticationToken [Principal= {uuid} , Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=1F1FE33BCEA04F6AD264643099E9A249], Granted Authorities=[ROLE_USER]]
+
+로그인 완료
+```
+<cap>구글 Oauth 로그인 요청 로그</cap><br>
+
+```
+getMyInfo api 호출
+
+o.s.security.web.FilterChainProxy        : Securing GET /members
+o.s.security.web.FilterChainProxy        : Invoking DisableEncodeUrlFilter (1/13)
+o.s.security.web.FilterChainProxy        : Invoking WebAsyncManagerIntegrationFilter (2/13)
+o.s.security.web.FilterChainProxy        : Invoking SecurityContextHolderFilter (3/13)
+o.s.security.web.FilterChainProxy        : Invoking HeaderWriterFilter (4/13)
+o.s.security.web.FilterChainProxy        : Invoking CorsFilter (5/13)
+o.s.security.web.FilterChainProxy        : Invoking LogoutFilter (6/13)
+o.s.s.w.a.logout.LogoutFilter            : Did not match request to Or [Ant [pattern='/logout', GET], Ant [pattern='/logout', POST], Ant [pattern='/logout', PUT], Ant [pattern='/logout', DELETE]]
+o.s.security.web.FilterChainProxy        : Invoking **OAuth2AuthorizationRequestRedirectFilter** (7/13)
+o.s.security.web.FilterChainProxy        : Invoking **OAuth2LoginAuthenticationFilter** (8/13)
+s.o.c.w.**OAuth2LoginAuthenticationFilter** : Did not match request to Ant [pattern='/login/oauth2/code/*']
+o.s.security.web.FilterChainProxy        : Invoking RequestCacheAwareFilter (9/13)
+o.s.s.w.s.HttpSessionRequestCache        : matchingRequestParameterName is required for getMatchingRequest to lookup a value, but not provided
+o.s.security.web.FilterChainProxy        : Invoking SecurityContextHolderAwareRequestFilter (10/13)
+o.s.security.web.FilterChainProxy        : Invoking AnonymousAuthenticationFilter (11/13)
+o.s.security.web.FilterChainProxy        : Invoking ExceptionTranslationFilter (12/13)
+o.s.security.web.FilterChainProxy        : Invoking **AuthorizationFilter** (13/13)
+estMatcherDelegatingAuthorizationManager : Authorizing GET /members
+estMatcherDelegatingAuthorizationManager : Checking authorization on GET /members using org.springframework.security.config.annotation.web.configurers.AuthorizeHttpRequestsConfigurer$$Lambda$1430/0x00000070018eb418@5fcc9b51
+o.s.security.web.FilterChainProxy        : Secured GET /members
+horizationManagerBeforeMethodInterceptor : Authorizing method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity SpringSecurityOauth2.domain.member.controller.MemberController.getMyInfo(); target is of class [SpringSecurityOauth2.domain.member.controller.MemberController]
+w.c.HttpSessionSecurityContextRepository : Retrieved SecurityContextImpl [Authentication=OAuth2AuthenticationToken [Principal={uuid}, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=137253ECD859237F7A141DDA86E44B29], Granted Authorities=[ROLE_USER]]] from SPRING_SECURITY_CONTEXT
+o.s.s.w.a.AnonymousAuthenticationFilter  : Did not set SecurityContextHolder since already authenticated OAuth2AuthenticationToken [Principal={uuid}, Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=137253ECD859237F7A141DDA86E44B29], Granted Authorities=[ROLE_USER]]
+horizationManagerBeforeMethodInterceptor : Authorized method invocation ReflectiveMethodInvocation: public org.springframework.http.ResponseEntity SpringSecurityOauth2.domain.member.controller.MemberController.getMyInfo(); target is of class [SpringSecurityOauth2.domain.member.controller.MemberController]
+S.domain.member.service.MemberService    : uuid = 66b0a49a-96c1-436d-ab3e-f64a031af3a2
+
+select member...
+```
+<cap>사용자 정보 요청 로그</cap><br>
+
+<br>
+
 Sequence 다이어그램의 형태를 흉내내어 정리하긴 했지만 가독성 문제로 일부 클래스들은 생략된 상태라는점 참고해주길 바란다.
 
 <br>
 
-## 인가코드 발급
+## 인가코드 발급 (OAuth2AuthorizationRequestRedirectFilter)
 
 ![image](https://github.com/user-attachments/assets/313c33ea-f99b-4fd4-a0da-c067d4a90160)
 
@@ -216,7 +323,7 @@ Sequence 다이어그램의 형태를 흉내내어 정리하긴 했지만 가독
 2. */oauth2/authorization*로 오는 요청은 `OAuth2AuthorizationRequestRedirectFilter`에 의해 인터셉트 된다. 
 3. `OAuth2AuthorizationRequestRedirectFilter`은 리다이렉션 URI(*/login/oauth2/code*)를 Query Parameter로 사용하여 Google에 인가 코드를 요청한다.
 
-## 토큰 발급
+## 토큰 발급 (OAuth2LoginAuthenticationFilter)
 
 ![image](https://github.com/user-attachments/assets/4ef6889f-0b9e-4f6f-ab52-ca3c32126aeb)
 
@@ -224,7 +331,7 @@ Sequence 다이어그램의 형태를 흉내내어 정리하긴 했지만 가독
 2. */login/oauth2/code*로 리다이렉션된 요청은 `OAuth2LoginAuthenticationFilter`에 의해 인터셉트 된다.
 3. `OAuth2LoginAuthenticationProvider`가 인가코드를 사용하여 엑세스 토큰을 요청하고, 엑세스 토큰을 사용하여 사용자 정보를 요청한다.
 
-## 사용자 정보 저장
+## 사용자 정보 저장 (OAuth2LoginAuthenticationFilter)
 
 ![image](https://github.com/user-attachments/assets/19f7f0cf-3016-482b-9b4f-c27ebe0b78e1)
 
@@ -284,7 +391,7 @@ public class Oauth2ClientConfig {
 
 ## oAuth2UserService
 
-![image](https://github.com/user-attachments/assets/ea0f3b13-28a2-4126-9602-3edfc59bd06a)
+![image](https://github.com/user-attachments/assets/a9d9f959-07d4-4093-aca7-a44f02940248)
 
 
 추후 다른 OAuth2 서비스가 추가되어도 코드 변경 없이 사용할 수 있도록 interface를 사용했다. 
@@ -307,8 +414,10 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         OAuth2User oAuth2User = super.loadUser(userRequest); //사용자 정보 반환
         ProviderUser providerUser = providerUser(clientRegistration, oAuth2User);
         String registrationId = userRequest.getClientRegistration().getRegistrationId();
-        artistService.register(registrationId, providerUser);
+        Member member = memberService.registerOrReturn(registrationId, providerUser);
         log.info("회원가입 = " + providerUser.getName());
+        providerUser.setUuid(member.getUuid());
+        providerUser.setRole(member.getRole());
         return providerUser;
     }
 
@@ -320,7 +429,6 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
         return null; //todo: 예외 반환
     }
 }
-
 ```
 
 프론트에서  */oauth2/authorization* 로 인가코드 요청을 보내면, 사용자 정보 반환을 위하여 커스텀된 `OAuth2UserService`가 실행된다.
@@ -337,6 +445,9 @@ public class OAuth2UserService extends DefaultOAuth2UserService {
 ```java
 public abstract class OAuth2ProviderUser implements ProviderUser {
 
+    private String uuid;
+    private Role role;
+
     private final Map<String, Object> attributes;
     private final OAuth2User oAuth2User;
     private final ClientRegistration clientRegistration;
@@ -346,11 +457,6 @@ public abstract class OAuth2ProviderUser implements ProviderUser {
         this.attributes = attributes;
         this.oAuth2User = oAuth2User;
         this.clientRegistration = clientRegistration;
-    }
-
-    @Override
-    public String getPassword() {
-        return UUID.randomUUID().toString();
     }
 
     @Override
@@ -365,17 +471,36 @@ public abstract class OAuth2ProviderUser implements ProviderUser {
 
     @Override
     public List<? extends GrantedAuthority> getAuthorities() {
-        return oAuth2User.getAuthorities().stream()
-                .map(authority -> new SimpleGrantedAuthority(authority.getAuthority()))
-                .toList();
+        return List.of(new SimpleGrantedAuthority(this.role.name()));
     }
 
     @Override
     public Map<String, Object> getAttributes() {
         return attributes;
     }
-}
 
+    @Override
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
+
+    @Override
+    public String getUuid() {
+        return this.uuid;
+    }
+
+    @Override
+    public void setRole(Role role) {
+        this.role = role;
+    }
+    
+    // authentication.getPrincipal().toString(); 시 UUID 반환을 위함
+    // JWT 토큰 적용 후에는 불필요
+    @Override
+    public String toString() {
+        return this.uuid;
+    }
+}
 ```
 
 ```java
@@ -411,8 +536,26 @@ public class GoogleUser extends OAuth2ProviderUser {
 
 Spring Security를 통해 정상적으로 사용자 정보를 제공받았다.
 
-다음에는 사용자의 uuid를 통해 JWT 토큰을 생성하고, JWT 토큰을 통해 사용자 요청을 검사하는 내용을 다뤄보겠다.
+<br>
 
+# 현재 로그인한 회원 정보 반환하기
+
+```java
+@Component
+public class AuthorizationHelper {
+    public String getMyUuid() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getPrincipal().toString();
+    }
+}
+
+```
+
+8번 필터에 의하여 현재 SecurityContextHolder에 저장되어 있는 Principal은 `GoogleUser`이다. 
+
+물론 현재 Stateful한 상태이기 때문에 이전에 저장한 상태가 새로운 요청에서도 그대로 저장되어있는 거고, 이후 JWT 토큰을 사용하여 Stateless한 상태로 변경해줄 것이다.
+
+다음에는 사용자의 uuid를 통해 JWT 토큰을 생성하고, JWT 토큰을 통해 사용자 요청을 검사하는 내용을 다뤄보겠다.
 
 <br>
 
