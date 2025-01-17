@@ -6,7 +6,7 @@ categories: [SOFO]
 tags: [Spring, Spring Security] 
 image: https://github.com/user-attachments/assets/19f7f0cf-3016-482b-9b4f-c27ebe0b78e1
 description: "Spring Security를 사용한 OAuth2 로그인 원리를 학습하고 직접 구현합니다."
-featured: true
+featured: false
 toc: true
 summary: "수동 인증 처리를 통한 Oauth2 로그인을 직접 구현해본적 있으나, 이러한 방식은 인증과 인가 방식에서 여러가지 불편함이 있었다. 
  해당 방식은 직접 인가코드를 호출하고, 토큰을 요청하고, 사용자 정보를 요청하는 번거로운 과정을 백엔드와 프론트상에서 수동으로 처리해야 했다. 
@@ -200,11 +200,30 @@ Spring Security에서 인가코드 발급을 위해 사용되는 URI는 **`OAuth
 
 `Oauth2LoginConfigure`는 configure() 메서드를 통해 만일 사용자가 **커스텀으로 작성한 인가코드 발급 URI과 Redirection URI가 존재한다면 해당 주소로 수정하고, 만일 존재하지 않는다면 기본주소를 사용하도록 설정한다**.
 
-
+<br>
 
 # Spring Security OAuth2 인증 처리 흐름
 
-Spring Security 필터 체인의 순서는 아래와 같다.
+현재 Spring Security 필터 체인 순서는 아래와 같다.
+
+```
+Security filter chain: [
+  DisableEncodeUrlFilter
+  WebAsyncManagerIntegrationFilter
+  SecurityContextHolderFilter
+  HeaderWriterFilter
+  CorsFilter
+  LogoutFilter
+  OAuth2AuthorizationRequestRedirectFilter
+  OAuth2LoginAuthenticationFilter
+  RequestCacheAwareFilter
+  SecurityContextHolderAwareRequestFilter
+  AnonymousAuthenticationFilter
+  ExceptionTranslationFilter
+  AuthorizationFilter
+]
+```
+(Security 설정 파일에 `@EnableWebSecurity(debug = true)`을 붙이는 것으로 현재 사용하고 있는 필터 체인 정보를 확인할 수 있다.)
 
 ### FilterChainProxy
 
@@ -388,6 +407,13 @@ public class Oauth2ClientConfig {
     - 사용자 정보 요청시 사용할 커스텀 클래스를 `oAuth2UserService`로 설정했다.
     - 로그인 성공시 커스텀한 `LoginSuccessHandler`가 실행되도록 설정했다.
     
+
+> +
+>
+>원래는 기존 프로젝트 파일에 있던 Cors 설정을 사용하고, Spring Security에는 따로 Cors 설정을 해주지 않았는데 해줘야 한다.  
+>관련헤서는 바로 다음 게시글에 첨부하겠다.
+
+<br>
 
 ## oAuth2UserService
 
