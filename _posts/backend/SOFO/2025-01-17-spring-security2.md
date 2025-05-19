@@ -6,7 +6,7 @@ categories: [SOFO]
 tags: [Spring, Spring Security] 
 image: https://github.com/user-attachments/assets/b69b84ea-2b36-45f0-aa3a-7bd83bd10cf6
 description: "JWT를 사용하여 사용자 인증 정보를 Statless하게 관리합니다."
-featured: true
+featured: false
 toc: true
 summary: "지난 게시글에서는 Spring Security를 사용하여 OAuth2 로그인을 구현하고, 이를 통해 로그인한 사용자 정보를 Stateful하게 관리했다.
 
